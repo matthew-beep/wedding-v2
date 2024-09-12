@@ -15,7 +15,8 @@ const config: Config = {
       fontFamily: {
         'rufina-stencil': ['rufina-stencil', 'sans-serif'],
         'rufina-stencil-ornaments': ['rufina-stencil-ornaments', 'sans-serif'],
-        'quinn-display' : ['quinn-display', 'serif']
+        'quinn-display' : ['quinn-display', 'serif'],
+        'canto' : ['canto', 'serif']
       }
     },
   },
