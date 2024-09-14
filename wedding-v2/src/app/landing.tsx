@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef,} from 'react'
-import {motion, useScroll, useTransform, useAnimationControls, useMotionValueEvent} from 'framer-motion'
+import {motion, useScroll, useTransform, useAnimationControls} from 'framer-motion'
 import img from './img/savethedate.jpg';
 
 interface LandingProps {

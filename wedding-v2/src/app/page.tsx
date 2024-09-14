@@ -1,8 +1,7 @@
 'use client'
-import Image from "next/image";
 import Landing from "./landing";
 import MobileNav from "./mobileNav";
-import {motion, useScroll, useTransform, useMotionValueEvent} from 'framer-motion'
+import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
 import Footer from "./footer";
 

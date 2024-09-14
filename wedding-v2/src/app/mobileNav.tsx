@@ -1,8 +1,7 @@
 'use client'
-import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef, useState} from 'react'
-import {motion, useAnimation, useAnimationControls} from 'framer-motion'
+import {useEffect, useState} from 'react'
+import {motion, useAnimationControls} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
