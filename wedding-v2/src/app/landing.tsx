@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef,} from 'react'
-import {motion, useScroll, useTransform, useAnimationControls} from 'framer-motion'
+import {motion, useScroll, useTransform, useAnimationControls, easeInOut} from 'framer-motion'
 import img from './img/savethedate.jpg';
 
 interface LandingProps {
@@ -26,7 +26,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
       console.log(scrollYProgress);
     }, [scrollYProgress])
 
-    
+    /*
     useEffect(() => {
       if(scroll !== undefined) {
         if(scroll > 5) {
@@ -50,7 +50,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
         }
       }
     })
-
+    */
     useEffect(() => { 
         console.log(xPos);
     }, [xPos])
@@ -58,27 +58,31 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
   
   return (
     <div className="relative"> 
-      <section className="bg-neutral-500 h-screen w-full flex justify-center">
-        <div className="relative landing w-full h-full items-center start flex flex-col border-2">
-          <motion.h1 
-            className="text-7xl text-white font-canto border-2 w-11/12"
-            style={{
-              top:'5rem',
-              position: "absolute",
-              margin: 'auto',
-              display: 'flex'
-            }}
-            animate={controls}
-          >
-            Anita & Jesus
-          </motion.h1>
-
+      <section className="bg-neutral-500 h-screen w-full flex">
+        <div className="relative landing w-full h-full px-12">
+          <div className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24">
+            <motion.h1 
+              className="text-5xl w-11/12"
+              initial={{
+                opacity: 0,
+                translateY: '50%'
+              }}
+              animate={{
+                opacity:1,
+                translateY: '0%',
+                transition: { duration: 0.5, ease: easeInOut }
+              }}
+            >
+              Anita & Jesus
+            </motion.h1>
+            <h2 className="text-2xl text-white">August 29, 2025</h2>
+          </div>
         </div>
       </section>
       <section ref={ref} className="lg:h-[200vh] h-[150vh] w-full relative">
-        <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden font-quinn-display border-amber-400 border-2">
-          <div className="lg:w-1/2 w-full bg-yellow-50 flex flex-col items-center justify-center h-1/2 lg:h-full">
-            <div className="font-quinn-display text-6xl">
+        <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
+          <div className="lg:w-1/2 w-full bg-white flex flex-col items-center justify-center h-1/2 lg:h-full">
+            <div className="font-canto text-6xl text-black">
               Save The Date              
             </div>
             <div className="font-rufina-stencil-ornaments text-9xl font-medium">
@@ -86,13 +90,13 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
             </div>
           </div>
           <motion.div 
-          className="w-full bg-amber-900 flex flex-col items-center justify-center h-screen absolute"
+          className="w-full flex flex-col items-center justify-center h-screen absolute bg-[#B0A395]"
           style={{
             translateX: windowWidth <= 1024 ? 0 : xPos ,
             translateY: windowWidth <= 1024 ? yPos : 0
           }}
           >
-            <div className="lg:w-1/2 w-full flex items-center justify-center border-2 h-1/2">
+            <div className="lg:w-1/2 w-full flex items-center justify-center h-1/2">
               <motion.div 
               className="bg-white"
               style={{
@@ -105,11 +109,14 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
                 </div>
               </motion.div>
             </div>
-            <div className="lg:w-1/2 w-full border-2 lg:h-full h-1/2 p-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div className="lg:w-1/2 w-11/12 lg:h-full h-1/2 p-5 font-canto">
+              <h3 className="text-3xl">We're Getting Married</h3>
+              <p className="text-xl">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
             </div>
 
           </motion.div>
