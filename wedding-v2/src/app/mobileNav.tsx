@@ -7,20 +7,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 interface MobileNavProps {
-  scroll? : number;
+  scroll : number;
+  height : number;
 }
 
-const MobileNav: React.FC<MobileNavProps> = ({ scroll }) => {
+const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   const [downAnimation, setDownAnimation] = useState<boolean>(false);
   const controls = useAnimationControls();
+  const [iconOpacity, setIconOpacity] = useState<number>(0);
   
   useEffect(() => {
     // console.log("mobile " + scroll);
     if (scroll !== undefined) {
       if (scroll > 5) {
         setDownAnimation(true);
+        setIconOpacity(1);
       } else {
         setDownAnimation(false);
+        setIconOpacity(0);
       }
     }
   }, [scroll])
@@ -40,6 +44,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll }) => {
       })
     }
   }, [downAnimation])
+
+  useEffect(() => {
+    if (scroll >= (0.75 * height)) { // going to need to detect scrolling down and when 
+      console.log("disappear");
+    }
+  }, [height, scroll])
   
   return (
     <nav className="font-canto w-full h-20">
@@ -48,10 +58,22 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll }) => {
         initial={{color: 'white'}}
         animate={controls}
       >
-        <div className="flex w-full justify-between w-11/12 items-center">
-          <h2 className="text-4xl">A+J</h2>
-          <FontAwesomeIcon icon={faBars} className="text-3xl" />
+        <div className="flex justify-between w-11/12 items-center">
+          <motion.h2 
+            className="text-4xl"
+            style={{
+              opacity: iconOpacity
+            }}
+          >
+            A&J
+          </motion.h2>
+          <FontAwesomeIcon icon={faBars} className="text-3xl cursor-pointer" />
         </div>
+      </motion.section>
+      <motion.section
+        className="flex-grow bg-white"
+      >
+
       </motion.section>
     </nav>
   );

@@ -4,10 +4,13 @@ import Landing from "./landing";
 import MobileNav from "./mobileNav";
 import {motion, useScroll, useTransform, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
+import Footer from "./footer";
 
 export default function Home() {
   const { scrollY } = useScroll();
   const [scrollYProgress, setScrollYProgress] = useState<number>(scrollY.get());
+  const [windowHeight, setWindowHeight] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -22,15 +25,33 @@ export default function Home() {
     setScrollYProgress(latest);
   })
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const viewportHeight = window.innerHeight;
+        const viewportWidth = window.innerWidth;
+        console.log(windowHeight);
+        setWindowHeight(viewportHeight);
+        setWindowWidth(viewportWidth);
+      }
+
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      }
+    }
+  });
 
   return (
     <div className="relative">
       <header className="fixed top-0 left-0 z-10 w-full">
-        <MobileNav scroll={scrollYProgress} />
+        <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
       <main className="">
-        <Landing scroll={scrollYProgress}/>
+        <Landing scroll={scrollYProgress} windowWidth={windowWidth}/>
       </main>
+      <Footer />
     </div>
   );
 }
