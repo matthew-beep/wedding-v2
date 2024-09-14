@@ -11,14 +11,12 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
-    // const controls = useAnimationControls();
+    const controls = useAnimationControls();
     const ref = useRef<HTMLDivElement | null>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end end"]
     })
-
-    const test = scroll;
 
     const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
     const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
@@ -28,31 +26,40 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
       console.log(scrollYProgress);
     }, [scrollYProgress])
 
-    /*
+    
     useEffect(() => {
       if(scroll !== undefined) {
         if(scroll > 5) {
           console.log("activate animation ")
+
           controls.start({
+            /*
             top: 0,
             fontSize: '4px',
             filter:'blur(10px)',
             opacity: 0,
             transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
+            */
+            transform:"translateY(-50%)",
+            opacity: 0
           })
         } else {
           controls.start({
+            /*
             color:"white",
             top: '5rem',
             filter:'blur(0px)',
             fontSize: '72px',
             opacity:  1,
             transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
+            */
+            transform:"translateY(0%)",
+            opacity: 1
           })
         }
       }
     })
-    */
+    
     useEffect(() => { 
         console.log(xPos);
     }, [xPos])
