@@ -11,12 +11,14 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
-    const controls = useAnimationControls();
+    // const controls = useAnimationControls();
     const ref = useRef<HTMLDivElement | null>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end end"]
     })
+
+    const test = scroll;
 
     const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
     const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
@@ -110,7 +112,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
               </motion.div>
             </div>
             <div className="lg:w-1/2 w-11/12 lg:h-full h-1/2 p-5 font-canto">
-              <h3 className="text-3xl">We're Getting Married</h3>
+              <h3 className="text-3xl">We&apos;re Getting Married</h3>
               <p className="text-xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
