@@ -43,8 +43,8 @@ export default function Home() {
   });
 
   return (
-    <div className="relative">
-      <header className="fixed top-0 left-0 z-10 w-full">
+    <div className="relative bg-white">
+      <header className="fixed top-0 left-0 z-10 w-full border-2">
         <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
       <main className="">
