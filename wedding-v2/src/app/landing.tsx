@@ -67,7 +67,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
   
   return (
     <div className="relative"> 
-      <section className="bg-neutral-500 h-screen w-full flex">
+      <section className="bg-neutral-500 h-screen w-full bg-white flex">
         <div className="relative landing w-full h-full px-12">
           <div className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24">
             <motion.h1 

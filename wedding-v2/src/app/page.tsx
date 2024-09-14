@@ -44,10 +44,10 @@ export default function Home() {
 
   return (
     <div className="relative bg-white">
-      <header className="fixed top-0 left-0 z-10 w-full border-2">
+      <header className="fixed top-0 left-0 z-10 w-full">
         <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
-      <main className="">
+      <main className="bg-white h-screen">
         <Landing scroll={scrollYProgress} windowWidth={windowWidth}/>
       </main>
       <Footer />
