@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
   }, 60000);
   */
   return (
-    <footer className="h-auto bg-white font-canto text-2xl flex flex-col items-center py-5">
+    <footer className="h-auto bg-white font-canto text-2xl flex flex-col items-center py-20">
       <section>
         <div>
           {days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds"}

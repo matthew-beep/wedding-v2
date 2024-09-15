@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+//import Link from 'next/link';
 import {useEffect, useState} from 'react'
 import {motion, useAnimationControls} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -63,7 +64,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         backgroundColor: 'rgba(255, 255, 255, 1)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
-
+      setIconOpacity(1);
       navAnimation.start({
         height: '100vh'
       })
@@ -75,7 +76,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         backgroundColor: 'rgba(255, 255, 255, 0)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
-
+      setIconOpacity(0);
       navAnimation.start({
         height: '5rem'
       })
@@ -86,11 +87,10 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   return (
     <nav className="font-canto w-full flex flex-col">
       <motion.div 
-        className='flex flex-col'
-        animate={navAnimation}
+        className='flex flex-col h-screen'
       >
         <motion.section 
-          className="flex w-full justify-center h-20 items-center "
+          className="flex w-full justify-center h-20 items-center"
           initial={{color: 'white'}}
           animate={controls}
         >
@@ -106,11 +106,26 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
             <FontAwesomeIcon icon={faBars} className="text-3xl cursor-pointer" onClick={handleClick}/>
           </div>
         </motion.section>
+        {navDisplay &&
         <motion.section
-          className="flex-grow bg-white"
+          className="bg-white flex-grow"
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
+          }}
         >
-
+          <ul className="flex flex-col w-full h-full">
+            <li className="text-lg text-gray-700 py-4 px-4">Venue</li>
+            <li className="text-lg text-gray-700 py-4 px-4">Registry</li>
+            <li className="text-lg text-gray-700 py-4 px-4">Guestbook</li>
+            <li className="text-lg text-gray-700 py-4 px-4">FAQ</li>
+            <li className="text-lg text-gray-700 py-4 px-4">RSVP</li>
+          </ul>
         </motion.section>
+        }
       </motion.div>
     </nav>
   );
