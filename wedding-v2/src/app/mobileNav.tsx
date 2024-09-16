@@ -50,8 +50,17 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   }, [downAnimation])
 
   useEffect(() => {
-    if (scroll >= (0.75 * height)) { // going to need to detect scrolling down and when 
-      console.log("disappear");
+    if (scroll > (0.75 * height)) { // going to need to detect scrolling down and when 
+      console.log("disappear " + scroll);
+      controls.start({
+        y: '-100%',
+        transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
+      })
+    } else {
+      controls.start({
+        y: '0%',
+        transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
+      })
     }
   }, [height, scroll])
 
@@ -87,7 +96,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   return (
     <nav className="font-canto w-full flex flex-col">
       <motion.div 
-        className='flex flex-col h-screen'
+        className='flex flex-col'
       >
         <motion.section 
           className="flex w-full justify-center h-20 items-center"
@@ -110,19 +119,19 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         <motion.section
           className="bg-white flex-grow"
           initial={{
-            opacity: 0
+            opacity: 0,
           }}
           animate={{
             opacity: 1,
             transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
           }}
         >
-          <ul className="flex flex-col w-full h-full">
-            <li className="text-lg text-gray-700 py-4 px-4">Venue</li>
-            <li className="text-lg text-gray-700 py-4 px-4">Registry</li>
-            <li className="text-lg text-gray-700 py-4 px-4">Guestbook</li>
-            <li className="text-lg text-gray-700 py-4 px-4">FAQ</li>
-            <li className="text-lg text-gray-700 py-4 px-4">RSVP</li>
+          <ul className="flex flex-col w-full h-full text-xl">
+            <li className="text-gray-700 py-4 px-4">Venue</li>
+            <li className="text-gray-700 py-4 px-4">Registry</li>
+            <li className="text-gray-700 py-4 px-4">Guestbook</li>
+            <li className="text-gray-700 py-4 px-4">FAQ</li>
+            <li className="text-gray-700 py-4 px-4">RSVP</li>
           </ul>
         </motion.section>
         }
