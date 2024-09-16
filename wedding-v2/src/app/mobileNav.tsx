@@ -14,7 +14,7 @@ interface MobileNavProps {
 const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   const [downAnimation, setDownAnimation] = useState<boolean>(false);
   const [navDisplay, setNavDisplay] = useState<boolean>(false);
-  const [hideNave, setHideNav] = useState<boolean>(false);
+  // const [hideNave, setHideNav] = useState<boolean>(false);
   const [iconOpacity, setIconOpacity] = useState<number>(0);
 
   const controls = useAnimationControls();
