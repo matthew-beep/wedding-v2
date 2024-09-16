@@ -13,10 +13,9 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        'rufina-stencil': ['rufina-stencil', 'sans-serif'],
         'rufina-stencil-ornaments': ['rufina-stencil-ornaments', 'sans-serif'],
-        'quinn-display' : ['quinn-display', 'serif'],
-        'canto' : ['canto', 'serif']
+        'canto' : ['canto', 'serif'],
+        'proxima': ['proxima-nova', 'sans-serif'],
       }
     },
   },
