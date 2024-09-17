@@ -39,8 +39,8 @@ const Footer: React.FC<FooterProps> = ({  }) => {
     <footer className=" bg-white font-canto text-2xl flex flex-col items-center min-h-54 pb-20 pt-10 text-black flex flex-col items-center justify-around">
       <section>
         <div className='flex flex-col items-center justify-center mb-5'>
-          <p>{days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds"}</p>
-          <p>Till We say "I do!"</p>
+          <p>{`${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`}</p>
+          <p>Till We say &quot;I do!&quot;</p>
         </div>
       </section>
       <section>
