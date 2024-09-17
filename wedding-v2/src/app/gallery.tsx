@@ -1,15 +1,13 @@
+
+/*
 'use client'
 import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import img from './img/savethedate.jpg';
-import landing1 from './img/hero.jpg';
-import landing2 from './img/preferred.jpg';
-import landing3 from './img/pillars.jpg';
-import landing4 from './img/dark.jpg';
 
 
 interface LandingProps {
@@ -19,8 +17,6 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     const controls = useAnimationControls();
-    const slide = useAnimationControls();
-    // const header = useAnimationControls();
     const ref = useRef<HTMLDivElement | null>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -33,15 +29,23 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     
     const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
     const [showText, setShowText] = useState<boolean>(false);
-    const [currentImg, setImg] = useState<number>(0);
 
-    const gallery = [
-      { img: landing1 },
-      { img: landing2 },
-      { img: landing3 },
-      { img: landing4 }
-    ];
     
+    const gallery = [
+      {
+        img: "./img/hero.jpg"
+      },
+      {
+        img: "./img/preferred.jpg"
+      },
+      {
+        img: "./img/pillars.jpg"
+      },
+      {
+        img:"./img/dark.jpg"
+      }
+    ];
+
     useEffect(() => {
       console.log(scrollYProgress);
     }, [scrollYProgress])
@@ -92,89 +96,29 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     useEffect(() => { 
         console.log(xPos);
     }, [xPos])
-
-    const next = () => {
-      console.log("next image");
-
-      if(gallery.length - 1 == currentImg) {
-        setImg(0);
-      } else {
-        setImg(currentImg + 1)
-      }
-      slide.start({
-        opacity: [0,1],
-        transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
-    }
-
-    const prev = () => {
-      console.log("prev image");
-
-      if(currentImg == 0) {
-        setImg(gallery.length - 1);
-      } else {
-        setImg(currentImg - 1)
-      }
-      slide.start({
-        opacity: [0,1],
-        transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
-    }
-
   
-    // <Image src={hero} alt="Anita & Jesus Sitting Together" className="w-full h-full absolute top-0 left-0 object-cover" />
-
   return (
     <div className="relative"> 
-      <section className="relative bg-neutral-500 h-screen w-full flex">
-        <motion.div 
-          className="w-full h-full object-cover z-0 absolute"
-          animate={slide}
-        >
-          <Image src={gallery[currentImg].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
-        </motion.div>
+      <section className="bg-neutral-500 h-screen w-full bg-white flex">
         <div 
-          className="relative w-full h-full px-12 flex flex-col justify-between pb-12 landing"
+          className="relative w-full h-full px-12 landing"
         >
-          <motion.div 
-            className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24 relative z-10"
-            initial={{
-              opacity: 0,
-              translateY: '50%'
-            }}
-            animate={{
-              opacity:1,
-              translateY: '0%',
-              transition: { duration: 0.5, ease: easeInOut }
-            }}
-          >
+          <div className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24">
             <motion.h1 
               className="text-5xl w-11/12"
+              initial={{
+                opacity: 0,
+                translateY: '50%'
+              }}
+              animate={{
+                opacity:1,
+                translateY: '0%',
+                transition: { duration: 0.5, ease: easeInOut }
+              }}
             >
               Anita & Jesus
             </motion.h1>
             <h2 className="text-2xl text-white">August 29, 2025</h2>
-          </motion.div>
-          <div className="flex justify-between">
-            <div 
-              className="border-2 w-12 h-12 flex items-center rounded-full"
-              onClick={prev}
-            >
-              <FontAwesomeIcon 
-                icon={faArrowLeft} 
-                className="text-3xl w-full h-full text-white border-white"
-              />
-            </div>
-            <div 
-              className="border-2 w-12 h-12 flex items-center rounded-full"
-              onClick={next}
-            
-            >
-              <FontAwesomeIcon 
-                icon={faArrowRight} 
-                className="text-3xl w-full h-full text-white border-white"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -233,7 +177,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
                   >
                     <div>
                       <h3 className="text-3xl font-black mb-1 text-white">We&apos;re Getting Married</h3>
-                      <p className="text-md text-white font-proxima font-extrathin">
+                      <p className="text-lg text-white font-proxima font-extrathin">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
                         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
@@ -253,3 +197,4 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
 }
 
 export default Landing;
+*/
