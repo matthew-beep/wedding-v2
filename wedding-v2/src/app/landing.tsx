@@ -105,7 +105,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
             <div className="font-canto text-6xl text-black">
               Save The Date              
             </div>
-            <div className="font-rufina-stencil-ornaments text-9xl font-medium">
+            <div className="font-rufina-stencil-ornaments text-9xl font-medium text-black">
               f
             </div>
           </div>
@@ -133,7 +133,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
               <AnimatePresence>
                 {showText && (
                   <motion.div 
-                    className="flex flex-col justify-between items-center h-full"
+                    className="flex flex-col justify-around items-center h-full"
                     style={{
                       opacity: textOpacity,
                     }}
@@ -153,7 +153,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
                     }}
                   >
                     <div>
-                      <h3 className="text-4xl font-black mb-3 text-white">We&apos;re Getting Married</h3>
+                      <h3 className="text-4xl font-black mb-1 text-white">We&apos;re Getting Married</h3>
                       <p className="text-xl text-white font-proxima font-extrathin">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
@@ -161,7 +161,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
                         sunt in culpa qui officia deserunt mollit anim id est laborum.
                       </p>
                     </div>
-                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold">RSVP</button>
+                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1">RSVP</button>
                   </motion.div>
                 )}
               </AnimatePresence>

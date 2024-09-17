@@ -36,14 +36,15 @@ const Footer: React.FC<FooterProps> = ({  }) => {
   }, 60000);
   */
   return (
-    <footer className="h-auto bg-white font-canto text-2xl flex flex-col items-center py-20">
+    <footer className=" bg-white font-canto text-2xl flex flex-col items-center min-h-54 pb-20 pt-10 text-black flex flex-col items-center justify-around">
       <section>
-        <div>
-          {days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds"}
+        <div className='flex flex-col items-center justify-center mb-5'>
+          <p>{days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds"}</p>
+          <p>Till We say "I do!"</p>
         </div>
       </section>
       <section>
-        <h5>Designed and Developed by <span>Matthew Herradura</span></h5>
+        <h5 className='text-center text-sm font-proxima'>Designed and Developed by <span>Matthew Herradura</span></h5>
       </section>
     </footer>
   );
