@@ -5,6 +5,7 @@ import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
 import img from './img/savethedate.jpg';
 
+
 interface LandingProps {
   scroll : number;
   windowWidth : number;
@@ -25,6 +26,22 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
     const [showText, setShowText] = useState<boolean>(false);
 
+    /*
+    const gallery = [
+      {
+        img: "./img/hero.jpg"
+      },
+      {
+        img: "./img/preferred.jpg"
+      },
+      {
+        img: "./img/pillars.jpg"
+      },
+      {
+        img:"./img/dark.jpg"
+      }
+    ];
+*/
     useEffect(() => {
       console.log(scrollYProgress);
     }, [scrollYProgress])
@@ -79,7 +96,9 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
   return (
     <div className="relative"> 
       <section className="bg-neutral-500 h-screen w-full bg-white flex">
-        <div className="relative landing w-full h-full px-12">
+        <div 
+          className="relative w-full h-full px-12 landing"
+        >
           <div className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24">
             <motion.h1 
               className="text-5xl w-11/12"
