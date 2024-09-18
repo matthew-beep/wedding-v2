@@ -126,7 +126,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
 
   return (
     <div className="relative"> 
-      <section className="relative bg-neutral-500 h-screen w-full flex">
+      <section className="relative bg-neutral-500 h-svh sm:h-screen w-full flex">
         <motion.div 
           className="w-full h-full object-cover z-0 absolute"
           animate={slide}
