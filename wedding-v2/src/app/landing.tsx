@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
-import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
+import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence, useMotionValue, useSpring} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import img from './img/savethedate.jpg';
@@ -34,6 +34,35 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
     const [showText, setShowText] = useState<boolean>(false);
     const [currentImg, setImg] = useState<number>(0);
+    const timer = useMotionValue(0);
+    const progress = useTransform(timer, [0, 5], [0, 1])
+    
+    const timerEnd:number = 5;
+
+    // useMotionValue()
+    const scaleX = useSpring(progress, {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001
+    });
+
+    useEffect(() => {
+      //Implementing the setInterval method
+      const interval = setInterval(() => {
+          const currTime = timer.get();
+          if (currTime >= timerEnd) {
+            timer.set(0);
+            console.log("resetting timer" + timer.get())
+          } else {
+            timer.set(currTime + 1);
+          }
+          console.log(timer.get() + " seconds");
+      }, 1000);
+      //Clearing the interval
+      return () => clearInterval(interval);
+    }, [timer]);
+
+
 
     const gallery = [
       { img: landing1 },
@@ -121,6 +150,8 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
       })
     }
 
+
+
   
     // <Image src={hero} alt="Anita & Jesus Sitting Together" className="w-full h-full absolute top-0 left-0 object-cover" />
 
@@ -154,6 +185,17 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
               Anita & Jesus
             </motion.h1>
             <h2 className="text-2xl text-white">August 29, 2025</h2>
+            <motion.div
+              className="h-4 bg-white w-full"
+              style={{
+                scaleX: scaleX,
+                originX: 0
+              }}
+
+
+            >
+
+            </motion.div>
           </motion.div>
           <div className="flex justify-between">
             <div 
