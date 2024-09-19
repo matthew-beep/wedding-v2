@@ -27,6 +27,34 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
         offset: ["start start", "end end"]
     })
 
+    const parentVariants = {
+      hidden: {              
+        opacity: 0,
+        translateY: '50%'
+      },
+      show: {
+        opacity:1,
+        translateY: '0%',
+        transition: { 
+          duration: 0.5, ease: easeInOut,
+          staggerChildren: 0.3
+        }
+      }
+    }
+
+    const childVariants = {
+      hidden: { 
+        opacity: 0,
+        translateY: '50%' 
+      },
+      show: { 
+        opacity: 1, 
+        translateY: '0%',
+        transition: { duration: 0.5, ease: easeInOut } 
+      
+      },
+    }
+
     const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
     const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
     const width = useTransform(scrollYProgress, [0, 0.9], ["45%", "100%"]);
@@ -52,12 +80,12 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
           const currTime = timer.get();
           if (currTime >= timerEnd) {
             timer.set(0);
-            console.log("resetting timer" + timer.get())
+            //console.log("resetting timer" + timer.get())
           } else {
-            timer.set(currTime + 1);
+            timer.set(currTime + 0.1);
           }
-          console.log(timer.get() + " seconds");
-      }, 1000);
+          //console.log(timer.get() + " seconds");
+      }, 100);
       //Clearing the interval
       return () => clearInterval(interval);
     }, [timer]);
@@ -168,31 +196,30 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
           className="relative w-full h-full px-12 flex flex-col justify-between pb-12 landing"
         >
           <motion.div 
-            className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24 relative z-10"
-            initial={{
-              opacity: 0,
-              translateY: '50%'
-            }}
-            animate={{
-              opacity:1,
-              translateY: '0%',
-              transition: { duration: 0.5, ease: easeInOut }
-            }}
+            className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
+            variants={parentVariants}
+            initial={"hidden"}
+            animate={"show"}
+            
           >
             <motion.h1 
-              className="text-5xl w-11/12"
+              className="text-5xl"
+              variants={childVariants}
             >
               Anita & Jesus
             </motion.h1>
-            <h2 className="text-2xl text-white">August 29, 2025</h2>
+            <motion.h2 
+              className="text-2xl text-white"
+              variants={childVariants}
+            >
+              August 29, 2025
+            </motion.h2>
             <motion.div
               className="h-4 bg-white w-full"
               style={{
                 scaleX: scaleX,
                 originX: 0
               }}
-
-
             >
 
             </motion.div>
