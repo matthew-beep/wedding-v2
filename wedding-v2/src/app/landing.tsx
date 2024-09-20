@@ -9,7 +9,6 @@ import landing1 from './img/hero.jpg';
 import landing2 from './img/preferred.jpg';
 import landing3 from './img/pillars.jpg';
 import landing4 from './img/dark.jpg';
-import { filter } from "framer-motion/client";
 
 
 interface LandingProps {
