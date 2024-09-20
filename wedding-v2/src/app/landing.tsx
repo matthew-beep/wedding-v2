@@ -17,16 +17,32 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const [showText, setShowText] = useState<boolean>(false);
+    const [currentImg, setImg] = useState<number>(0);
+    const [timerEnable, setTimerEnable] = useState<boolean>(true);
     const controls = useAnimationControls();
     const slide = useAnimationControls();
     const textAnimation = useAnimationControls();
+
+    const { scrollYProgress } = useScroll({
+      target: ref,
+      offset: ["start start", "end end"]
+  })
+
+    const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
+    const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
+    const width = useTransform(scrollYProgress, [0, 0.9], ["45%", "100%"]);
+    
+    const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
+
+    
+    const timer = useMotionValue(0);
+    const timerEnd:number = 10;
+    const progress = useTransform(timer, [0, timerEnd], [0, 1])
     
     // const header = useAnimationControls();
-    const ref = useRef<HTMLDivElement | null>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end end"]
-    })
+    
 
     const parentVariants = {
       hidden: {              
@@ -75,18 +91,6 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
         } 
       }
     }
-
-    const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
-    const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
-    const width = useTransform(scrollYProgress, [0, 0.9], ["45%", "100%"]);
-    
-    const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
-    const [showText, setShowText] = useState<boolean>(false);
-    const [currentImg, setImg] = useState<number>(0);
-    
-    const timer = useMotionValue(0);
-    const timerEnd:number = 10;
-    const progress = useTransform(timer, [0, timerEnd], [0, 1])
     
     
 
@@ -103,7 +107,9 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
 
     useEffect(() => {
       //Implementing the setInterval method
-      const interval = setInterval(() => {
+      let interval:any
+      if (timerEnable) {
+        interval = setInterval(() => {
           const currTime = timer.get();
           if (currTime >= timerEnd) {
             console.log(currentImg)
@@ -114,10 +120,11 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
             timer.set(currTime + 0.1);
           }
           //console.log(timer.get() + " seconds");
-      }, 100);
+        }, 100);
+      }
       //Clearing the interval
       return () => clearInterval(interval);
-    }, [timer, currentImg]);
+    }, [timer, currentImg, timerEnable]);
 
 
 
@@ -176,13 +183,16 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     })
     
     useEffect(() => { 
-        console.log(xPos);
-    }, [xPos])
+        console.log(timerEnable);
+    }, [timerEnable])
 
     const next = () => {
-      console.log("next image" + currentImg);
+      //console.log("next image" + currentImg);
       textAnimation.start("exit");
-      //textAnimation.start("show");
+      timer.set(0);
+      setTimerEnable(false);
+      
+      setTimeout(() => {
         if(gallery.length - 1 == currentImg) {
           setImg(0);
         } else {
@@ -195,16 +205,22 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
           textAnimation.start("show")
           textAnimation.set({ filter: 'blur(0px)' });  
         })
+        setTimerEnable(true);
+      }, 1000)
+
     }
 
     const prev = () => {
-      console.log("prev image");
+      //console.log("prev image");
       textAnimation.start("exit");
-      if(currentImg == 0) {
-        setImg(gallery.length - 1);
-      } else {
-        setImg(currentImg - 1)
-      }
+      timer.set(0);
+      setTimerEnable(false);
+      setTimeout(() => {
+        if(currentImg == 0) {
+          setImg(gallery.length - 1);
+        } else {
+          setImg(currentImg - 1)
+        }
         slide.start({
           opacity: [0.5,1],
           transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
@@ -212,6 +228,8 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
           textAnimation.start("show")
           textAnimation.set({ filter: 'blur(0px)' });
         })
+        setTimerEnable(true);
+      }, 1000)
     }
 
 
