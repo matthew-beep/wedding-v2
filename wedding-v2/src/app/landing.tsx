@@ -12,11 +12,10 @@ import landing4 from './img/dark.jpg';
 
 
 interface LandingProps {
-  scroll : number;
   windowWidth : number;
 }
 
-const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
+const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const [showText, setShowText] = useState<boolean>(false);
     const [currentImg, setImg] = useState<number>(0);
@@ -107,7 +106,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
 
     useEffect(() => {
       //Implementing the setInterval method
-      let interval:any
+      let interval: NodeJS.Timeout | undefined;
       if (timerEnable) {
         interval = setInterval(() => {
           const currTime = timer.get();
@@ -149,87 +148,57 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     })
 
     
-    useEffect(() => { // header text animation
-      if(scroll !== undefined) {
-        if(scroll > 5) {
-          console.log("activate animation ")
-
-          controls.start({
-            
-            top: 0,
-            fontSize: '4px',
-            filter:'blur(10px)',
-            opacity: 0,
-            transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
-            
-            //transform:"translateY(-50%)",
-            //opacity: 0
-          })
-        } else {
-          controls.start({
-            
-            color:"white",
-            top: '5rem',
-            filter:'blur(0px)',
-            fontSize: '72px',
-            opacity:  1,
-            transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
-            
-           // transform:"translateY(0%)",
-           // opacity: 1
-          })
-        }
-      }
-    })
-    
     useEffect(() => { 
         console.log(timerEnable);
     }, [timerEnable])
 
     const next = () => {
-      //console.log("next image" + currentImg);
-      textAnimation.start("exit");
-      timer.set(0);
-      setTimerEnable(false);
       
-      setTimeout(() => {
-        if(gallery.length - 1 == currentImg) {
-          setImg(0);
-        } else {
-          setImg(currentImg + 1)
-        }
-        slide.start({
-          opacity: [0.5,1],
-          transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
-        }).then(()=> {
-          textAnimation.start("show")
-          textAnimation.set({ filter: 'blur(0px)' });  
-        })
-        setTimerEnable(true);
-      }, 1000)
-
+      if(timerEnable) {
+        textAnimation.start("exit");
+        timer.set(0);
+        setTimerEnable(false);
+        
+        setTimeout(() => {
+          if(gallery.length - 1 == currentImg) {
+            setImg(0);
+          } else {
+            setImg(currentImg + 1)
+          }
+          slide.start({
+            opacity: [0.5,1],
+            transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
+          }).then(()=> {
+            textAnimation.start("show")
+            textAnimation.set({ filter: 'blur(0px)' });  
+          })
+          setTimerEnable(true);
+        }, 1000)
+      }
     }
 
     const prev = () => {
-      //console.log("prev image");
-      textAnimation.start("exit");
-      timer.set(0);
-      setTimerEnable(false);
-      setTimeout(() => {
-        if(currentImg == 0) {
-          setImg(gallery.length - 1);
-        } else {
-          setImg(currentImg - 1)
-        }
-        slide.start({
-          opacity: [0.5,1],
-          transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
-        }).then(() => {
-          textAnimation.start("show")
-          textAnimation.set({ filter: 'blur(0px)' });
-        })
-        setTimerEnable(true);
-      }, 1000)
+      
+      if (timerEnable) {
+        textAnimation.start("exit");
+        timer.set(0);
+        setTimerEnable(false);
+        setTimeout(() => {
+          if(currentImg == 0) {
+            setImg(gallery.length - 1);
+          } else {
+            setImg(currentImg - 1)
+          }
+          slide.start({
+            opacity: [0.5,1],
+            transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
+          }).then(() => {
+            textAnimation.start("show")
+            textAnimation.set({ filter: 'blur(0px)' });
+          })
+          setTimerEnable(true);
+        }, 1000)
+      }
     }
 
 

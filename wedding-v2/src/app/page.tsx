@@ -48,7 +48,7 @@ export default function Home() {
         <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
       <main className="bg-white">
-        <Landing scroll={scrollYProgress} windowWidth={windowWidth}/>
+        <Landing windowWidth={windowWidth}/>
       </main>
       <Footer />
     </div>
