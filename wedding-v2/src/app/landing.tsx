@@ -20,7 +20,6 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
     const [showText, setShowText] = useState<boolean>(false);
     const [currentImg, setImg] = useState<number>(0);
     const [timerEnable, setTimerEnable] = useState<boolean>(true);
-    const controls = useAnimationControls();
     const slide = useAnimationControls();
     const textAnimation = useAnimationControls();
 
