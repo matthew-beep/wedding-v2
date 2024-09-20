@@ -3,13 +3,13 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence, useMotionValue, useSpring} from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { CircleChevronRight, CircleChevronLeft } from 'lucide-react';
 import img from './img/savethedate.jpg';
 import landing1 from './img/hero.jpg';
 import landing2 from './img/preferred.jpg';
 import landing3 from './img/pillars.jpg';
 import landing4 from './img/dark.jpg';
+import { filter } from "framer-motion/client";
 
 
 interface LandingProps {
@@ -20,6 +20,8 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     const controls = useAnimationControls();
     const slide = useAnimationControls();
+    const textAnimation = useAnimationControls();
+    
     // const header = useAnimationControls();
     const ref = useRef<HTMLDivElement | null>(null);
     const { scrollYProgress } = useScroll({
@@ -33,26 +35,46 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
         translateY: '50%'
       },
       show: {
-        opacity:1,
+        opacity: 1,
         translateY: '0%',
         transition: { 
           duration: 0.5, ease: easeInOut,
           staggerChildren: 0.3
         }
+      },
+      exit: { 
+        opacity: 0,
+        translateY: '50%',
+        filter:'blur(10px)', 
+        transition: { 
+          duration: 0.5, ease: easeInOut,
+          staggerChildren: 1,
+          staggerDirection: -1
+        } 
       }
+
     }
 
     const childVariants = {
       hidden: { 
         opacity: 0,
+        filter:'blur(10px)',
         translateY: '50%' 
       },
       show: { 
         opacity: 1, 
         translateY: '0%',
-        transition: { duration: 0.5, ease: easeInOut } 
-      
+        filter:'blur(0px)',
+        transition: { duration: 0.5, ease: easeInOut} 
       },
+      exit: { 
+        opacity: 0,
+        translateY: '50%',
+        filter:'blur(10px)', 
+        transition: { 
+          duration: 0.3, ease: easeInOut,
+        } 
+      }
     }
 
     const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
@@ -62,10 +84,12 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
     const [showText, setShowText] = useState<boolean>(false);
     const [currentImg, setImg] = useState<number>(0);
-    const timer = useMotionValue(0);
-    const progress = useTransform(timer, [0, 5], [0, 1])
     
-    const timerEnd:number = 5;
+    const timer = useMotionValue(0);
+    const timerEnd:number = 10;
+    const progress = useTransform(timer, [0, timerEnd], [0, 1])
+    
+    
 
     // useMotionValue()
     const scaleX = useSpring(progress, {
@@ -75,10 +99,16 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     });
 
     useEffect(() => {
+      textAnimation.start("show")
+    }, [])
+
+    useEffect(() => {
       //Implementing the setInterval method
       const interval = setInterval(() => {
           const currTime = timer.get();
           if (currTime >= timerEnd) {
+            console.log(currentImg)
+            next();
             timer.set(0);
             //console.log("resetting timer" + timer.get())
           } else {
@@ -88,7 +118,7 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
       }, 100);
       //Clearing the interval
       return () => clearInterval(interval);
-    }, [timer]);
+    }, [timer, currentImg]);
 
 
 
@@ -151,31 +181,38 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
     }, [xPos])
 
     const next = () => {
-      console.log("next image");
-
-      if(gallery.length - 1 == currentImg) {
-        setImg(0);
-      } else {
-        setImg(currentImg + 1)
-      }
-      slide.start({
-        opacity: [0,1],
-        transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
+      console.log("next image" + currentImg);
+      textAnimation.start("exit");
+      //textAnimation.start("show");
+        if(gallery.length - 1 == currentImg) {
+          setImg(0);
+        } else {
+          setImg(currentImg + 1)
+        }
+        slide.start({
+          opacity: [0.5,1],
+          transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
+        }).then(()=> {
+          textAnimation.start("show")
+          textAnimation.set({ filter: 'blur(0px)' });  
+        })
     }
 
     const prev = () => {
       console.log("prev image");
-
+      textAnimation.start("exit");
       if(currentImg == 0) {
         setImg(gallery.length - 1);
       } else {
         setImg(currentImg - 1)
       }
-      slide.start({
-        opacity: [0,1],
-        transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
+        slide.start({
+          opacity: [0.5,1],
+          transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
+        }).then(() => {
+          textAnimation.start("show")
+          textAnimation.set({ filter: 'blur(0px)' });
+        })
     }
 
 
@@ -193,17 +230,34 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
           <Image src={gallery[currentImg].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
         </motion.div>
         <div 
+          className="absolute bottom-0 left-0 w-full z-20 bg-amber-400"
+          style={{
+            backgroundColor: "rgba(128, 128, 128, 0.5)"
+          }}
+        >
+          <motion.div
+                className="h-2 bg-white w-full"
+                style={{
+                  scaleX: scaleX,
+                  originX: 0
+                }}
+              >
+          </motion.div>
+        </div>
+                
+        <div 
           className="relative w-full h-full px-12 flex flex-col justify-between pb-12 landing"
         >
+          
           <motion.div 
-            className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
-            variants={parentVariants}
-            initial={"hidden"}
-            animate={"show"}
-            
+          className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
+          variants={parentVariants}
+          initial={"hidden"}
+          animate={textAnimation}
+          exit={"exit"}
           >
             <motion.h1 
-              className="text-5xl"
+              className="text-6xl sm:text-7xl"
               variants={childVariants}
             >
               Anita & Jesus
@@ -214,35 +268,19 @@ const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
             >
               August 29, 2025
             </motion.h2>
-            <motion.div
-              className="h-4 bg-white w-full"
-              style={{
-                scaleX: scaleX,
-                originX: 0
-              }}
-            >
-
-            </motion.div>
           </motion.div>
           <div className="flex justify-between">
             <div 
-              className="border-2 w-12 h-12 flex items-center rounded-full"
+              className="w-12 h-12 flex items-center"
               onClick={prev}
             >
-              <FontAwesomeIcon 
-                icon={faArrowLeft} 
-                className="text-3xl w-full h-full text-white border-white"
-              />
+              <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1}/>
             </div>
             <div 
-              className="border-2 w-12 h-12 flex items-center rounded-full"
-              onClick={next}
-            
+              className="w-12 h-12 flex items-center"
+              onClick={next} 
             >
-              <FontAwesomeIcon 
-                icon={faArrowRight} 
-                className="text-3xl w-full h-full text-white border-white"
-              />
+              <CircleChevronRight className="text-white w-full h-full" strokeWidth={1}/>
             </div>
           </div>
         </div>
