@@ -2,9 +2,9 @@
 import React from 'react';
 // import Link from 'next/link';
 import {useEffect, useState} from 'react'
-import {motion, useAnimationControls} from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import {AnimatePresence, motion, useAnimationControls, easeInOut} from 'framer-motion'
+import { Menu, X } from 'lucide-react';
+import { nav } from 'framer-motion/client';
 
 interface MobileNavProps {
   scroll : number;
@@ -14,44 +14,100 @@ interface MobileNavProps {
 const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   const [downAnimation, setDownAnimation] = useState<boolean>(false);
   const [navDisplay, setNavDisplay] = useState<boolean>(false);
-  // const [hideNave, setHideNav] = useState<boolean>(false);
   const [iconOpacity, setIconOpacity] = useState<number>(0);
   const [prevScroll, setPrevScroll] = useState<number>(scroll);
   const [scrollDown, setScrollDown] = useState<boolean>(false);
   const controls = useAnimationControls();
   const navAnimation = useAnimationControls();
+
+  const linkSection = {
+    hidden: {
+      opacity: 0,
+    },
+
+    show:{
+      opacity: 1,
+      transition: { 
+        duration: 0.5, 
+        ease: easeInOut,
+        staggerChildren: 0.2
+      }
+    },
+
+    
+    exit: {
+      opacity: 0,
+      transition: { 
+        duration: 0.5, 
+        ease: easeInOut,
+        staggerChildren: 0.3,
+        staggerDirection: -1
+      }
+    }
+
+    
+  }
+
+  const links = {
+    hidden: {
+      opacity: 0,
+      filter: 'blur(10px)'
+    },
+
+    show:{
+      opacity: 1,
+      filter: 'blur(0px)',
+      transition: { 
+        duration: 0.1, 
+        ease: easeInOut
+      }
+    },
+    exit: {
+      opacity: 0,
+      filter: 'blur(10px)',
+      transition: { 
+        duration: 0.1, 
+        ease: easeInOut
+      }
+    }
+  }
   
   useEffect(() => {
     // console.log("mobile " + scroll);
     if (scroll !== undefined) {
       if (scroll > 5) {
         setDownAnimation(true);
-        setIconOpacity(1);
       } else {
-        setDownAnimation(false);
-        setIconOpacity(0);
+
+        if (!navDisplay) {
+          setDownAnimation(false);
+        }
       }
     }
-  }, [scroll])
+  }, [scroll, navDisplay])
 
   useEffect(() => {
     //console.log("prev: " + prevScroll);
     setPrevScroll(scroll);
     if (scroll > prevScroll) {
       console.log("down");
+      setScrollDown(true);
     } else {
       console.log("up");
+      setScrollDown(false);
     }
   }, [scroll])
 
   useEffect(() => {
     if (downAnimation == true) {
+      setIconOpacity(1);
       controls.start({
         color: 'black',
         backgroundColor: 'rgba(255, 255, 255, 1)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
+      setIconOpacity(0);
       controls.start({
         color: 'white',
         backgroundColor: 'rgba(255, 255, 255, 0)',
@@ -61,12 +117,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   }, [downAnimation])
 
   useEffect(() => {
-    if (scroll > (0.75 * height)) { // going to need to detect scrolling down and when 
-      //console.log("disappear " + scroll);
+    if (scroll > (0.75 * height) && scrollDown) { // going to need to detect scrolling down and when 
       controls.start({
         y: '-100%',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
+
     } else {
       controls.start({
         y: '0%',
@@ -77,12 +133,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
 
   const handleClick = () => { // show navbar 
     console.log("handleClick");
-    if (downAnimation == false && navDisplay != true) {
+    if (!navDisplay) {
       setNavDisplay(true);
       controls.start({
         color: 'black',
         backgroundColor: 'rgba(255, 255, 255, 1)',
-        transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
+        transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
       setIconOpacity(1);
       navAnimation.start({
@@ -90,27 +146,28 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       })
 
     } else {
-      setNavDisplay(false);
-      controls.start({
-        color: 'white',
-        backgroundColor: 'rgba(255, 255, 255, 0)',
-        transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
-      setIconOpacity(0);
+      if (scroll <= 0) {
+        controls.start({
+          color: 'white',
+          backgroundColor: 'rgba(255, 255, 255, 0)',
+          transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
+        })
+        setIconOpacity(0);
+      }
       navAnimation.start({
         height: '5rem'
       })
+      setNavDisplay(false);
     }
-    
   }
   
   return (
     <nav className="font-canto w-full flex flex-col">
       <motion.div 
-        className='flex flex-col'
+        className='flex flex-col relative'
       >
         <motion.section 
-          className="flex w-full justify-center h-20 items-center"
+          className="flex w-full justify-center h-20 items-center relative z-20"
           initial={{color: 'white'}}
           animate={controls}
         >
@@ -123,29 +180,77 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
             >
               A&J
             </motion.h2>
-            <FontAwesomeIcon icon={faBars} className="text-3xl cursor-pointer" onClick={handleClick}/>
+            <div className="cursor-pointer" onClick={handleClick}>
+              {navDisplay && <X size={30}/> || <Menu size={30} />}
+            </div>
+            
+            
           </div>
         </motion.section>
+        <AnimatePresence>
         {navDisplay &&
-        <motion.section
-          className="bg-white flex-grow"
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
-          }}
-        >
-          <ul className="flex flex-col w-full h-full text-xl">
-            <li className="text-gray-700 py-4 px-4">Venue</li>
-            <li className="text-gray-700 py-4 px-4">Registry</li>
-            <li className="text-gray-700 py-4 px-4">Guestbook</li>
-            <li className="text-gray-700 py-4 px-4">FAQ</li>
-            <li className="text-gray-700 py-4 px-4">RSVP</li>
-          </ul>
-        </motion.section>
-        }
+          <motion.section
+            className="flex-grow bg-white relative z-0"
+            initial={{
+              opacity: 0,
+              height: 0
+            }}
+            animate={{
+              opacity: 1,
+              height: '100vh',
+              transition: { 
+                duration: 0.3, 
+                ease: [0.43, 0.13, 0.23, 0.96],
+                delay: 0.1
+              }
+            }}
+            exit={{
+              opacity: 0,
+              height: 0,
+              transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.1 }
+            }}
+          >
+            <motion.ul 
+              className="flex flex-col w-full h-full text-xl"
+              variants={linkSection}
+              initial={"hidden"}
+              animate={"show"}
+              exit={"exit"}
+            >
+              <motion.li 
+                className="text-gray-700 py-4 px-4"
+                variants={links}
+              >
+                Venue
+              </motion.li>
+              <motion.li 
+                className="text-gray-700 py-4 px-4"
+                variants={links}
+              >
+                Registry
+              </motion.li>
+              <motion.li 
+                className="text-gray-700 py-4 px-4"
+                variants={links}
+              >
+                Guestbook
+              </motion.li>
+              <motion.li 
+                className="text-gray-700 py-4 px-4"
+                variants={links}
+              >
+                FAQ
+              </motion.li>
+              <motion.li 
+                className="text-gray-700 py-4 px-4"
+                variants={links}
+              >
+                RSVP
+              </motion.li>
+            </motion.ul>
+          </motion.section>
+          }
+        </AnimatePresence>
       </motion.div>
     </nav>
   );
