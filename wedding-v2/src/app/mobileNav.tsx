@@ -16,7 +16,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   const [navDisplay, setNavDisplay] = useState<boolean>(false);
   // const [hideNave, setHideNav] = useState<boolean>(false);
   const [iconOpacity, setIconOpacity] = useState<number>(0);
-
+  const [prevScroll, setPrevScroll] = useState<number>(scroll);
+  const [scrollDown, setScrollDown] = useState<boolean>(false);
   const controls = useAnimationControls();
   const navAnimation = useAnimationControls();
   
@@ -30,6 +31,16 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         setDownAnimation(false);
         setIconOpacity(0);
       }
+    }
+  }, [scroll])
+
+  useEffect(() => {
+    //console.log("prev: " + prevScroll);
+    setPrevScroll(scroll);
+    if (scroll > prevScroll) {
+      console.log("down");
+    } else {
+      console.log("up");
     }
   }, [scroll])
 
@@ -51,7 +62,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
 
   useEffect(() => {
     if (scroll > (0.75 * height)) { // going to need to detect scrolling down and when 
-      console.log("disappear " + scroll);
+      //console.log("disappear " + scroll);
       controls.start({
         y: '-100%',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
