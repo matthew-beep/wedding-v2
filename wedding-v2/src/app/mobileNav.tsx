@@ -18,7 +18,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   const [prevScroll, setPrevScroll] = useState<number>(scroll);
   const [scrollDown, setScrollDown] = useState<boolean>(false);
   const controls = useAnimationControls();
-  const navAnimation = useAnimationControls();
+
 
   const linkSection = {
     hidden: {
@@ -30,7 +30,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       transition: { 
         duration: 0.5, 
         ease: easeInOut,
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     },
 
@@ -40,7 +40,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       transition: { 
         duration: 0.5, 
         ease: easeInOut,
-        staggerChildren: 0.3,
+        staggerChildren: 0.015,
         staggerDirection: -1
       }
     }
@@ -156,23 +156,24 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
       setIconOpacity(1);
-      navAnimation.start({
-        height: '100vh'
-      })
-
     } else {
+      setNavDisplay(false);
       if (scroll <= 0) {
         controls.start({
           color: 'white',
           backgroundColor: 'rgba(255, 255, 255, 0)',
-          transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
-        })
+          transition: {
+            delay: 0.3,
+            duration: 0.1,
+            ease: [0.43, 0.13, 0.23, 0.96]
+          }
+          
+        });
         setIconOpacity(0);
+        
       }
-      navAnimation.start({
-        height: '5rem'
-      })
-      setNavDisplay(false);
+      
+      
     }
   }
   
@@ -196,10 +197,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
               A&J
             </motion.h2>
             <div className="cursor-pointer" onClick={handleClick}>
-              {navDisplay && <X size={30}/> || <Menu size={30} />}
+              {navDisplay && <div className='text-white bg-black rounded-full w-8 h-8 flex items-center justify-center border-2'><X size={24}/></div> || <Menu size={30} />}
             </div>
-            
-            
           </div>
         </motion.section>
         <AnimatePresence>
@@ -207,11 +206,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
           <motion.section
             className="flex-grow bg-white relative z-0"
             initial={{
-              opacity: 0,
               height: 0
             }}
             animate={{
-              opacity: 1,
               height: '100vh',
               transition: { 
                 duration: 0.3, 
@@ -220,7 +217,6 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
               }
             }}
             exit={{
-              opacity: 0,
               height: 0,
               transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.1 }
             }}
