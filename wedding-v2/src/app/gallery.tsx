@@ -19,21 +19,23 @@ interface GalleryProps {
 
 
 const Gallery: React.FC<GalleryProps> = ({}) => {
-  const [currentImg, setImg] = useState<number>(0);
-  const controls = useAnimationControls();
   const textAnimation = useAnimationControls();
-  const slide = useAnimationControls();
   const [timerEnable, setTimerEnable] = useState<boolean>(true);
   const timer = useMotionValue(0);
+  const timerEnd:number = 10;
   const [direction, setDirection] = useState<string>("next");
   const [transition, setTransition] = useState<string>("animate");
+
+  const progress = useTransform(timer, [0, timerEnd], [0, 1])
+  const [curr, setCurr] = useState(0);
+  const [next, setNext] = useState(curr + 1); 
+  const [nextDisplay, setNextDisplay] = useState<boolean>(false);
   const gallery = [
     { img: landing1 },
     { img: landing2 },
     { img: landing3 },
     { img: landing4 }
   ];
-  const timerEnd:number = 10;
 
   
   const variants =  {
@@ -107,13 +109,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     }
   }
 
-  const progress = useTransform(timer, [0, timerEnd], [0, 1])
-  const [prev, setPrev] = useState(gallery.length - 1);
-  const [curr, setCurr] = useState(0);
-  const [next, setNext] = useState(curr + 1); 
-
-  const [prevDisplay, setPrevDisplay] = useState<boolean>(false);
-  const [nextDisplay, setNextDisplay] = useState<boolean>(false);
 
 
   const scaleX = useSpring(progress, {
@@ -152,7 +147,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
       interval = setInterval(() => {
         const currTime = timer.get();
         if (currTime >= timerEnd) {
-          console.log(currentImg)
           nextClick();
           timer.set(0);
           //console.log("resetting timer" + timer.get())
@@ -164,16 +158,9 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     }
     //Clearing the interval
     return () => clearInterval(interval);
-  }, [timer, currentImg, timerEnable]);
+  }, [timer, timerEnable]);
 
-  useEffect(() => {
-
-    console.log("previous index: " + prev)
-  }, [prev])
-
-
-
-  const nextClick = () => {
+  const nextClick = () => { // handle next click functions
 
     if (curr == gallery.length - 1) {
       setNext(0);
@@ -181,8 +168,8 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
       setNext(curr + 1);
     }
 
-    setDirection("next");
-    setTransition("animate");
+    setDirection("next"); // set initial direction
+    setTransition("animate"); // set correct transition
 
     textAnimation.start("exit")// trigger text animation first 
     setNextDisplay(true); // trigger next animation
@@ -190,7 +177,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     setTimerEnable(false);
   }
 
-  const prevClick = () => {
+  const prevClick = () => { // handle prev click functions
     setNext(curr);
     
     if (curr == 0) {
