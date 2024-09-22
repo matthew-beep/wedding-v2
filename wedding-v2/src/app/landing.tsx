@@ -3,14 +3,8 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence, useMotionValue, useSpring} from 'framer-motion'
-import { CircleChevronRight, CircleChevronLeft } from 'lucide-react';
 import Gallery from './gallery'
 import img from './img/savethedate.jpg';
-import landing1 from './img/hero.jpg';
-import landing2 from './img/preferred.jpg';
-import landing3 from './img/pillars.jpg';
-import landing4 from './img/dark.jpg';
-
 
 interface LandingProps {
   windowWidth : number;
@@ -19,10 +13,8 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const [showText, setShowText] = useState<boolean>(false);
-    const [currentImg, setImg] = useState<number>(0);
-    const [timerEnable, setTimerEnable] = useState<boolean>(true);
     const slide = useAnimationControls();
-    const textAnimation = useAnimationControls();
+
 
     const { scrollYProgress } = useScroll({
       target: ref,
@@ -35,61 +27,10 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
     
     const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
 
-    
-    const timer = useMotionValue(0);
-    const timerEnd:number = 10;
-    const progress = useTransform(timer, [0, timerEnd], [0, 1])
-    
+ 
+
     // const header = useAnimationControls();
     
-
-    const parentVariants = {
-      hidden: {              
-        opacity: 0,
-        translateY: '50%'
-      },
-      show: {
-        opacity: 1,
-        translateY: '0%',
-        transition: { 
-          duration: 0.5, ease: easeInOut,
-          staggerChildren: 0.3
-        }
-      },
-      exit: { 
-        opacity: 0,
-        translateY: '50%',
-        filter:'blur(10px)', 
-        transition: { 
-          duration: 0.5, ease: easeInOut,
-          staggerChildren: 1,
-          staggerDirection: -1
-        } 
-      }
-
-    }
-
-    const childVariants = {
-      hidden: { 
-        opacity: 0,
-        filter:'blur(10px)',
-        translateY: '50%' 
-      },
-      show: { 
-        opacity: 1, 
-        translateY: '0%',
-        filter:'blur(0px)',
-        transition: { duration: 0.5, ease: easeInOut} 
-      },
-      exit: { 
-        opacity: 0,
-        translateY: '50%',
-        filter:'blur(10px)', 
-        transition: { 
-          duration: 0.3, ease: easeInOut,
-        } 
-      }
-    }
     
 
     useEffect(() => {
