@@ -26,16 +26,18 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   const [direction, setDirection] = useState<string>("next");
   const [transition, setTransition] = useState<string>("animate");
 
-  const progress = useTransform(timer, [0, timerEnd], [0, 1])
-  const [curr, setCurr] = useState(0);
-  const [next, setNext] = useState(curr + 1); 
-  const [nextDisplay, setNextDisplay] = useState<boolean>(false);
   const gallery = [
     { img: landing1 },
     { img: landing2 },
     { img: landing3 },
     { img: landing4 }
   ];
+
+  const progress = useTransform(timer, [0, timerEnd], [0, 1])
+  const [curr, setCurr] = useState(0);
+  const [next, setNext] = useState(curr + 1); 
+  const [prev, setPrev] = useState(gallery.length - 1);
+  const [nextDisplay, setNextDisplay] = useState<boolean>(false);
 
   
   const variants =  {
@@ -118,7 +120,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   });
 
 
-  /*
+  
   useEffect(() => {
     
     if (curr == gallery.length - 1) {
@@ -134,7 +136,8 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     }
     console.log(next);
   }, [curr])
-  */
+
+  
   useEffect(() => { // initial text animation
     textAnimation.start("show");
   }, [])
@@ -162,11 +165,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
   const nextClick = () => { // handle next click functions
 
-    if (curr == gallery.length - 1) {
-      setNext(0);
-    } else {
-      setNext(curr + 1);
-    }
+    setNext(next);
 
     setDirection("next"); // set initial direction
     setTransition("animate"); // set correct transition
@@ -179,17 +178,13 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
   const prevClick = () => { // handle prev click functions
     setNext(curr);
-    
-    if (curr == 0) {
-      setCurr(gallery.length - 1);
-    } else {
-      setCurr(curr - 1);
-    }
-    
-    setDirection("prev");
-    setTransition("animatePrev");
-    setNextDisplay(true);
-    textAnimation.start("exit");
+
+    textAnimation.start("exit").then(() =>{
+      setDirection("prev");
+      setNextDisplay(true); 
+      setTransition("animatePrev");
+      setCurr(prev);
+    });
     timer.set(0);
     setTimerEnable(false);
   }
@@ -202,7 +197,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
   
   return (
-    <div className="relative h-full w-full"> 
+    <div className="relative h-full w-full overflow-x-hidden"> 
       <div className="w-full h-full border-amber-400">
         <motion.div
           className="w-full h-full absolute"
