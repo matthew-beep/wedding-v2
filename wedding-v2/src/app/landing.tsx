@@ -4,6 +4,7 @@ import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence, useMotionValue, useSpring} from 'framer-motion'
 import { CircleChevronRight, CircleChevronLeft } from 'lucide-react';
+import Gallery from './gallery'
 import img from './img/savethedate.jpg';
 import landing1 from './img/hero.jpg';
 import landing2 from './img/preferred.jpg';
@@ -90,49 +91,7 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
       }
     }
     
-    
 
-    // useMotionValue()
-    const scaleX = useSpring(progress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-
-    useEffect(() => {
-      textAnimation.start("show")
-    }, [])
-
-    useEffect(() => {
-      //Implementing the setInterval method
-      let interval: NodeJS.Timeout | undefined;
-      if (timerEnable) {
-        interval = setInterval(() => {
-          const currTime = timer.get();
-          if (currTime >= timerEnd) {
-            console.log(currentImg)
-            next();
-            timer.set(0);
-            //console.log("resetting timer" + timer.get())
-          } else {
-            timer.set(currTime + 0.1);
-          }
-          //console.log(timer.get() + " seconds");
-        }, 100);
-      }
-      //Clearing the interval
-      return () => clearInterval(interval);
-    }, [timer, currentImg, timerEnable]);
-
-
-
-    const gallery = [
-      { img: landing1 },
-      { img: landing2 },
-      { img: landing3 },
-      { img: landing4 }
-    ];
-    
     useEffect(() => {
       console.log(scrollYProgress);
     }, [scrollYProgress])
@@ -146,65 +105,6 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
       }
     })
 
-    
-    useEffect(() => { 
-        console.log(timerEnable);
-    }, [timerEnable])
-
-    const next = () => {
-      
-      if(timerEnable) {
-        textAnimation.start("exit");
-        timer.set(0);
-        setTimerEnable(false);
-        
-        setTimeout(() => {
-          if(gallery.length - 1 == currentImg) {
-            setImg(0);
-          } else {
-            setImg(currentImg + 1)
-          }
-          slide.start({
-            opacity: [0.5,1],
-            transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
-          }).then(()=> {
-            textAnimation.start("show")
-            textAnimation.set({ filter: 'blur(0px)' });  
-          })
-          setTimerEnable(true);
-        }, 1000)
-      }
-    }
-
-    const prev = () => {
-      
-      if (timerEnable) {
-        textAnimation.start("exit");
-        timer.set(0);
-        setTimerEnable(false);
-        setTimeout(() => {
-          if(currentImg == 0) {
-            setImg(gallery.length - 1);
-          } else {
-            setImg(currentImg - 1)
-          }
-          slide.start({
-            opacity: [0.5,1],
-            transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
-          }).then(() => {
-            textAnimation.start("show")
-            textAnimation.set({ filter: 'blur(0px)' });
-          })
-          setTimerEnable(true);
-        }, 1000)
-      }
-    }
-
-
-
-  
-    // <Image src={hero} alt="Anita & Jesus Sitting Together" className="w-full h-full absolute top-0 left-0 object-cover" />
-
   return (
     <div className="relative"> 
       <section className="relative bg-neutral-500 h-svh sm:h-screen w-full flex">
@@ -212,63 +112,8 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
           className="w-full h-full object-cover z-0 absolute"
           animate={slide}
         >
-          <Image src={gallery[currentImg].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
+            <Gallery /> 
         </motion.div>
-        <div 
-          className="absolute bottom-0 left-0 w-full z-20 bg-amber-400"
-          style={{
-            backgroundColor: "rgba(128, 128, 128, 0.5)"
-          }}
-        >
-          <motion.div
-                className="h-2 bg-white w-full"
-                style={{
-                  scaleX: scaleX,
-                  originX: 0
-                }}
-              >
-          </motion.div>
-        </div>
-                
-        <div 
-          className="relative w-full h-full px-12 flex flex-col justify-between pb-12 landing"
-        >
-          
-          <motion.div 
-          className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
-          variants={parentVariants}
-          initial={"hidden"}
-          animate={textAnimation}
-          exit={"exit"}
-          >
-            <motion.h1 
-              className="text-6xl sm:text-7xl"
-              variants={childVariants}
-            >
-              Anita & Jesus
-            </motion.h1>
-            <motion.h2 
-              className="text-2xl text-white"
-              variants={childVariants}
-            >
-              August 29, 2025
-            </motion.h2>
-          </motion.div>
-          <div className="flex justify-between">
-            <div 
-              className="w-12 h-12 flex items-center"
-              onClick={prev}
-            >
-              <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1}/>
-            </div>
-            <div 
-              className="w-12 h-12 flex items-center"
-              onClick={next} 
-            >
-              <CircleChevronRight className="text-white w-full h-full" strokeWidth={1}/>
-            </div>
-          </div>
-        </div>
       </section>
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
         <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
@@ -289,11 +134,11 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
           >
             <div className="lg:w-1/2 w-full flex items-center justify-center h-1/2">
               <motion.div 
-              className="bg-white"
-              style={{
-                width, 
-                height: width
-              }}
+                className="bg-white"
+                style={{
+                  width, 
+                  height: width
+                }}
               >
                 <div className="bg-white w-full h-full">
                   <Image src={img} alt="Anita and Jesus holding a newspaper of the wedding of the century" className="w-full h-full object-cover"/>

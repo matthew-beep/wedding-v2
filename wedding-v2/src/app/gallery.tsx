@@ -1,200 +1,309 @@
 
-/*
+
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef, useState} from 'react'
-import {motion, useScroll, useTransform, useAnimationControls, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
-import img from './img/savethedate.jpg';
+import landing1 from './img/hero.jpg';
+import landing2 from './img/preferred.jpg';
+import landing3 from './img/pillars.jpg';
+import landing4 from './img/dark.jpg';
+import {useEffect, useState} from 'react'
+import {motion, useTransform, useAnimationControls, easeInOut, useMotionValue, useSpring} from 'framer-motion'
+import { CircleChevronRight, CircleChevronLeft } from 'lucide-react';
 
 
-interface LandingProps {
-  scroll : number;
-  windowWidth : number;
+
+interface GalleryProps {
+
 }
 
-const Landing: React.FC<LandingProps> = ({ scroll, windowWidth }) => {
-    const controls = useAnimationControls();
-    const ref = useRef<HTMLDivElement | null>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end end"]
-    })
 
-    const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
-    const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
-    const width = useTransform(scrollYProgress, [0, 0.9], ["45%", "100%"]);
-    
-    const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
-    const [showText, setShowText] = useState<boolean>(false);
+const Gallery: React.FC<GalleryProps> = ({}) => {
+  const [currentImg, setImg] = useState<number>(0);
+  const controls = useAnimationControls();
+  const textAnimation = useAnimationControls();
+  const slide = useAnimationControls();
+  const [timerEnable, setTimerEnable] = useState<boolean>(true);
+  const timer = useMotionValue(0);
+  const [direction, setDirection] = useState<string>("next");
+  const [transition, setTransition] = useState<string>("animate");
+  const gallery = [
+    { img: landing1 },
+    { img: landing2 },
+    { img: landing3 },
+    { img: landing4 }
+  ];
+  const timerEnd:number = 10;
 
-    
-    const gallery = [
-      {
-        img: "./img/hero.jpg"
-      },
-      {
-        img: "./img/preferred.jpg"
-      },
-      {
-        img: "./img/pillars.jpg"
-      },
-      {
-        img:"./img/dark.jpg"
+  
+  const variants =  {
+    current: {
+      transform:'translateX(0%)'
+    },
+
+    next: {
+      transform: 'translateX(100%)',
+    },
+
+    prev: {
+      transform:'translateX(0%)',
+    },
+    animate: {
+      transform: 'translateX(0%)',
+      transition: { duration: 0.5, ease: easeInOut }
+    },
+    animatePrev: {
+      transform: 'translateX(100%)',
+      transition: { duration: 0.5, ease: easeInOut }
+    }
+  }
+
+  const parentVariants = {
+    hidden: {              
+      opacity: 0,
+      translateY: '50%'
+    },
+    show: {
+      opacity: 1,
+      translateY: '0%',
+      filter:'blur(0px)', 
+      transition: { 
+        duration: 0.5, ease: easeInOut,
+        staggerChildren: 0.3
       }
-    ];
+    },
+    exit: { 
+      opacity: 0,
+      translateY: '50%',
+      filter:'blur(10px)', 
+      transition: { 
+        duration: 0.5, ease: easeInOut,
+        staggerChildren: 1,
+        staggerDirection: -1
+      } 
+    }
 
-    useEffect(() => {
-      console.log(scrollYProgress);
-    }, [scrollYProgress])
+  }
 
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-      if(latest > 0.3) {
-        console.log("show text");
-        setShowText(true);
-      } else {
-        setShowText(false);
-      }
-    })
+  const childVariants = {
+    hidden: { 
+      opacity: 0,
+      filter:'blur(10px)',
+      translateY: '50%' 
+    },
+    show: { 
+      opacity: 1, 
+      translateY: '0%',
+      filter:'blur(0px)',
+      transition: { duration: 0.5, ease: easeInOut} 
+    },
+    exit: { 
+      opacity: 0,
+      translateY: '50%',
+      filter:'blur(10px)', 
+      transition: { 
+        duration: 0.3, ease: easeInOut,
+      } 
+    }
+  }
 
+  const progress = useTransform(timer, [0, timerEnd], [0, 1])
+  const [prev, setPrev] = useState(gallery.length - 1);
+  const [curr, setCurr] = useState(0);
+  const [next, setNext] = useState(curr + 1); 
+
+  const [prevDisplay, setPrevDisplay] = useState<boolean>(false);
+  const [nextDisplay, setNextDisplay] = useState<boolean>(false);
+
+
+  const scaleX = useSpring(progress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+
+  /*
+  useEffect(() => {
     
-    useEffect(() => { // header text animation
-      if(scroll !== undefined) {
-        if(scroll > 5) {
-          console.log("activate animation ")
+    if (curr == gallery.length - 1) {
+      setNext(0);
+    } else {
+      setNext(curr + 1);
+    }
 
-          controls.start({
-            
-            top: 0,
-            fontSize: '4px',
-            filter:'blur(10px)',
-            opacity: 0,
-            transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
-            
-            //transform:"translateY(-50%)",
-            //opacity: 0
-          })
+    if (curr == 0) {
+      setPrev(gallery.length - 1);
+    } else {
+      setPrev(curr - 1);
+    }
+    console.log(next);
+  }, [curr])
+  */
+  useEffect(() => { // initial text animation
+    textAnimation.start("show");
+  }, [])
+  
+
+  useEffect(() => {
+    //Implementing the setInterval method
+    let interval: NodeJS.Timeout | undefined;
+    if (timerEnable) {
+      interval = setInterval(() => {
+        const currTime = timer.get();
+        if (currTime >= timerEnd) {
+          console.log(currentImg)
+          nextClick();
+          timer.set(0);
+          //console.log("resetting timer" + timer.get())
         } else {
-          controls.start({
-            
-            color:"white",
-            top: '5rem',
-            filter:'blur(0px)',
-            fontSize: '72px',
-            opacity:  1,
-            transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
-            
-           // transform:"translateY(0%)",
-           // opacity: 1
-          })
+          timer.set(currTime + 0.1);
         }
-      }
-    })
+        //console.log(timer.get() + " seconds");
+      }, 100);
+    }
+    //Clearing the interval
+    return () => clearInterval(interval);
+  }, [timer, currentImg, timerEnable]);
+
+  useEffect(() => {
+
+    console.log("previous index: " + prev)
+  }, [prev])
+
+
+
+  const nextClick = () => {
+
+    if (curr == gallery.length - 1) {
+      setNext(0);
+    } else {
+      setNext(curr + 1);
+    }
+
+    setDirection("next");
+    setTransition("animate");
+
+    textAnimation.start("exit")// trigger text animation first 
+    setNextDisplay(true); // trigger next animation
+    timer.set(0);
+    setTimerEnable(false);
+  }
+
+  const prevClick = () => {
+    setNext(curr);
     
-    useEffect(() => { 
-        console.log(xPos);
-    }, [xPos])
+    if (curr == 0) {
+      setCurr(gallery.length - 1);
+    } else {
+      setCurr(curr - 1);
+    }
+    
+    setDirection("prev");
+    setTransition("animatePrev");
+    setNextDisplay(true);
+    textAnimation.start("exit");
+    timer.set(0);
+    setTimerEnable(false);
+  }
+
+
+
+  // turn next on, it animates
+  // set current to next, update all others
+
+
   
   return (
-    <div className="relative"> 
-      <section className="bg-neutral-500 h-screen w-full bg-white flex">
-        <div 
-          className="relative w-full h-full px-12 landing"
+    <div className="relative h-full w-full"> 
+      <div className="w-full h-full border-amber-400">
+        <motion.div
+          className="w-full h-full absolute"
+          variants={variants}
+
         >
-          <div className="flex flex-col items-start text-white font-canto w-auto h-auto mt-24">
+          <Image src={gallery[curr].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
+          
+        </motion.div>
+
+        {nextDisplay &&
+          <motion.div
+            className="w-full h-full absolute"
+            variants={variants}
+            initial={direction}
+            animate={transition}
+            onAnimationComplete={() => {
+              console.log("Animation done");
+              if (direction == "next") {
+                setCurr(next);
+              }
+              
+              setNextDisplay(false);
+              textAnimation.start("show").then(() => {
+                setTimerEnable(true);
+              })
+            }}
+          >
+            <Image src={gallery[next].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
+          </motion.div>
+        }
+      </div>
+      <div className="flex flex-col justify-between absolute bottom-0 left-0 w-full z-100 items-center landing  h-full">
+        <div className="flex flex-col justify-between w-11/12 mb-4 h-full h-full sm:h-[50vh]">
+          <motion.div 
+            className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
+            variants={parentVariants}
+            initial={"hidden"}
+            animate={textAnimation}
+          >
             <motion.h1 
-              className="text-5xl w-11/12"
-              initial={{
-                opacity: 0,
-                translateY: '50%'
-              }}
-              animate={{
-                opacity:1,
-                translateY: '0%',
-                transition: { duration: 0.5, ease: easeInOut }
-              }}
+              className="text-6xl sm:text-7xl"
+              variants={childVariants}
             >
               Anita & Jesus
             </motion.h1>
-            <h2 className="text-2xl text-white">August 29, 2025</h2>
-          </div>
-        </div>
-      </section>
-      <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
-        <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
-          <div className="lg:w-1/2 w-full bg-white flex flex-col items-center justify-center h-1/2 lg:h-full">
-            <div className="font-canto text-6xl text-black">
-              Save The Date              
-            </div>
-            <div className="font-rufina-stencil-ornaments text-9xl font-medium text-black">
-              f
-            </div>
-          </div>
-          <motion.div 
-          className="w-full flex flex-col items-center justify-center h-screen absolute bg-[#B0A395]"
-          style={{
-            translateX: windowWidth <= 1024 ? 0 : xPos ,
-            translateY: windowWidth <= 1024 ? yPos : 0
-          }}
-          >
-            <div className="lg:w-1/2 w-full flex items-center justify-center h-1/2">
-              <motion.div 
-              className="bg-white"
-              style={{
-                width, 
-                height: width
-              }}
-              >
-                <div className="bg-white w-full h-full">
-                  <Image src={img} alt="Anita and Jesus holding a newspaper of the wedding of the century" className="w-full h-full object-cover"/>
-                </div>
-              </motion.div>
-            </div>
-            <div className="lg:w-1/2 w-11/12 lg:h-full h-1/2 py-5 font-canto text-white">
-              <AnimatePresence>
-                {showText && (
-                  <motion.div 
-                    className="flex flex-col justify-around items-center h-full"
-                    style={{
-                      opacity: textOpacity,
-                    }}
-                    initial={{
-                      y: 1000,
-                      filter: 'blur(10px)'
-                    }}
-                    animate={{
-                      y: 0,
-                      filter: 'blur(0px)',
-                      transition: { duration: 0.5, ease: easeInOut }
-                    }}
-                    exit={{
-                      y: 1000,
-                      filter: 'blur(10px)',
-                      transition: { duration: 0.5, ease: easeInOut }
-                    }}
-                  >
-                    <div>
-                      <h3 className="text-3xl font-black mb-1 text-white">We&apos;re Getting Married</h3>
-                      <p className="text-lg text-white font-proxima font-extrathin">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                    </div>
-                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1">RSVP</button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <motion.h2 
+              className="text-2xl text-white"
+              variants={childVariants}
+            >
+              August 29, 2025
+            </motion.h2> 
           </motion.div>
+          <div className="flex justify-between">
+            <div 
+              className="w-12 h-12 flex items-center"
+              onClick={prevClick}
+            >
+              <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1}/>
+            </div>
+            <div 
+              className="w-12 h-12 flex items-center"
+              onClick={nextClick} 
+            >
+              <CircleChevronRight className="text-white w-full h-full" strokeWidth={1}/>
+            </div>
+          </div>
         </div>
-      </section>
+          <div 
+            className="w-full z-20 bg-amber-400"
+            style={{
+              backgroundColor: "rgba(128, 128, 128, 0.5)"
+            }}
+          >
+            <motion.div
+                  className="h-2 bg-white w-full"
+                  style={{
+                    scaleX: scaleX,
+                    originX: 0
+                  }}
+                >
+            </motion.div>
+          </div>
+        </div>
+
+
     </div>
   );
 }
 
-export default Landing;
-*/
+export default Gallery;

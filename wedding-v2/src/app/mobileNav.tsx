@@ -130,14 +130,13 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   }, [downAnimation])
 
   useEffect(() => {
-    if (scroll > (0.75 * height) && scrollDown) { // going to need to detect scrolling down and when 
+    if (scroll > (0.75 * height) && scrollDown) { // hide navbar when scrolling down
       if(!navDisplay) {
         controls.start({
           y: '-100%',
           transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
         })
       }
-
     } else {
       controls.start({
         y: '0%',
@@ -146,9 +145,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
     }
   }, [height, scroll])
 
-  const handleClick = () => { // show navbar 
-    console.log("handleClick");
-    if (!navDisplay) {
+  const handleClick = () => { 
+    if (!navDisplay) { // show navbar links
       setNavDisplay(true);
       controls.start({
         color: 'black',
@@ -156,7 +154,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
       setIconOpacity(1);
-    } else {
+    } else { // hide links
       setNavDisplay(false);
       if (scroll <= 0) {
         controls.start({
@@ -170,10 +168,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
           
         });
         setIconOpacity(0);
-        
       }
-      
-      
     }
   }
   
@@ -253,7 +248,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                 FAQ
               </motion.li>
               <motion.li 
-                className="text-gray-700 py-4 px-4 text-3xl"
+                className="text-gray-700 px-4 py-2 text-3xl bg-black text-white"
                 variants={links}
               >
                 RSVP
