@@ -71,6 +71,19 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       }
     }
   }
+
+  useEffect(() => {
+    // Disable scrolling when navDisplay is true
+    if (navDisplay) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = ''; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = ''; // Ensure scrolling is enabled when component unmounts
+    };
+  }, [navDisplay]);
   
   useEffect(() => {
     // console.log("mobile " + scroll);
@@ -213,14 +226,14 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
             }}
           >
             <motion.ul 
-              className="flex flex-col w-full h-full text-xl items-center justify-start gap-10 border-2 py-20"
+              className="flex flex-col w-full h-full text-xl items-center justify-start gap-10 py-20"
               variants={linkSection}
               initial={"hidden"}
               animate={"show"}
               exit={"exit"}
             >
               <motion.li 
-                className="text-gray-700 py-4 px-4 border-2 text-3xl"
+                className="text-gray-700 py-4 px-4  text-3xl"
                 variants={links}
               >
                 Venue
