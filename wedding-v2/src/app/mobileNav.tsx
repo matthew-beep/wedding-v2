@@ -4,7 +4,7 @@ import React from 'react';
 import {useEffect, useState} from 'react'
 import {AnimatePresence, motion, useAnimationControls, easeInOut} from 'framer-motion'
 import { Menu, X } from 'lucide-react';
-import { nav } from 'framer-motion/client';
+
 
 interface MobileNavProps {
   scroll : number;
@@ -118,10 +118,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
 
   useEffect(() => {
     if (scroll > (0.75 * height) && scrollDown) { // going to need to detect scrolling down and when 
-      controls.start({
-        y: '-100%',
-        transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
+      if(!navDisplay) {
+        controls.start({
+          y: '-100%',
+          transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
+        })
+      }
 
     } else {
       controls.start({
@@ -211,38 +213,38 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
             }}
           >
             <motion.ul 
-              className="flex flex-col w-full h-full text-xl"
+              className="flex flex-col w-full h-full text-xl items-center justify-start gap-10 border-2 py-20"
               variants={linkSection}
               initial={"hidden"}
               animate={"show"}
               exit={"exit"}
             >
               <motion.li 
-                className="text-gray-700 py-4 px-4"
+                className="text-gray-700 py-4 px-4 border-2 text-3xl"
                 variants={links}
               >
                 Venue
               </motion.li>
               <motion.li 
-                className="text-gray-700 py-4 px-4"
+                className="text-gray-700 py-4 px-4 text-3xl"
                 variants={links}
               >
                 Registry
               </motion.li>
               <motion.li 
-                className="text-gray-700 py-4 px-4"
+                className="text-gray-700 py-4 px-4 text-3xl"
                 variants={links}
               >
                 Guestbook
               </motion.li>
               <motion.li 
-                className="text-gray-700 py-4 px-4"
+                className="text-gray-700 py-4 px-4 text-3xl"
                 variants={links}
               >
                 FAQ
               </motion.li>
               <motion.li 
-                className="text-gray-700 py-4 px-4"
+                className="text-gray-700 py-4 px-4 text-3xl"
                 variants={links}
               >
                 RSVP
