@@ -13,7 +13,6 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const [showText, setShowText] = useState<boolean>(false);
-    const slide = useAnimationControls();
 
 
     const { scrollYProgress } = useScroll({
