@@ -162,10 +162,8 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   const nextClick = () => { // handle next click functions
 
     setNext(next); // set transitioning photo to correct index
-
     setDirection("next"); // set initial direction
     setTransition("animate"); // set correct transition
-
     textAnimation.start("exit")// trigger text animation first 
     setNextDisplay(true); // trigger next animation
     timer.set(0);
