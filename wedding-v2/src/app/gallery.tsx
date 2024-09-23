@@ -33,13 +33,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     { img: landing4 }
   ];
 
-  useEffect(() => {
-    gallery.forEach((image) => {
-      const img = new window.Image();
-      img.src = image.img.src;  // Preload the actual image src
-    });
-  }, [gallery]);
-
   const progress = useTransform(timer, [0, timerEnd], [0, 1])
   const [curr, setCurr] = useState(0);
   const [next, setNext] = useState(curr + 1); 
