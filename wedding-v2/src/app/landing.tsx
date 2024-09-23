@@ -47,9 +47,9 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
 
   return (
     <div className="relative"> 
-      <section className="relative bg-neutral-500 h-svh sm:h-screen w-full flex">
+      <section className="relative bg-neutral-500 h-svh sm:h-screen w-full flex border-2 border-amber-400">
         <div 
-          className="w-full h-svh sm:h-full object-cover z-0 absolute"
+          className="w-full h-full object-cover z-0 absolute"
         >
             <Gallery /> 
         </div>
