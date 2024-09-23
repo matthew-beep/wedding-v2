@@ -183,7 +183,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   }
 
   return (
-    <div className="relative h-svh lg:h-full w-full overflow-x-hidden"> 
+    <div className="relative h-svh lg:h-screen w-full overflow-x-hidden"> 
       <div className="w-full h-full border-amber-400">
         <motion.div
           className="w-full h-full absolute"

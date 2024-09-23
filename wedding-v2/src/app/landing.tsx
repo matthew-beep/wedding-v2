@@ -38,13 +38,13 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
 
   return (
     <div className="relative"> 
-      <section className="relative bg-neutral-500 h-svh w-full flex">
+      <section className="relative bg-neutral-500 h-svh lg:h-screen w-full flex">
         <div 
           className="w-full h-full object-cover z-0 absolute"
         >
             <Gallery /> 
         </div>
-      </section>
+         </section>
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
         <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <div className="lg:w-1/2 w-full bg-white flex flex-col items-center justify-center h-1/2 lg:h-full">
