@@ -57,7 +57,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     },
 
     prev: {
-      transform:'translateX(0%)',
+      transform:'translateX(-100%)',
     },
     animate: {
       transform: 'translateX(0%)',
@@ -184,14 +184,13 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   }
 
   const prevClick = () => { // handle prev click functions
-    setNext(curr);
+    setNext(prev);
 
     textAnimation.start("exit")
     setDirection("prev");
-    setNextDisplay(true); 
-    setTransition("animatePrev");
-    setCurr(prev);
     
+    setTransition("animate");
+    setNextDisplay(true); 
     timer.set(0);
     setTimerEnable(false);
   }
@@ -225,6 +224,8 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               console.log("Animation done");
               if (direction == "next") {
                 setCurr(next);
+              } else {
+                setCurr(prev)
               }
               
               setNextDisplay(false);
@@ -233,7 +234,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               })
             }}
           >
-            <Image src={gallery[next].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
+            <Image src={gallery[next].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute bg-white" />
           </motion.div>
         }
       </div>
