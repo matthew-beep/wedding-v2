@@ -13,24 +13,15 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const [showText, setShowText] = useState<boolean>(false);
-
-
     const { scrollYProgress } = useScroll({
       target: ref,
       offset: ["start start", "end end"]
-  })
+    })
 
     const yPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
     const xPos = useTransform(scrollYProgress, [0, 0.9], ["50%", "0%"]);
     const width = useTransform(scrollYProgress, [0, 0.9], ["45%", "100%"]);
-    
     const textOpacity = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
-
- 
-
-    // const header = useAnimationControls();
-    
-    
 
     useEffect(() => {
       console.log(scrollYProgress);

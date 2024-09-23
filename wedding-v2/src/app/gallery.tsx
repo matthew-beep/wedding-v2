@@ -40,11 +40,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   const [nextDisplay, setNextDisplay] = useState<boolean>(false);
 
   
-  const variants =  {
-    current: {
-      transform:'translateX(0%)'
-    },
-
+  const variants =  {  // gallery transition animations
     next: {
       transform: 'translateX(100%)',
       opacity: 0,
@@ -61,14 +57,10 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
       opacity: 1,
       filter: 'blur(0px)',
       transition: { duration: 0.5, ease: easeInOut }
-    },
-    animatePrev: {
-      transform: 'translateX(100%)',
-      transition: { duration: 0.5, ease: easeInOut }
     }
   }
 
-  const parentVariants = {
+  const parentVariants = { // header text animation 
     hidden: {              
       opacity: 0,
       translateY: '50%'
@@ -95,7 +87,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
   }
 
-  const childVariants = {
+  const childVariants = { // header text animation
     hidden: { 
       opacity: 0,
       filter:'blur(10px)',
@@ -117,8 +109,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     }
   }
 
-
-
   const scaleX = useSpring(progress, {
     stiffness: 100,
     damping: 30,
@@ -127,7 +117,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
 
   
-  useEffect(() => {
+  useEffect(() => { // update index as gallery changes
     
     if (curr == gallery.length - 1) {
       setNext(0);
@@ -171,7 +161,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
   const nextClick = () => { // handle next click functions
 
-    setNext(next);
+    setNext(next); // set transitioning photo to correct index
 
     setDirection("next"); // set initial direction
     setTransition("animate"); // set correct transition
@@ -185,7 +175,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   const prevClick = () => { // handle prev click functions
     setNext(prev);
 
-    textAnimation.start("exit")
+    textAnimation.start("exit");
     setDirection("prev");
     
     setTransition("animate");
@@ -194,13 +184,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     setTimerEnable(false);
   }
 
-
-
-  // turn next on, it animates
-  // set current to next, update all others
-
-
-  
   return (
     <div className="relative h-svh lg:h-full w-full overflow-x-hidden"> 
       <div className="w-full h-full border-amber-400">
