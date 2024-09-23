@@ -49,12 +49,11 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
   return (
     <div className="relative"> 
       <section className="relative bg-neutral-500 h-svh sm:h-screen w-full flex">
-        <motion.div 
-          className="w-full h-full object-cover z-0 absolute"
-          animate={slide}
+        <div 
+          className="w-full h-svh sm:h-full object-cover z-0 absolute"
         >
             <Gallery /> 
-        </motion.div>
+        </div>
       </section>
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
         <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">

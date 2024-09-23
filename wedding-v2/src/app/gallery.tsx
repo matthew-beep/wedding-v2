@@ -260,13 +260,13 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
           </motion.div>
           <div className="flex justify-between">
             <div 
-              className="w-12 h-12 flex items-center"
+              className="w-12 h-12 flex items-center cursor-pointer"
               onClick={prevClick}
             >
               <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1}/>
             </div>
             <div 
-              className="w-12 h-12 flex items-center"
+              className="w-12 h-12 flex items-center cursor-pointer"
               onClick={nextClick} 
             >
               <CircleChevronRight className="text-white w-full h-full" strokeWidth={1}/>
