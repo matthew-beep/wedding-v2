@@ -47,13 +47,19 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
     next: {
       transform: 'translateX(100%)',
+      opacity: 0,
+      filter: 'blur(10px)'
     },
 
     prev: {
       transform:'translateX(-100%)',
+      opacity: 0,
+      filter: 'blur(10px)'
     },
     animate: {
       transform: 'translateX(0%)',
+      opacity: 1,
+      filter: 'blur(0px)',
       transition: { duration: 0.5, ease: easeInOut }
     },
     animatePrev: {
@@ -227,7 +233,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               })
             }}
           >
-            <Image src={gallery[next].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute bg-white" />
+            <Image src={gallery[next].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
           </motion.div>
         }
       </div>
