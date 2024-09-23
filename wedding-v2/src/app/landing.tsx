@@ -57,9 +57,9 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
         <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <div className="lg:w-1/2 w-full bg-white flex flex-col items-center justify-center h-1/2 lg:h-full">
-            <div className="font-canto text-6xl text-black">
+            <h3 className="font-canto text-6xl text-black">
               Save The Date              
-            </div>
+            </h3>
             <div className="font-rufina-stencil-ornaments text-9xl font-medium text-black">
               f
             </div>
