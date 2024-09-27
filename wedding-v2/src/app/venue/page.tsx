@@ -9,7 +9,6 @@ export default function Home() {
   const { scrollY } = useScroll();
   const [scrollYProgress, setScrollYProgress] = useState<number>(scrollY.get());
   const [windowHeight, setWindowHeight] = useState<number>(0);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
   
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -28,9 +27,8 @@ export default function Home() {
     if (typeof window !== "undefined") {
       const handleResize = () => {
         const viewportHeight = window.innerHeight;
-        const viewportWidth = window.innerWidth;
         setWindowHeight(viewportHeight);
-        setWindowWidth(viewportWidth);
+
       }
 
       window.addEventListener("resize", handleResize);
@@ -47,7 +45,7 @@ export default function Home() {
         <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
       <main className="bg-[#fdfdfd]">
-        <Landing windowWidth={windowWidth}/>
+        <Landing />
       </main>
       <Footer />
     </div>

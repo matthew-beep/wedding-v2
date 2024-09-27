@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { MoveUpRight } from 'lucide-react';
 
 interface LandingProps {
-  windowWidth : number;
+  windowWidth? : number;
 }
 
-const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
+const Landing: React.FC<LandingProps> = ({ }) => {
 
 
   return (
