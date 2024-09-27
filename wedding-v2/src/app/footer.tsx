@@ -45,7 +45,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
         </div>
       </section>
       <section>
-        <h5 className='text-center text-sm font-proxima'>Designed and Developed by <span className='font-semibold'><Link href="mherradura.com" target='_blank'>Matthew Herradura</Link>Matthew Herradura</span></h5>
+        <h5 className='text-center text-sm font-proxima'>Designed and Developed by <span className='font-semibold'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
       </section>
     </footer>
   );
