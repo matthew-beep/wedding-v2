@@ -92,7 +92,6 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       if (scroll > 5) {
         setDownAnimation(true);
       } else {
-
         if (!navDisplay) {
           setDownAnimation(false);
         }
@@ -117,14 +116,14 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       setIconOpacity(1);
       controls.start({
         color: 'black',
-        backgroundColor: 'rgba(255, 255, 255, 1)',
+        backgroundColor: 'rgba(245, 245, 245, 1)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
       setIconOpacity(0);
       controls.start({
         color: 'white',
-        backgroundColor: 'rgba(255, 255, 255, 0)',
+        backgroundColor: 'rgba(245, 245, 245, 0)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     }
@@ -151,28 +150,33 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       setNavDisplay(true);
       controls.start({
         color: 'black',
-        backgroundColor: 'rgba(255, 255, 255, 1)',
+        backgroundColor: 'rgba(245, 245, 245, 1)',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
       setIconOpacity(1);
-    } else { // hide links
+    } else {
       setNavDisplay(false);
+    }
+  }
+
+  const turnOff = () => {
       if (scroll <= 0) {
         controls.start({
           color: 'white',
-          backgroundColor: 'rgba(255, 255, 255, 0)',
-          transition: {
-            delay: 0.3,
-            duration: 0.1,
-            ease: [0.43, 0.13, 0.23, 0.96]
-          }
-          
-        });
+          backgroundColor: 'rgba(245, 245, 245, 0)',
+          transition: {duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
+        })
         setIconOpacity(0);
       }
-    }
   }
-  
+
+  /*
+  useEffect(() => {
+    if (!navDisplay && scroll == 0) { 
+      console.log('turn off display');
+    }
+  }, [navDisplay]);
+  */
   return (
     <nav className="font-canto w-full flex flex-col">
       <motion.div 
@@ -199,68 +203,71 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
             </div>
           </div>
         </motion.section>
-        <AnimatePresence>
-        {navDisplay &&
-          <motion.section
-            className="flex-grow bg-white relative z-0"
-            initial={{
-              height: 0
-            }}
-            animate={{
-              height: '100vh',
-              transition: { 
-                duration: 0.3, 
-                ease: [0.43, 0.13, 0.23, 0.96],
-                delay: 0.1
-              }
-            }}
-            exit={{
-              height: 0,
-              transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.1 }
-            }}
-          >
-            <motion.ul 
-              className="flex flex-col w-full h-full text-xl items-center justify-start gap-10 py-20"
-              variants={linkSection}
-              initial={"hidden"}
-              animate={"show"}
-              exit={"exit"}
+        <AnimatePresence 
+          onExitComplete={turnOff}
+        >
+          {navDisplay &&
+            <motion.section
+              className="flex-grow bg-[#f5f5f5] relative z-0"
+              initial={{
+                height: 0
+              }}
+              animate={{
+                height: '100vh',
+                transition: { 
+                  duration: 0.3, 
+                  ease: [0.43, 0.13, 0.23, 0.96],
+                  delay: 0.1
+                }
+              }}
+              exit={{
+                height: 0,
+                transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.1 }
+              }}
+              
             >
-              <motion.li 
-                className="text-gray-700 py-4 px-4  text-3xl"
-                variants={links}
+              <motion.ul 
+                className="flex flex-col w-full h-full text-xl items-center justify-start gap-10 py-20"
+                variants={linkSection}
+                initial={"hidden"}
+                animate={"show"}
+                exit={"exit"}
               >
-                <Link href="/venue">
-                  Venue
-                </Link>
-                
-              </motion.li>
-              <motion.li 
-                className="text-gray-700 py-4 px-4 text-3xl"
-                variants={links}
-              >
-                Registry
-              </motion.li>
-              <motion.li 
-                className="text-gray-700 py-4 px-4 text-3xl"
-                variants={links}
-              >
-                Guestbook
-              </motion.li>
-              <motion.li 
-                className="text-gray-700 py-4 px-4 text-3xl"
-                variants={links}
-              >
-                FAQ
-              </motion.li>
-              <motion.li 
-                className="text-gray-700 px-4 py-2 text-3xl bg-black text-white"
-                variants={links}
-              >
-                RSVP
-              </motion.li>
-            </motion.ul>
-          </motion.section>
+                <motion.li 
+                  className="text-black py-4 px-4  text-3xl"
+                  variants={links}
+                >
+                  <Link href="/venue">
+                    Venue
+                  </Link>
+                  
+                </motion.li>
+                <motion.li 
+                  className="text-black py-4 px-4 text-3xl"
+                  variants={links}
+                >
+                  Registry
+                </motion.li>
+                <motion.li 
+                  className="text-black py-4 px-4 text-3xl"
+                  variants={links}
+                >
+                  Guestbook
+                </motion.li>
+                <motion.li 
+                  className="text-black py-4 px-4 text-3xl"
+                  variants={links}
+                >
+                  FAQ
+                </motion.li>
+                <motion.li 
+                  className="text-black px-4 py-2 text-3xl bg-black text-white"
+                  variants={links}
+                >
+                  RSVP
+                </motion.li>
+              </motion.ul>
+            </motion.section>
           }
         </AnimatePresence>
       </motion.div>

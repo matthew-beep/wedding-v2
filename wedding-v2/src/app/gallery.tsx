@@ -244,13 +244,13 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               className="w-12 h-12 flex items-center cursor-pointer"
               onClick={prevClick}
             >
-              <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1}/>
+              <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1.5}/>
             </div>
             <div 
               className="w-12 h-12 flex items-center cursor-pointer"
               onClick={nextClick} 
             >
-              <CircleChevronRight className="text-white w-full h-full" strokeWidth={1}/>
+              <CircleChevronRight className="text-white w-full h-full" strokeWidth={1.5}/>
             </div>
           </div>
         </div>

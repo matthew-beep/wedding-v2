@@ -12,7 +12,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
 
 
   return (
-    <div className="relative"> 
+    <div className="relative bg-[#f5f5f5]"> 
       <section className="h-svh relative flex flex-col">
         <div className="h-1/4">
           <div 
@@ -28,7 +28,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             <h2 className="text-3xl">Venue</h2>
           </div>
         </div>
-        <div className="font-canto py-10 px-5">
+        <div className="font-canto py-10 px-5 text-black">
           <h3 className="text-5xl">Address</h3>
           <h4>11421 164th St E, Puyallup, WA 98374</h4>
           <p className="text-lg">
