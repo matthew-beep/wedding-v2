@@ -46,13 +46,18 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
         </div>
          </section>
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
-        <div className="bg-white flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
-          <div className="lg:w-1/2 w-full bg-white flex flex-col items-center justify-center h-1/2 lg:h-full">
-            <h3 className="font-canto text-6xl text-black">
-              Save The Date              
-            </h3>
-            <div className="font-rufina-stencil-ornaments text-9xl font-medium text-black">
-              f
+        <div className="bg-[#f5f5f5] flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
+          <div className="lg:w-1/2 w-full h-1/2 lg:h-full p-5">
+            <div className="w-full h-full flex flex-col items-center justify-center border-2 border-black">
+              <h3 className="font-canto text-6xl text-black">
+                Save The Date              
+              </h3>
+              <h3 className="font-canto text-xl text-black">
+                29th August, 2025             
+              </h3>
+              <h3 className="font-canto text-xl text-black">
+                Rock Creek Gardens             
+              </h3>
             </div>
           </div>
           <motion.div 
