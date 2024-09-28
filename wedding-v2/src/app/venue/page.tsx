@@ -1,9 +1,9 @@
 'use client'
 import Landing from "./landing";
-import MobileNav from "./mobileNav";
+import MobileNav from "../mobileNav";
 import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
-import Footer from "./footer";
+import Footer from "../footer";
 
 export default function Home() {
   const { scrollY } = useScroll();

@@ -219,7 +219,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
         }
       </div>
       <div className="flex flex-col justify-between absolute bottom-0 left-0 w-full z-100 items-center landing  h-full">
-        <div className="flex flex-col justify-between w-11/12 mb-4 h-full h-full sm:h-[50vh]">
+        <div className="flex flex-col justify-between w-11/12 mb-4 h-full sm:h-[50vh]">
           <motion.div 
             className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
             variants={parentVariants}
@@ -227,17 +227,35 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
             animate={textAnimation}
           >
             <motion.h1 
-              className="text-6xl sm:text-7xl"
+              className="text-6xl sm:text-9xl w-auto text-center font-semibold"
               variants={childVariants}
             >
               Anita & Jesus
             </motion.h1>
-            <motion.h2 
-              className="text-2xl text-white"
+            <motion.div 
+              className="flex text-2xl sm:text-5xl text-white text-center w-3/4 sm:w-1/4 items-center justify-center px-1"
               variants={childVariants}
             >
-              August 29, 2025
-            </motion.h2> 
+              <motion.div 
+                className="flex-grow h-0.5 sm:h-1 bg-white"
+                style={{
+                  scaleX: scaleX,
+                  originX: 1
+                }}
+              >
+              </motion.div>
+              <h2 className="w-auto mx-1 mt-1">
+                August 29, 2025
+              </h2>
+              <motion.div 
+                className="flex-grow h-0.5 bg-white sm:h-1 scale-x-100 origin-left"
+                style={{
+                  scaleX: scaleX,
+                  originX: 0
+                }}
+              >
+              </motion.div>
+            </motion.div> 
           </motion.div>
           <div className="flex justify-between">
             <div 
