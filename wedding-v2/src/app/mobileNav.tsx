@@ -103,10 +103,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
     //console.log("prev: " + prevScroll);
     setPrevScroll(scroll);
     if (scroll > prevScroll) {
-      console.log("down");
       setScrollDown(true);
     } else {
-      console.log("up");
       setScrollDown(false);
     }
   }, [scroll])
@@ -259,7 +257,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                   className="text-black py-4 px-4 text-3xl"
                   variants={links}
                 >
-                  FAQ
+                  <Link href="/faq">
+                    FAQ
+                  </Link>
                 </motion.li>
                 <motion.li 
                   className="text-black px-4 py-2 text-3xl bg-black text-white"
