@@ -236,25 +236,39 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               className="flex text-2xl sm:text-5xl text-white text-center w-3/4 sm:w-1/4 items-center justify-center px-1"
               variants={childVariants}
             >
-              <motion.div 
-                className="flex-grow h-0.5 sm:h-1 bg-white"
+              <div 
+                className="flex-grow z-20 bg-amber-400"
                 style={{
-                  scaleX: scaleX,
-                  originX: 1
+                  backgroundColor: "rgba(255, 255, 255, 0.3)"
                 }}
               >
-              </motion.div>
+                <motion.div 
+                  className="w-full h-0.5 sm:h-1 bg-white"
+                  style={{
+                    scaleX: scaleX,
+                    originX: 1
+                  }}
+                >
+                </motion.div>
+              </div>
               <h2 className="w-auto mx-1 mt-1">
                 August 29, 2025
               </h2>
-              <motion.div 
-                className="flex-grow h-0.5 bg-white sm:h-1 scale-x-100 origin-left"
+              <div 
+                className="flex-grow z-20 bg-amber-400"
                 style={{
-                  scaleX: scaleX,
-                  originX: 0
+                  backgroundColor: "rgba(255, 255, 255, 0.3)"
                 }}
               >
-              </motion.div>
+                <motion.div 
+                  className="w-full h-0.5 sm:h-1 bg-white"
+                  style={{
+                    scaleX: scaleX,
+                    originX: 0
+                  }}
+                >
+                </motion.div>
+              </div>
             </motion.div> 
           </motion.div>
           <div className="flex justify-between">

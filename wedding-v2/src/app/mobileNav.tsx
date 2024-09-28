@@ -237,22 +237,23 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                   className="text-black py-4 px-4  text-3xl"
                   variants={links}
                 >
-                  <Link href="/venue">
-                    Venue
+                  <Link href="/">
+                    Save The Date
                   </Link>
-                  
+                </motion.li>
+                <motion.li 
+                  className="text-black py-4 px-4  text-3xl"
+                  variants={links}
+                >
+                  <Link href="/ceremony">
+                    Ceremony
+                  </Link>
                 </motion.li>
                 <motion.li 
                   className="text-black py-4 px-4 text-3xl"
                   variants={links}
                 >
                   Registry
-                </motion.li>
-                <motion.li 
-                  className="text-black py-4 px-4 text-3xl"
-                  variants={links}
-                >
-                  Guestbook
                 </motion.li>
                 <motion.li 
                   className="text-black py-4 px-4 text-3xl"

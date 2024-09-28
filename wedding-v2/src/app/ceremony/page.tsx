@@ -1,5 +1,5 @@
 'use client'
-import Landing from "./landing";
+import Ceremony from "./ceremony";
 import MobileNav from "../mobileNav";
 import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
@@ -45,7 +45,7 @@ export default function Home() {
         <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
       <main className="bg-[#fdfdfd]">
-        <Landing />
+        <Ceremony />
       </main>
       <Footer />
     </div>
