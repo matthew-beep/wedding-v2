@@ -35,13 +35,51 @@ const Footer: React.FC<FooterProps> = ({  }) => {
     setCurrentDate(new Date());
     //console.log(Math.abs(weddingDate.getTime() - currentDate.getTime()));
   }, 60000);
+
+            <p>{`${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`}</p>
+          <p>Till We say &quot;I do!&quot;</p>
   */
   return (
     <footer className= "bg-[#f5f5f5] font-canto text-2xl flex flex-col items-center min-h-54 py-10 text-black flex flex-col items-center justify-around">
-      <section>
+      <section className='w-full'>
         <div className='flex flex-col items-center justify-center mb-5'>
-          <p>{`${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`}</p>
-          <p>Till We say &quot;I do!&quot;</p>
+          <div className='flex w-full justify-around items-center'>
+            <div className='flex flex-col items-center'>
+              <div className='font-proxima'>
+                {days}
+              </div>
+              <div className='font-canto font-bold'>
+                Days
+              </div>
+            </div>
+            <div className='flex flex-col items-center'>
+              <div className='font-proxima'>
+                {hours}
+              </div>
+              <div className='font-canto font-bold'>
+                Hours
+              </div>
+            </div>
+            <div className='flex flex-col items-center'>
+              <div className='font-proxima'>
+                {minutes}
+              </div>
+              <div className='font-canto font-bold'>
+                Minutes
+              </div>
+            </div>
+            <div className='flex flex-col items-center'>
+              <div className='font-proxima'>
+                {seconds}
+              </div>
+              <div className='font-canto font-bold'>
+                Seconds
+              </div>
+            </div>
+          </div>
+          <div className='my-1'>
+            Till We Say &quot;I Do&quot;
+          </div>
         </div>
       </section>
       <section>

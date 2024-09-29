@@ -188,7 +188,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
         <motion.div
           className="w-full h-full absolute"
           variants={variants}
-
         >
           <Image src={gallery[curr].img} alt="Anita & Jesus sitting together" className="w-full h-full object-cover z-0 absolute" />
           

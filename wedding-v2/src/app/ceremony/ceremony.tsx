@@ -64,6 +64,17 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
           </Link>
           <button>FAQ</button>
         </div>
+        <div className="font-canto py-10 px-5 text-black flex flex-col justify-start items-center border-2">
+          <h3 className="text-5xl">Venue</h3>
+          <h4>Rock Creek Gardens</h4>
+          <hr className='h-px w-full'/>
+          <h4>11421 164th St E, Puyallup, WA 98374</h4>
+          <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank" className="cursor-pointer underline flex items-center">
+            <h4 className='text-xl'>Get Directions</h4>
+            <Map className="ml-2 w-4 h-4" />
+          </Link>
+          <button>FAQ</button>
+        </div> 
       </section>
     </div>
   );

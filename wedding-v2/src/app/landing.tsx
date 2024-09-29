@@ -42,7 +42,7 @@ const Landing: React.FC<LandingProps> = ({ windowWidth }) => {
         <div 
           className="w-full h-full object-cover z-0 absolute"
         >
-            <Gallery /> 
+          <Gallery /> 
         </div>
          </section>
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
