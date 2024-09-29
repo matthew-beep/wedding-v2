@@ -45,7 +45,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
         <div className='flex flex-col items-center justify-center mb-5'>
           <div className='flex w-full justify-around items-center'>
             <div className='flex flex-col items-center'>
-              <div className='font-proxima'>
+              <div>
                 {days}
               </div>
               <div className='font-canto font-bold'>
@@ -53,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               </div>
             </div>
             <div className='flex flex-col items-center'>
-              <div className='font-proxima'>
+              <div>
                 {hours}
               </div>
               <div className='font-canto font-bold'>
@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               </div>
             </div>
             <div className='flex flex-col items-center'>
-              <div className='font-proxima'>
+              <div>
                 {minutes}
               </div>
               <div className='font-canto font-bold'>
@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               </div>
             </div>
             <div className='flex flex-col items-center'>
-              <div className='font-proxima'>
+              <div>
                 {seconds}
               </div>
               <div className='font-canto font-bold'>
