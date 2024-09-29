@@ -115,6 +115,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       controls.start({
         color: 'black',
         backgroundColor: 'rgba(245, 245, 245, 1)',
+        boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.2)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
@@ -122,6 +123,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       controls.start({
         color: 'white',
         backgroundColor: 'rgba(245, 245, 245, 0)',
+        boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     }
@@ -149,11 +151,17 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       controls.start({
         color: 'black',
         backgroundColor: 'rgba(245, 245, 245, 1)',
+        boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
       setIconOpacity(1);
     } else {
       setNavDisplay(false);
+      if (scroll > 0) { // if scroll bar not at the top, set shadow back after closing
+        controls.start({
+          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.2)',
+        })
+      }
     }
   }
 
@@ -162,19 +170,14 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         controls.start({
           color: 'white',
           backgroundColor: 'rgba(245, 245, 245, 0)',
+          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
           transition: {duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
         })
         setIconOpacity(0);
       }
   }
 
-  /*
-  useEffect(() => {
-    if (!navDisplay && scroll == 0) { 
-      console.log('turn off display');
-    }
-  }, [navDisplay]);
-  */
+
   return (
     <nav className="font-canto w-full flex flex-col">
       <motion.div 
@@ -182,7 +185,10 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       >
         <motion.section 
           className="flex w-full justify-center h-20 items-center relative z-20"
-          initial={{color: 'white'}}
+          initial={{
+            color: 'white',
+            boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)'
+          }}
           animate={controls}
         >
           <div className="flex justify-between w-11/12 items-center">

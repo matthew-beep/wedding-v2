@@ -44,7 +44,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
           }}
           >
             <motion.h2 
-              className="text-5xl font-bold"
+              className="text-6xl font-bold"
               variants={textAnimation}
               initial="hidden"
               animate="show"
@@ -55,7 +55,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
         </div>
         <div className='h-auto'>
           <div className="font-canto pt-10 pb-5 px-5 text-black flex flex-col justify-start items-center gap-2">
-            <h3 className="text-5xl">Venue Address</h3>
+            <h3 className="text-5xl font-semibold">Venue Address</h3>
             <h4 className='text-2xl'>Rock Creek Gardens</h4>
             <hr className='h-px w-6/12'/>
             <h4 className='text-2xl'>11421 164th St E</h4>
@@ -68,7 +68,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
             </button>
           </div>
           <div className="font-canto pt-10 pb-5 px-5 text-black flex flex-col justify-start items-center gap-2">
-            <h3 className="text-5xl">Event Details</h3>
+            <h3 className="text-5xl font-semibold">Event Details</h3>
             <h4 className='text-2xl w-2/3 text-center'>Event Start: 3:00 PM</h4>
             <hr className='h-px w-6/12'/>
             <h4 className='text-2xl w-2/3 text-center'>Note: We advise arriving 30 - 45 minutes early. Please read the FAQ for more info and don&apos;t forget to RSVP!</h4>
@@ -79,7 +79,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
             </button>
           </div>
         </div>
-        
+        <hr className='m-auto h-px w-11/12 mt-5'/>
       </section>
     </div>
   );
