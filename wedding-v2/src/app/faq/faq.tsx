@@ -27,6 +27,8 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
     }
   }
 
+  /*
+
   const answers = {
     hidden: {
       height: 0
@@ -39,7 +41,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
       }
     }
   }
-
+  */
   const questions =[
     {
       id: 1,
