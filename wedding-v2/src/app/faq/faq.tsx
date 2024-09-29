@@ -103,7 +103,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
   return (
     <div className="relative bg-[#f5f5f5]"> 
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col  items-center">
-        <div className="h-[50svh]  border-gray-700 w-full flex">
+        <div className="h-[50svh] border-gray-700 w-full flex">
             <div 
               className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto"
               style={{

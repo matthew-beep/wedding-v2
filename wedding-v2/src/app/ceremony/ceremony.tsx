@@ -31,7 +31,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
 
   return (
     <div className="relative bg-[#f5f5f5]"> 
-      <section className="h-svh relative flex flex-col">
+      <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col">
         <div className="h-1/2">
           <div 
           className="h-auto w-full z-0 flex pt-24 justify-center text-white font-canto"
