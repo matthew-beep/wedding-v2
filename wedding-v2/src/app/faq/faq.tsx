@@ -1,8 +1,8 @@
 'use client'
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
 import { motion, easeOut } from 'framer-motion'
 import banner from '../img/faq.jpg';
+import Collapsible from './collapsible';
 
 interface FAQProps {
   windowWidth? : number;
@@ -124,18 +124,10 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
               </motion.h2>
             </div>
         </div>
-        <div className='flex flex-col  border-amber-400 w-11/12'>
-          {questions.map((question) => (
-            <div key={question.id} className="flex flex-col font-canto my-2">
-              <div className=' flex items-center'>
-                <h2 className='font-bold text-lg'>
-                  {question.q}
-                </h2>
-                <ChevronDown className="ml-auto text-3xl cursor-pointer" />
-              </div>
-              <p className='h-auto'>{question.a}</p>
-            </div>
-          ))}
+        <div className='flex flex-col w-11/12'>
+          {questions.map(question => 
+            <Collapsible key={question.id} question={question} />  // Pass the question as a prop to the Collapsible component
+          )}
         </div>
       </section>
     </div>
