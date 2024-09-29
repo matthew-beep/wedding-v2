@@ -63,7 +63,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
 
   return (
     <motion.div 
-      className="flex flex-col font-canto text-black border-y border-gray-200 w-full cursor-pointer"
+      className="flex flex-col font-canto text-black border sm:border-2 rounded-lg mb-5 border-gray-200 w-full cursor-pointer"
     >
       <motion.div 
         className='flex items-center justify-between py-5 px-3' onClick={handleClick}
@@ -95,8 +95,11 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
           {q}
         </h2>
         <motion.div
-          className="flex justify-center items-center"
+          className="flex justify-center items-center rounded-full"
           animate={controls}
+          whileHover={{
+            backgroundColor: 'rgba(0, 0, 0, 0.2)'
+          }}
         >
           <ChevronDown size={35} strokeWidth={1} className="w-full h-full text-xl cursor-pointer" />
         </motion.div>
