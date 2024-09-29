@@ -64,13 +64,32 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
   return (
     <motion.div 
       className="flex flex-col font-canto text-black border-y border-gray-200 w-full cursor-pointer"
-      whileHover={{
-        backgroundColor: 'rgba(229,231,235)'
-      }}
-      animate={header}
     >
-      <div 
+      <motion.div 
         className='flex items-center justify-between py-5 px-3' onClick={handleClick}
+        initial={{
+          backgroundColor: 'rgba(229,231,235, 0)'
+        }}
+        animate={header}
+        onMouseEnter={
+          () => {
+            if (!opened) {
+              header.start({
+                backgroundColor: 'rgba(229,231,235, 1)'
+              })
+            }
+          }
+        }
+        onMouseLeave={
+          () => {
+            if (!opened) {
+              header.start({
+                backgroundColor: 'rgba(229,231,235, 0)'
+              })
+            }
+          }
+        }
+
       >
         <h2 className='font-bold text-xl sm:text-3xl'>
           {q}
@@ -81,11 +100,11 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
         >
           <ChevronDown size={35} strokeWidth={1} className="w-full h-full text-xl cursor-pointer" />
         </motion.div>
-      </div>
+      </motion.div>
       <AnimatePresence>
         {opened && 
             <motion.div
-              className='font-proxima text-lg sm:text-2xl overflow-y-hidden px-3'
+              className='font-proxima text-lg sm:text-2xl overflow-y-hidden p-3'
               variants={collapse}
               initial="hidden"
               animate="show"
