@@ -34,7 +34,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
       <section className="h-svh relative flex flex-col">
         <div className="h-1/2">
           <div 
-          className="h-auto w-full z-0 flex items-center justify-center text-white font-canto"
+          className="h-auto w-full z-0 flex pt-32 justify-center text-white font-canto"
           style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
             backgroundSize: "cover",
@@ -44,7 +44,7 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
           }}
           >
             <motion.h2 
-              className="text-5xl"
+              className="text-5xl font-bold"
               variants={textAnimation}
               initial="hidden"
               animate="show"

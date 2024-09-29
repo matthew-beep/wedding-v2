@@ -28,7 +28,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
   }
 
   /*
-
+  // lets stagger animate the components
   const answers = {
     hidden: {
       height: 0
@@ -105,7 +105,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col  items-center">
         <div className="h-[50svh]  border-gray-700 w-full flex">
             <div 
-              className="h-full w-full z-0 flex items-center justify-center text-white font-canto"
+              className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto"
               style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
                 backgroundSize: "cover",
@@ -115,7 +115,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
               }}
             >
               <motion.h2 
-                className="text-4xl"
+                className="text-4xl font-bold"
                 variants={textAnimation}
                 initial="hidden"
                 animate="show"
@@ -124,7 +124,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
               </motion.h2>
             </div>
         </div>
-        <div className='flex flex-col w-11/12'>
+        <div className='flex flex-col w-11/12 sm:w-6/12 mt-5'>
           {questions.map(question => 
             <Collapsible key={question.id} question={question} />  // Pass the question as a prop to the Collapsible component
           )}
