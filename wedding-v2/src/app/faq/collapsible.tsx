@@ -63,7 +63,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
 
   return (
     <motion.div 
-      className="flex flex-col font-canto text-black border sm:border-2 rounded-lg mb-5 border-gray-200 w-full cursor-pointer"
+      className="flex flex-col font-canto text-black border sm:border-2 rounded-lg mb-5 border-gray-200 w-full cursor-pointer shadow-md"
     >
       <motion.div 
         className='flex items-center justify-between py-5 px-3' onClick={handleClick}

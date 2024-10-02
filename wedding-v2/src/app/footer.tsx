@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {days}
               </div>
-              <div className='font-canto font-bold'>
+              <div className='font-canto'>
                 Days
               </div>
             </div>
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {hours}
               </div>
-              <div className='font-canto font-bold'>
+              <div className='font-canto'>
                 Hours
               </div>
             </div>
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {minutes}
               </div>
-              <div className='font-canto font-bold'>
+              <div className='font-canto'>
                 Minutes
               </div>
             </div>
@@ -72,7 +72,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {seconds}
               </div>
-              <div className='font-canto font-bold'>
+              <div className='font-canto'>
                 Seconds
               </div>
             </div>

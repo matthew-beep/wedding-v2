@@ -95,7 +95,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
     },
     {
       id: 11,
-      q: "I have a question not answered here; how do I contact you?",
+      q: "How should I contact you for more info?",
       a: "If you still have any questions that are not answered here, please feel free to call or text Anita or Jesus! We appreciate you taking the time to read this through and hope this can alleviate any questions/concerns."
     }
   ]
