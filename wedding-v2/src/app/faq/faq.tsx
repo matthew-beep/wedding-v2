@@ -115,7 +115,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
               }}
             >
               <motion.h2 
-                className="text-4xl font-bold"
+                className="text-8xl font-bold"
                 variants={textAnimation}
                 initial="hidden"
                 animate="show"
@@ -124,7 +124,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
               </motion.h2>
             </div>
         </div>
-        <div className='flex flex-col w-11/12 sm:w-6/12 mt-5'>
+        <div className='flex flex-col w-11/12 xl:w-6/12 mt-5'>
           {questions.map(question => 
             <Collapsible key={question.id} question={question} />  // Pass the question as a prop to the Collapsible component
           )}

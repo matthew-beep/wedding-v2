@@ -4,7 +4,7 @@
 import Image from "next/image";
 import React from 'react';
 import landing1 from './img/hero.jpg';
-import landing2 from './img/preferred.jpg';
+import landing2 from './img/elevator.jpg';
 import landing3 from './img/pillars.jpg';
 import landing4 from './img/dark.jpg';
 import {useEffect, useState} from 'react'
@@ -143,6 +143,8 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     //Implementing the setInterval method
     let interval: NodeJS.Timeout | undefined;
     if (timerEnable) {
+      console.log(curr)
+      console.log(next)
       interval = setInterval(() => {
         const currTime = timer.get();
         if (currTime >= timerEnd) {
@@ -204,7 +206,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               if (direction == "next") {
                 setCurr(next);
               } else {
-                setCurr(prev)
+                setCurr(prev);
               }
               
               setNextDisplay(false);

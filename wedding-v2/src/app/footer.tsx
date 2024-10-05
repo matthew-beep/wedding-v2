@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
   return (
     <footer className= "bg-[#f5f5f5] font-canto text-2xl flex flex-col items-center min-h-54 py-10 text-black flex flex-col items-center justify-around">
       <section className='w-full'>
-        <div className='flex flex-col items-center justify-center mb-5'>
+        <div className='flex flex-col items-center justify-center mb-5 lg:text-4xl'>
           <div className='flex items-center w-11/12 justify-center gap-10 font-canto font-semibold'>
             <div className='flex flex-col items-center'>
               <div>
@@ -82,8 +82,9 @@ const Footer: React.FC<FooterProps> = ({  }) => {
           </div>
         </div>
       </section>
-      <section>
-        <h5 className='text-center text-sm font-proxima'>Designed and Developed by <span className='font-semibold'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
+      <section className='py-2'>
+        <hr className='m-auto h-px w-8/12'/>
+        <h5 className=' mt-5 text-center text-sm font-proxima lg:text-lg'>Designed and Developed by <span className='font-semibold underline'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
       </section>
     </footer>
   );
