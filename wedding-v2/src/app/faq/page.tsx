@@ -39,6 +39,8 @@ export default function Home() {
     }
   });
 
+  
+  
   return (
     <div className="relative bg-[#fdfdfd]">
       <header className="fixed top-0 left-0 z-40 w-screen">

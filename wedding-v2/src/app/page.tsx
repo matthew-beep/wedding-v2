@@ -9,8 +9,8 @@ export default function Home() {
   const { scrollY } = useScroll();
   const [scrollYProgress, setScrollYProgress] = useState<number>(scrollY.get());
   const [windowHeight, setWindowHeight] = useState<number>(0);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
-  
+  //const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false)
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // console.log("Page scroll: ", latest)
@@ -24,13 +24,17 @@ export default function Home() {
     setScrollYProgress(latest);
   })
 
+  
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
+      
       const handleResize = () => {
         const viewportHeight = window.innerHeight;
         const viewportWidth = window.innerWidth;
         setWindowHeight(viewportHeight);
-        setWindowWidth(viewportWidth);
+        //setWindowWidth(viewportWidth);
+        //console.log("resize: " + viewportWidth);
       }
 
       window.addEventListener("resize", handleResize);
@@ -40,6 +44,32 @@ export default function Home() {
       }
     }
   });
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Create a media query for min-width: 1024px
+      const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+      // Function to update the state based on media query match and actual window width
+      const handleMediaChange = (event: MediaQueryListEvent) => {
+        console.log("Media Query: " + event.media);  // Logs the media query string
+        console.log("Matches: " + event.matches);    // true if the media query matches
+        setIsLargeScreen(event.matches);
+
+      };
+
+      // Initial check without triggering event listener
+      setIsLargeScreen(mediaQuery.matches);
+
+      // Add listener for media query changes
+      mediaQuery.addEventListener("change", handleMediaChange);
+
+      // Cleanup function to remove the listener when component unmounts
+      return () => {
+        mediaQuery.removeEventListener("change", handleMediaChange);
+      };
+    }
+  }, [isLargeScreen]);
 
   return (
     <div className="relative bg-white">
@@ -47,7 +77,7 @@ export default function Home() {
         <MobileNav scroll={scrollYProgress} height={windowHeight}/>
       </header>
       <main className="bg-white">
-        <Landing windowWidth={windowWidth}/>
+        <Landing large={isLargeScreen}/>
       </main>
       <Footer />
     </div>

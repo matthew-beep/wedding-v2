@@ -43,12 +43,12 @@ const Footer: React.FC<FooterProps> = ({  }) => {
     <footer className= "bg-[#f5f5f5] font-canto text-2xl flex flex-col items-center min-h-54 py-10 text-black flex flex-col items-center justify-around">
       <section className='w-full'>
         <div className='flex flex-col items-center justify-center mb-5'>
-          <div className='flex w-full justify-around items-center'>
+          <div className='flex items-center w-11/12 justify-center gap-10 font-canto font-semibold'>
             <div className='flex flex-col items-center'>
               <div>
                 {days}
               </div>
-              <div className='font-canto'>
+              <div>
                 Days
               </div>
             </div>
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {hours}
               </div>
-              <div className='font-canto'>
+              <div>
                 Hours
               </div>
             </div>
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {minutes}
               </div>
-              <div className='font-canto'>
+              <div>
                 Minutes
               </div>
             </div>
@@ -72,13 +72,13 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {seconds}
               </div>
-              <div className='font-canto'>
+              <div >
                 Seconds
               </div>
             </div>
           </div>
-          <div className='my-1'>
-            Till We Say &quot;I Do&quot;
+          <div className='my-5'>
+            Till We Say <span className='font-semibold'>&quot;I Do&quot;</span>
           </div>
         </div>
       </section>

@@ -184,7 +184,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
 
   return (
     <div className="relative h-svh lg:h-screen w-full overflow-x-hidden"> 
-      <div className="w-full h-full border-amber-400">
+      <div className="w-full h-full">
         <motion.div
           className="w-full h-full absolute"
           variants={variants}
@@ -232,11 +232,11 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               Anita & Jesus
             </motion.h1>
             <motion.div 
-              className="flex text-2xl sm:text-5xl text-white text-center w-3/4 sm:w-1/4 items-center justify-center px-1"
+              className="flex text-2xl sm:text-5xl text-white text-center w-3/4 lg:w-7/12 xl:w-1/4 items-center justify-center px-1"
               variants={childVariants}
             >
               <div 
-                className="flex-grow z-20 bg-amber-400"
+                className="flex-grow z-20"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.3)"
                 }}
@@ -254,7 +254,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
                 August 29, 2025
               </h2>
               <div 
-                className="flex-grow z-20 bg-amber-400"
+                className="flex-grow z-20"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.3)"
                 }}
