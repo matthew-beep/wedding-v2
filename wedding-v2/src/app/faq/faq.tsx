@@ -115,7 +115,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
               }}
             >
               <motion.h2 
-                className="text-8xl font-bold"
+                className="text-3xl xl:text-8xl font-bold"
                 variants={textAnimation}
                 initial="hidden"
                 animate="show"
