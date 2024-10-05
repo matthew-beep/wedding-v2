@@ -31,7 +31,6 @@ export default function Home() {
       
       const handleResize = () => {
         const viewportHeight = window.innerHeight;
-        const viewportWidth = window.innerWidth;
         setWindowHeight(viewportHeight);
         //setWindowWidth(viewportWidth);
         //console.log("resize: " + viewportWidth);
