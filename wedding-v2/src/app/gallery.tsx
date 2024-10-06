@@ -130,7 +130,6 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     } else {
       setPrev(curr - 1);
     }
-    console.log(next);
   }, [curr])
 
   
@@ -143,8 +142,8 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     //Implementing the setInterval method
     let interval: NodeJS.Timeout | undefined;
     if (timerEnable) {
-      console.log(curr)
-      console.log(next)
+      //console.log("going from " + curr + " to " + next)
+      //console.log(next)
       interval = setInterval(() => {
         const currTime = timer.get();
         if (currTime >= timerEnd) {
@@ -162,26 +161,37 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
   }, [timer, timerEnable]);
 
   const nextClick = () => { // handle next click functions
-
-    setNext(next); // set transitioning photo to correct index
-    setDirection("next"); // set initial direction
-    setTransition("animate"); // set correct transition
-    textAnimation.start("exit")// trigger text animation first 
-    setNextDisplay(true); // trigger next animation
-    timer.set(0);
-    setTimerEnable(false);
+    if (timerEnable) {
+      console.log("going from " + curr + " to " + next + ", previous is " + prev)
+      setNext(next); // set transitioning photo to correct index
+      setDirection("next"); // set initial direction
+      setTransition("animate"); // set correct transition
+      textAnimation.start("exit")// trigger text animation first 
+      setNextDisplay(true); // trigger next animation
+      timer.set(0);
+      setTimerEnable(false);
+      console.log("setting timer off")
+      
+    }
+    setTimeout(() => {
+      setTimerEnable(true);
+      console.log("setting timer on")
+    }, 1000);
   }
 
   const prevClick = () => { // handle prev click functions
-    setNext(prev);
-
-    textAnimation.start("exit");
-    setDirection("prev");
-    
-    setTransition("animate");
-    setNextDisplay(true); 
-    timer.set(0);
-    setTimerEnable(false);
+    if (timerEnable) {
+      setNext(prev);
+      textAnimation.start("exit");
+      setDirection("prev");
+      setTransition("animate");
+      setNextDisplay(true); 
+      timer.set(0);
+      setTimerEnable(false);
+    }
+    setTimeout(() => {
+      setTimerEnable(true);
+    }, 1000);
   }
 
   return (
@@ -222,7 +232,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
       <div className="flex flex-col justify-between absolute bottom-0 left-0 w-full z-100 items-center landing  h-full">
         <div className="flex flex-col justify-between w-11/12 mb-4 h-full sm:h-[50vh]">
           <motion.div 
-            className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10"
+            className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10 xl:mt-48"
             variants={parentVariants}
             initial={"hidden"}
             animate={textAnimation}
@@ -237,10 +247,21 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               className="flex text-2xl sm:text-5xl text-white text-center w-3/4 lg:w-7/12 xl:w-1/4 items-center justify-center px-1"
               variants={childVariants}
             >
-              <div 
+              <motion.div 
                 className="flex-grow z-20"
+                initial={{
+                  scaleX:0
+                }}
+                animate={{
+                  scaleX:1,
+                  transition: { 
+                    delay: 0.5,
+                    duration: 0.4, ease: easeInOut,
+                  }
+                }}
                 style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.3)"
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  originX: 1
                 }}
               >
                 <motion.div 
@@ -251,14 +272,25 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
                   }}
                 >
                 </motion.div>
-              </div>
+              </motion.div>
               <h2 className="w-auto mx-1 mt-1">
                 August 29, 2025
               </h2>
-              <div 
+              <motion.div 
                 className="flex-grow z-20"
+                initial={{
+                  scaleX:0
+                }}
+                animate={{
+                  scaleX:1,
+                  transition: { 
+                    delay: 0.5,
+                    duration: 0.4, ease: easeInOut,
+                  }
+                }}
                 style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.3)"
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  originX: 0
                 }}
               >
                 <motion.div 
@@ -269,24 +301,27 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
                   }}
                 >
                 </motion.div>
-              </div>
+              </motion.div>
             </motion.div> 
           </motion.div>
           <div className="flex justify-between">
             <div 
-              className="w-12 h-12 flex items-center cursor-pointer"
+              className="w-20 h-auto flex items-center cursor-pointer flex flex-col"
               onClick={prevClick}
             >
-              <CircleChevronLeft className="text-white w-full h-full" strokeWidth={1.5}/>
+              <CircleChevronLeft className="text-white" strokeWidth={1.5} size={48}/>
+              <h4 className="text-white font-proxima">PREV</h4>
             </div>
             <div 
-              className="w-12 h-12 flex items-center cursor-pointer"
+              className="w-20 h-20 flex items-center cursor-pointer flex flex-col"
               onClick={nextClick} 
             >
-              <CircleChevronRight className="text-white w-full h-full" strokeWidth={1.5}/>
+              <CircleChevronRight className="text-white" strokeWidth={1.5} size={48}/>
+              <h4 className="text-white font-proxima">NEXT</h4>
             </div>
           </div>
         </div>
+        {false &&
           <div 
             className="w-full z-20 bg-amber-400"
             style={{
@@ -302,6 +337,7 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
                 >
             </motion.div>
           </div>
+        }
         </div>
 
 

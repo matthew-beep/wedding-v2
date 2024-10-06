@@ -1,6 +1,7 @@
 'use client'
 import Landing from "./landing";
 import MobileNav from "./mobileNav";
+import Nav from "./nav";
 import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
 import Footer from "./footer";
@@ -73,7 +74,8 @@ export default function Home() {
   return (
     <div className="relative bg-white">
       <header className="fixed top-0 left-0 z-40 w-screen">
-        <MobileNav scroll={scrollYProgress} height={windowHeight}/>
+        {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight}/>}
+        {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight}/>}
       </header>
       <main className="bg-white">
         <Landing large={isLargeScreen}/>

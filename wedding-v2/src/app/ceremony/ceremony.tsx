@@ -67,23 +67,23 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
           </div>
         </div>
         <div className='h-auto'>
-          <div className="font-canto pt-10 pb-5 px-5 text-black flex flex-col justify-start items-center gap-2">
-            <h3 className="text-5xl">Venue Address</h3>
-            <h4 className='text-2xl'>Rock Creek Gardens</h4>
-            <hr className='h-px w-6/12'/>
-            <h4 className='text-2xl'>11421 164th St E</h4>
-            <h4 className='text-2xl'>Puyallup, WA 98374</h4>
-            <p className='text-lg text-center w-9/12'>Don&apos;t be late! The ceremony starts at 3:00 PM but we advise arriving 30 - 45 minutes before. Please read the FAQ for more information and remember to RSVP!</p>
-            <div className='flex  w-full items-center justify-center gap-2 mt-5'>
-              <button className="text-2xl px-3 py-2 bg-[#cccccc] text-black rounded-full w-full font-bold flex justify-center items-center">
+          <div className="font-canto pt-10 pb-5 px-5 text-black flex flex-col justify-start items-center gap-2 md:gap-10">
+            <h3 className="text-5xl md:text-7xl">Venue Address</h3>
+            <h4 className='text-2xl md:text-4xl'>Rock Creek Gardens</h4>
+            <hr className='h-px w-6/12 md:w-2/12'/>
+            <h4 className='text-2xl md:text-4xl'>11421 164th St E</h4>
+            <h4 className='text-2xl md:text-4xl'>Puyallup, WA 98374</h4>
+            <p className='text-lg md:text-3xl text-center w-9/12 md:w-5/12'><span className='font-bold'>Don&apos;t be late!</span> The ceremony starts at 3:00 PM but we advise arriving 30 - 45 minutes before. Please read the FAQ for more information and remember to RSVP!</p>
+            <div className='flex w-full items-center justify-center gap-2 mt-5 md:w-6/12'>
+              <button className="text-2xl md:text-3xl px-3 py-2 md:px-5 md:py-4 bg-[#cccccc] text-black rounded-full w-full font-bold flex justify-center items-center">
                 <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank" className="flex items-center justify-center w-full h-full">
-                  <h4 className='text-xl'>Directions</h4>
-                  <Map className="ml-2 w-4 h-4" />
+                  <h4>Directions</h4>
+                  <Map className="ml-2 w-4 h-4 md:h-6 md:w-6" />
                 </Link>
               </button>
-              <button className="text-2xl px-3 py-2 bg-black text-white rounded-full w-full font-bold flex justify-center items-center">
+              <button className="text-2xl md:text-3xl px-3 py-2 md:px-5 md:py-4 bg-black text-white rounded-full w-full font-bold flex justify-center items-center">
                 <Link href="../faq" className="flex items-center justify-center w-full h-full">
-                  <h4 className='text-xl'>FAQ</h4>
+                  <h4>FAQ</h4>
                 </Link>
               </button>
             </div>
