@@ -63,7 +63,7 @@ const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
   */
 
   return (
-    <div className="relative bg-[#f5f5f5]"> 
+    <div className="relative bg-[#f5f5f5] text-black"> 
       <section className="h-auto relative flex flex-col items-center font-canto">
         <form className='' onSubmit={handleSubmit}>
           <div className='flex gap-2'>

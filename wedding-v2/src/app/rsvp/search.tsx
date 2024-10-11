@@ -142,7 +142,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
   );
 
   return (
-    <div className="relative w-full"> 
+    <div className="relative w-full text-black"> 
       <section className="h-auto relative flex flex-col items-center border-2">
         <h2>To RSVP, </h2>
         {searchForm}
