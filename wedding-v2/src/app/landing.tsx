@@ -5,6 +5,7 @@ import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
 import Gallery from './gallery'
 import img from './img/savethedate.jpg';
+import Link from 'next/link';
 
 interface LandingProps {
   //windowWidth : number;
@@ -110,16 +111,23 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                       transition: { duration: 0.5, ease: easeInOut }
                     }}
                   >
-                    <div className="sm:w-11/12">
-                      <h3 className="text-3xl font-black mb-1 text-white sm:text-6xl">We&apos;re Getting Married</h3>
+                    <div className="sm:w-11/12 flex flex-col gap-2">
+                      <h3 className="text-3xl font-black text-white sm:text-6xl">We&apos;re Getting Married</h3>
                       <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        We are thrilled to invite you to join us as we celebrate our love and commitment to each other. 
+                        Please mark your calendars for August 25th, 2025, and join us in the beautiful town of Orting, Washington.
+                      </p>
+                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
+                        We are so excited to share this special day with our family and friends. 
+                        Your presence will make our celebration truly unforgettable. Stay tuned for more details and remember to RSVP. 
+                        We can't wait to see you there!
+                      </p>
+                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl flex flex-col">
+                        <span>With Love,</span>
+                        <span className="font-canto font-bold text-2xl">Anita & Jesus</span>
                       </p>
                     </div>
-                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1 sm:w-11/12">RSVP</button>
+                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1 sm:w-11/12"><Link href="/rsvp">RSVP</Link></button>
                   </motion.div>
                 )}
               </AnimatePresence>
