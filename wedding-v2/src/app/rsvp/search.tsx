@@ -104,8 +104,8 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
   }
 
   const searchForm = (
-    <form onSubmit={handleSearch} className='w-11/12 sm:w-9/12 font-canto flex flex-col'>
-      <div className='flex justify-between flex-col sm:flex-row'>
+    <form onSubmit={handleSearch} className='w-11/12 sm:w-9/12 font-canto flex flex-col mb-5'>
+      <div className='flex justify-between flex-col gap-4 sm:flex-row'>
         <div className='flex flex-col'>
           <label htmlFor="firstName" className='text-2xl font-bold'>First Name:</label>
           <input
@@ -124,7 +124,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
             type="text"
             id="lastName"
             name="lastName"
-            className='text-xl rounded-md'
+            className='text-xl rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-[#cccccc] border'
             value={searchLastName}
             onChange={handleLast}
             required
@@ -143,12 +143,10 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
 
   return (
     <div className="relative w-full text-black"> 
-      <section className="h-auto relative flex flex-col items-center border-2">
-        <h2>To RSVP, </h2>
+      <section className="h-auto relative flex flex-col items-center">
         {searchForm}
       </section>
-
-      <div className='flex flex-col items-center border-2'>
+      <div className='flex flex-col items-center'>
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
         {loading && <span>Loading...</span>}
         {searching && (

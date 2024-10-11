@@ -67,10 +67,11 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
           </motion.h2>
         </div>
       </div>
-      <div className='py-5 border-2 w-full'>
-        <div className='border-2 text-center flex flex-col gap-2'>
-          <h1 className='text-3xl font-canto font-bold'>Will you be at our celebration?</h1>
-          <h2 className='text-xl font-canto'>To RSVP, please search for and select your name.</h2>
+      <div className='py-5 w-full text-black'>
+        <div className='text-center flex flex-col gap-2 items-center'>
+          <h1 className='text-3xl font-canto font-bold'>Will you be joining us?</h1>
+          <h2 className='text-xl font-canto w-10/12'>Please let us know if you will be attending our celebration by searching for your name and filling out the RSVP form by <span className='font-bold'>February 28th</span>.</h2>
+          <hr className='h-px mt-2 mb-5 w-9/12'/>
         </div>
         {search && <Search setSearch={setSearch} setForm={setForm} setFirstName={setFirstName} setLastName={setLastName} setId={setId}/>}
         {form && <Form firstName={firstName} lastName={lastName} id={id} />}
