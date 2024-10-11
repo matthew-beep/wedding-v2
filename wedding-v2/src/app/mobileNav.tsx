@@ -271,7 +271,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                   className="text-black px-4 py-2 text-3xl bg-black text-white"
                   variants={links}
                 >
-                  RSVP
+                  <Link href="/rsvp">
+                    RSVP
+                  </Link>
                 </motion.li>
               </motion.ul>
             </motion.section>

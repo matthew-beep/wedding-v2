@@ -89,7 +89,6 @@ const Ceremony: React.FC<CeremonyProps> = ({ }) => {
             </div>
           </div>
         </div>
-        <hr className='m-auto h-px w-11/12 mt-5'/>
       </section>
     </div>
   );

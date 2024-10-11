@@ -91,7 +91,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
         }
 
       >
-        <h2 className='font-bold text-xl sm:text-2xl xl:text-5xl'>
+        <h2 className='font-bold text-xl sm:text-2xl xl:text-3xl'>
           {q}
         </h2>
         <motion.div

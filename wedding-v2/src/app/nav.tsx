@@ -187,7 +187,9 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
               <motion.li 
                 className="text-black px-4 py-2 text-3xl bg-black text-white cursor-pointer"
               >
-                RSVP
+                  <Link href="/rsvp">
+                    RSVP
+                  </Link>
               </motion.li>
             </motion.ul>
         </motion.section>

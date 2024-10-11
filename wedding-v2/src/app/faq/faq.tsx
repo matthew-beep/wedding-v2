@@ -27,21 +27,6 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
     }
   }
 
-  /*
-  // lets stagger animate the components
-  const answers = {
-    hidden: {
-      height: 0
-    },
-    show: {
-      height: 'auto',
-      transition: { 
-        duration: 0.3, 
-        ease: easeOut,
-      }
-    }
-  }
-  */
   const questions =[
     {
       id: 1,
