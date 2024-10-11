@@ -127,7 +127,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                         <span className="font-canto font-bold text-2xl">Anita & Jesus</span>
                       </p>
                     </div>
-                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1 sm:w-11/12"><Link href="/rsvp">RSVP</Link></button>
+                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1 sm:w-11/12"><Link className="w-full h-full"href="/rsvp">RSVP</Link></button>
                   </motion.div>
                 )}
               </AnimatePresence>
