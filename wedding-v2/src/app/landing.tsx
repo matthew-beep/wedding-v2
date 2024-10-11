@@ -115,7 +115,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                       <h3 className="text-3xl font-black text-white sm:text-6xl">We&apos;re Getting Married</h3>
                       <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
                         We are thrilled to invite you to join us as we celebrate our love and commitment to each other. 
-                        Please mark your calendars for August 25th, 2025, and join us in the beautiful town of Orting, Washington.
+                        Please mark your calendars for August 25th, 2025, and join us for our celebration in Puyallap, Washington.
                       </p>
                       <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
                         We are so excited to share this special day with our family and friends. 
