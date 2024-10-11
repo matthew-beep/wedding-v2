@@ -120,7 +120,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                       <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
                         We are so excited to share this special day with our family and friends. 
                         Your presence will make our celebration truly unforgettable. Stay tuned for more details and remember to RSVP. 
-                        We can't wait to see you there!
+                        We can&apos;t wait to see you there!
                       </p>
                       <p className="text-md text-white font-proxima font-extrathin sm:text-xl flex flex-col">
                         <span>With Love,</span>
