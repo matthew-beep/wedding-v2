@@ -1,8 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection, setDoc, doc } from 'firebase/firestore';
+import { collection, setDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { LoaderCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface RSVPProps {
   windowWidth? : number;
@@ -20,7 +22,10 @@ interface AttendanceDocument {
 
 const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
   const [value, error] = useCollection(collection(db, 'attending'));
-  const [attendance, setAttendance] = useState<AttendanceDocument[]>([])
+  const [attendance, setAttendance] = useState<AttendanceDocument[]>([]);
+  const [attending, setAttending] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   //const attendanceRef = collection(db, 'attending');
   //const listRef = collection(db, 'rsvp');
 
@@ -42,54 +47,105 @@ const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
     console.log(attendance)
   }, [attendance])
 
+  useEffect(() => {
+    console.log(attending)
+  }, [attending])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     const attendanceRef = doc(db, 'attending', id);
+    const rsvpList = doc(db, 'rsvp', id);
     try {
       await setDoc(attendanceRef, {
         firstName: firstName,
         lastName:lastName,
-        attending: true
+        attending: attending
       })
+      
+      await updateDoc(rsvpList, {
+        attending: attending,
+        submitted: true
+      })
+      
+      setIsSubmitted(true);
+      
     } catch {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
-  /*
-  const handleDecline = async (e: React.FormEvent) => { 
-
+  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAttending(e.target.value === 'accept')
   }
-  */
+
+  const thankYou = (
+    <div className='font-canto flex flex-col items-center'>
+      <h4 className='text-2xl font-bold'>Thank You</h4>
+      <p>Your response has been submitted.</p>
+    </div>
+  )
+
+  const form = (
+    <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
+      <div className='flex gap-2'>
+        <div className='flex flex-col'>
+          <label htmlFor="firstName" className='text-lg font-bold'>First Name</label>
+          <input type='search' id="firstName" placeholder ="First Name" value={firstName} className='border-2 rounded-lg w-full p-2' disabled/>
+        </div>
+        <div className='flex flex-col'>
+          <label htmlFor="lastName" className='text-lg font-bold'>Last Name</label>
+          <input type='search' id="lastName" placeholder ="Last Name" value={lastName} className='border-2 rounded-lg w-full p-2' disabled/>
+        </div>
+      </div>
+      <div>
+        <h3 className='text-xl font-bold'>Will you be Attending?</h3>
+        <div className='flex gap-2'>
+          <input 
+            type="radio" 
+            id="attending"
+            name="attendance" 
+            value="accept"
+            onChange={handleSelect}
+          />
+          <label htmlFor="attendance" className='text-lg'>Joyfully Accepts</label>
+        </div>
+        <div className='flex gap-2'>
+          <input 
+            type="radio" 
+            id="notAttending"
+            name="attendance"
+            value="decline" 
+            onChange={handleSelect}
+          />
+          <label htmlFor="attendance" className='text-lg'>Respectfully Declines</label>
+        </div>
+      </div>
+
+      <button type="submit" className="py-2 w-full bg-black text-white font-canto text-3xl rounded-lg mt-10">Submit</button>
+    </form>
+  )
 
   return (
     <div className="relative bg-[#f5f5f5] text-black"> 
       <section className="h-auto relative flex flex-col items-center font-canto">
-        <form className='' onSubmit={handleSubmit}>
-          <div className='flex gap-2'>
-            <input type='search' placeholder ="First Name" value={firstName} className='border-2 rounded-lg w-1/2 p-2' disabled/>
-            <input type='search' placeholder ="Last Name" value={lastName} className='border-2 rounded-lg w-1/2 p-2' disabled/>
-          </div>
-          <div className='flex gap-2'>
-            <input 
-              type="radio" 
-              id="attending"
-              name="attendance" 
-            />
-            <label htmlFor="attendance" className='text-xl font-bold'>Joyfully Accepts</label>
-            
-          </div>
-          <div className='flex gap-2'>
-            <input 
-              type="radio" 
-              id="notAttending"
-              name="attendance" 
-            />
-            <label htmlFor="attendance" className='text-xl font-bold'>Respectfully Declines</label>
-            
-          </div>
-          <button type="submit" className="bg-black text-white">Submit</button>
-        </form>
+        {!isSubmitted && !isLoading && form}
+        {isLoading && 
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ duration: 0.1 }}>
+              <motion.div
+                animate={{rotate: 360}}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              >
+                <LoaderCircle />
+              </motion.div>
+          </motion.div>
+        }
+        {isSubmitted && !isLoading && thankYou}
       </section>
     </div>
   );

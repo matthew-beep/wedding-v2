@@ -160,39 +160,56 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     return () => clearInterval(interval);
   }, [timer, timerEnable]);
 
-  const nextClick = () => { // handle next click functions
+  const nextClick = () => { 
     if (timerEnable) {
-      console.log("going from " + curr + " to " + next + ", previous is " + prev)
-      setNext(next); // set transitioning photo to correct index
-      setDirection("next"); // set initial direction
-      setTransition("animate"); // set correct transition
-      textAnimation.start("exit")// trigger text animation first 
-      setNextDisplay(true); // trigger next animation
+      const updatedNext = curr === gallery.length - 1 ? 0 : curr + 1; // Update next index
+      console.log("going from " + curr + " to " + updatedNext + ", previous is " + prev)
+      setNext(updatedNext); 
+      setDirection("next"); 
+      setTransition("animate");
+      textAnimation.start("exit");
+      setNextDisplay(true);
       timer.set(0);
       setTimerEnable(false);
-      console.log("setting timer off")
-      
     }
     setTimeout(() => {
       setTimerEnable(true);
       console.log("setting timer on")
     }, 1000);
-  }
+  };
 
-  const prevClick = () => { // handle prev click functions
-    if (timerEnable) {
-      setNext(prev);
-      textAnimation.start("exit");
-      setDirection("prev");
-      setTransition("animate");
-      setNextDisplay(true); 
-      timer.set(0);
-      setTimerEnable(false);
-    }
-    setTimeout(() => {
-      setTimerEnable(true);
-    }, 1000);
+const prevClick = () => { 
+  if (timerEnable) {
+    console.log("going from " + curr + " to " + prev + ", next is " + next);
+    
+    // Set the next index to the previous one (prev)
+    setNext(prev);
+    
+    // Set the direction for the animation to previous
+    setDirection("prev");
+    
+    // Trigger the text exit animation first
+    textAnimation.start("exit");
+    
+    // Set the transition to "animate" for the next image
+    setTransition("animate");
+    
+    // Display the next image (which is the previous one)
+    setNextDisplay(true);
+    
+    // Reset the timer
+    timer.set(0);
+    
+    // Disable the timer to prevent multiple transitions at once
+    setTimerEnable(false);
   }
+  
+  // After the animation, set the current index to previous and re-enable the timer
+  setTimeout(() => {
+    setTimerEnable(true);
+    console.log("setting timer on");
+  }, 1000);
+}
 
   return (
     <div className="relative h-svh lg:h-screen w-full overflow-x-hidden"> 
@@ -310,14 +327,14 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
               onClick={prevClick}
             >
               <CircleChevronLeft className="text-white" strokeWidth={1.5} size={48}/>
-              <h4 className="text-white font-proxima">PREV</h4>
+              <h4 className="text-white font-canto font-bold">{"0" + (prev + 1)}</h4>
             </div>
             <div 
               className="w-20 h-20 flex items-center cursor-pointer flex flex-col"
               onClick={nextClick} 
             >
               <CircleChevronRight className="text-white" strokeWidth={1.5} size={48}/>
-              <h4 className="text-white font-proxima">NEXT</h4>
+              <h4 className="text-white font-canto font-bold">{"0" + (next + 1)}</h4>
             </div>
           </div>
         </div>

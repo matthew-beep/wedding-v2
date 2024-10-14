@@ -19,6 +19,7 @@ interface RSVPDocument {
   firstName: string;
   lastName: string;
   attending: boolean;
+  submitted: boolean;
 }
 
 const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLastName, setId }) => {
@@ -161,7 +162,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
                       name="selectedUser" 
                       onChange={() => handleSelect(doc.id, doc.firstName, doc.lastName)} 
                       value={doc.id}
-                      disabled={doc.attending}
+                      disabled={doc.submitted}
                     />
                     <label htmlFor={doc.id} className='text-2xl font-bold'>{doc.firstName + " " + doc.lastName}</label>
                   </div>
