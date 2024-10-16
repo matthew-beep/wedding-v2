@@ -92,7 +92,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <AnimatePresence>
                 {showText && (
                   <motion.div 
-                    className="flex flex-col justify-around items-center h-full"
+                    className="flex flex-col justify-between items-center h-full"
                     style={{
                       opacity: textOpacity,
                     }}
@@ -111,23 +111,23 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                       transition: { duration: 0.5, ease: easeInOut }
                     }}
                   >
-                    <div className="sm:w-11/12 flex flex-col gap-2">
-                      <h3 className="text-3xl font-black text-white sm:text-6xl">We&apos;re Getting Married</h3>
-                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
+                    <div className="sm:w-11/12 flex flex-col">
+                      <h3 className="text-3xl font-black text-white sm:text-6xl">We&apos;re Getting Married!</h3>
+                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl my-1">
                         We are thrilled to invite you to join us as we celebrate our love and commitment to each other. 
                         Please mark your calendars for August 25th, 2025, and join us for our celebration in Puyallap, Washington.
                       </p>
-                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl">
+                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl my-1">
                         We are so excited to share this special day with our family and friends. 
                         Your presence will make our celebration truly unforgettable. Stay tuned for more details and remember to RSVP. 
                         We can&apos;t wait to see you there!
                       </p>
-                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl flex flex-col">
+                      <p className="text-md text-white font-proxima font-extrathin sm:text-xl flex flex-col my-1">
                         <span>With Love,</span>
                         <span className="font-canto font-bold text-2xl">Anita & Jesus</span>
                       </p>
                     </div>
-                    <button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold mt-1 sm:w-11/12"><Link className="w-full h-full"href="/rsvp">RSVP</Link></button>
+                    <Link className="w-full"href="/rsvp"><button className="text-2xl px-3 py-2 bg-white text-black rounded-full w-full font-bold sm:w-11/12">RSVP</button></Link>
                   </motion.div>
                 )}
               </AnimatePresence>

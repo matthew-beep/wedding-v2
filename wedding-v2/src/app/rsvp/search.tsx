@@ -29,6 +29,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
   const [filtered, setFilter] = useState<RSVPDocument[]>([]);
   const [searching, setSearching] = useState<boolean>(false);
   const [empty, setEmpty] = useState<boolean>(true);
+  const [enableSelect, setEnableSelect] = useState<boolean>(false);
 
   // Use the query in useCollection (it will run the query every time it changes)
   const [value, loading, error] = useCollection(collection(db, 'rsvp'));
@@ -89,13 +90,18 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
       setFilter([]);
       setSearching(false);
     }
-  }, [searchFirstName, searchLastName])
+  }, [searchFirstName, searchLastName]);
+
+  useEffect(() => {
+    console.log("selected option: " + enableSelect)
+  },[enableSelect])
 
   const handleSelect = (id:string, firstName:string, lastName:string) => {
     console.log("selected person: " + id + ", " + firstName + " " + lastName)
     setId(id);
     setFirstName(firstName);
     setLastName(lastName);
+    setEnableSelect(true);
   }
 
   const handleClickSelect = () => {
@@ -113,7 +119,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
             type="text"
             id="firstName"
             name="firstName"
-            className='text-xl rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-[#cccccc] border'
+            className='text-xl rounded-md focus:outline-none border-[#cccccc] border px-3 py-1'
             value={searchFirstName}
             onChange={handleFirst}
             required
@@ -125,7 +131,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
             type="text"
             id="lastName"
             name="lastName"
-            className='text-xl rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-[#cccccc] border'
+            className='text-xl rounded-md focus:outline-none border-[#cccccc] border px-3 py-1'
             value={searchLastName}
             onChange={handleLast}
             required
@@ -166,14 +172,18 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
                     />
                     <label htmlFor={doc.id} className='text-2xl font-bold'>{doc.firstName + " " + doc.lastName}</label>
                   </div>
-                  <div>{doc.attending ? "attending" : "not attending"}</div>
+                  <div>{doc.submitted ? "confirmed" : "not confirmed"}</div>
                 </li>
               ))}
             </ul>
           </div>
         )}
         {empty && noResults}
-        <button className='py-2 w-11/12 bg-black text-white font-canto text-3xl rounded-lg mt-10' onClick={handleClickSelect}>Select</button>
+        {enableSelect ? 
+          <button className='py-2 w-11/12 bg-black text-white font-canto text-3xl rounded-lg mt-10 cursor-pointer' onClick={handleClickSelect}>Select</button> 
+          : 
+          <button className='py-2 w-11/12 bg-black text-white font-canto text-3xl rounded-lg mt-10 text-[#757575] bg-[#e0e0e0]'>Select</button> 
+        }
       </div>
     </div>
   );

@@ -101,7 +101,10 @@ const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
         </div>
       </div>
       <div>
-        <h3 className='text-xl font-bold'>Will you be Attending?</h3>
+        <div className='flex items-center gap-1'>
+          <h3 className='text-xl font-bold'>Will you be Attending?</h3>
+          <h4 className='text-sm text-[#666666]'>(required)</h4>
+        </div>
         <div className='flex gap-2'>
           <input 
             type="radio" 
