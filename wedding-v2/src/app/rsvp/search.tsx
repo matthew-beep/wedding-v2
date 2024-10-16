@@ -119,7 +119,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
             type="text"
             id="firstName"
             name="firstName"
-            className='text-xl rounded-md focus:outline-none border-[#cccccc] border px-3 py-1'
+            className='text-xl rounded-md focus:outline-none border-[#cccccc] border px-3 py-1 caret-black'
             value={searchFirstName}
             onChange={handleFirst}
             required
@@ -131,7 +131,7 @@ const Search: React.FC<RSVPProps> = ({ setSearch, setForm, setFirstName, setLast
             type="text"
             id="lastName"
             name="lastName"
-            className='text-xl rounded-md focus:outline-none border-[#cccccc] border px-3 py-1'
+            className='text-xl rounded-md focus:outline-none border-[#cccccc] border px-3 py-1 caret-black'
             value={searchLastName}
             onChange={handleLast}
             required
