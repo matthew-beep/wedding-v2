@@ -121,14 +121,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       })
     } else {
       setIconOpacity(0);
-      if (pathname != '/faq') {
-        controls.start({
-          color: 'white',
-          backgroundColor: 'rgba(245, 245, 245, 0)',
-          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
-          transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
-        })
-      }
+      controls.start({
+        color: pathname != '/faq' ? 'white' : 'black',
+        backgroundColor: 'rgba(245, 245, 245, 0)',
+        boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
+        transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
+      })
     }
   }, [downAnimation])
 
