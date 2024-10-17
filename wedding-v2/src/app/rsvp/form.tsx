@@ -26,8 +26,6 @@ const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
   const [attending, setAttending] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  //const attendanceRef = collection(db, 'attending');
-  //const listRef = collection(db, 'rsvp');
 
 
   useEffect(() => {
@@ -57,11 +55,14 @@ const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
     const attendanceRef = doc(db, 'attending', id);
     const rsvpList = doc(db, 'rsvp', id);
     try {
-      await setDoc(attendanceRef, {
-        firstName: firstName,
-        lastName:lastName,
-        attending: attending
-      })
+
+      if (attending) {
+        await setDoc(attendanceRef, {
+          firstName: firstName,
+          lastName:lastName,
+          attending: attending
+        })
+      }
       
       await updateDoc(rsvpList, {
         attending: attending,

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-// import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 import {useEffect, useState} from 'react'
 import {AnimatePresence, motion, useAnimationControls, easeInOut} from 'framer-motion'
 import { Menu, X } from 'lucide-react';
@@ -18,7 +18,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   const [iconOpacity, setIconOpacity] = useState<number>(0);
   const [prevScroll, setPrevScroll] = useState<number>(scroll);
   const [scrollDown, setScrollDown] = useState<boolean>(false);
-  const controls = useAnimationControls();
+  const controls = useAnimationControls();  
+  const pathname = usePathname();
 
 
   const linkSection = {
@@ -120,12 +121,14 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
       })
     } else {
       setIconOpacity(0);
-      controls.start({
-        color: 'white',
-        backgroundColor: 'rgba(245, 245, 245, 0)',
-        boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
-        transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
-      })
+      if (pathname != '/faq') {
+        controls.start({
+          color: 'white',
+          backgroundColor: 'rgba(245, 245, 245, 0)',
+          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
+          transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
+        })
+      }
     }
   }, [downAnimation])
 
@@ -186,7 +189,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         <motion.section 
           className="flex w-full justify-center h-20 items-center relative z-20"
           initial={{
-            color: 'white',
+            color: pathname != '/faq' ? 'white' : 'black',
             boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)'
           }}
           animate={controls}
@@ -264,7 +267,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                   variants={links}
                 >
                   <Link href="/faq">
-                    FAQ
+                    FAQs
                   </Link>
                 </motion.li>
                 <motion.li 

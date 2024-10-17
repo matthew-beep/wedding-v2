@@ -181,7 +181,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 animate={textColor}
               >
                 <Link href="/faq">
-                  FAQ
+                  FAQs
                 </Link>
               </motion.li>
               <motion.li 

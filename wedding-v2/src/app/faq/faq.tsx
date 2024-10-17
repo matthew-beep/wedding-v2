@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { motion, easeOut } from 'framer-motion'
-import banner from '../img/faq.jpg';
+// import banner from '../img/faq.jpg';
 import Collapsible from './collapsible';
 
 interface FAQProps {
@@ -84,29 +84,33 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
       a: "If you still have any questions that are not answered here, please feel free to call or text Anita or Jesus! We appreciate you taking the time to read this through and hope this can alleviate any questions/concerns."
     }
   ]
-
+  // className="h-full w-full z-0 flex justify-center text-black font-canto"
+  /*
+    style={{
+      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      height: "100%",
+      width: "100%",
+    }}
+  */  
   return (
     <div className="relative bg-[#f5f5f5]"> 
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col  items-center">
-        <div className="h-[50svh] border-gray-700 w-full flex">
+        <div className="h-auto border-gray-700 w-full flex pt-32 pb-4 xl:pt-32">
             <div 
-              className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto"
-              style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "100%",
-                width: "100%",
-              }}
+              className="h-full w-full z-0 flex justify-center text-black font-canto"
             >
-              <motion.h2 
-                className="text-3xl xl:text-8xl font-bold"
+              <motion.div 
+                className="text-3xl xl:text-7xl font-bold flex items-center justify-center w-11/12 md:w-1/2 px-5"
                 variants={textAnimation}
                 initial="hidden"
                 animate="show"
               >
-                Frequently Asked Questions
-              </motion.h2>
+                <hr className='h-px flex-grow border-black'/>
+                <h2 className='mx-5'>FAQs</h2>
+                <hr className='h-px flex-grow border-black'/>
+              </motion.div>
             </div>
         </div>
         <div className='flex flex-col w-11/12 xl:w-6/12 mt-5'>
