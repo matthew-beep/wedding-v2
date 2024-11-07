@@ -5,6 +5,7 @@ import Form from './form'
 import { motion, easeOut } from 'framer-motion'
 import banner from '../img/rsvp.jpg';
 
+
 interface RSVPProps {
   windowWidth? : number;
 }

@@ -3,6 +3,7 @@ import Ceremony from "./ceremony";
 import MobileNav from "../mobileNav";
 import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
+import Login from "../login";
 import Footer from "../footer";
 import Nav from "../nav";
 
@@ -10,7 +11,17 @@ export default function Home() {
   const { scrollY } = useScroll();
   const [scrollYProgress, setScrollYProgress] = useState<number>(scrollY.get());
   const [windowHeight, setWindowHeight] = useState<number>(0);
-  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false)
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
+  const [auth, setAuth] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);  // New state for mounting check
+
+  useEffect(() => {
+    setIsMounted(true);  // Set to true once component mounts
+
+    // Check session storage on initial load
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    setAuth(isLoggedIn);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // console.log("Page scroll: ", latest)
@@ -66,17 +77,25 @@ export default function Home() {
     }
   }, [isLargeScreen]);
 
+  if (!isMounted) return null;
+
   return (
-    <div className="relative bg-[#fdfdfd]">
-      <header className="fixed top-0 left-0 z-40 w-screen">
-      {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight}/>}
-      {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight}/>}
-      </header>
-      <main className="bg-[#fdfdfd]">
-        <Ceremony />
-      </main>
-      <Footer />
-    </div>
+    <>
+      {!auth ? (
+        <Login setAuth={setAuth} />
+      ) : (
+        <div className="relative bg-[#fdfdfd]">
+          <header className="fixed top-0 left-0 z-40 w-screen">
+          {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight}/>}
+          {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight}/>}
+          </header>
+          <main className="bg-[#fdfdfd]">
+            <Ceremony />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 
