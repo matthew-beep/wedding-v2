@@ -20,6 +20,10 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
   
   const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (typeof window !== 'undefined') { 
+      window.scrollTo(0, 0)
+    }
+  
     checkMatch(firstName, lastName).then((result) => {
       if (result) {
         setAuth(true);
@@ -78,7 +82,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
                 type="text"
                 id="firstName"
                 name="firstName"
-                className='text-xl font-canto rounded-md focus:outline-none border-[#d9d9d9] border px-3 py-2 caret-black placeholder:font-canto bg-[#F5F5F5]'
+                className='text-xl font-canto text-black rounded-md focus:outline-none border-[#d9d9d9] border px-3 py-2 caret-black placeholder:font-canto bg-[#F5F5F5]'
                 placeholder='First Name'
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -90,7 +94,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
                 type="text"
                 id="lastName"
                 name="lastName"
-                className='text-xl font-canto rounded-md focus:outline-none border-[#d9d9d9] border px-3 py-2 caret-black placeholder:font-canto bg-[#F5F5F5]'
+                className='text-xl text-black font-canto rounded-md focus:outline-none border-[#d9d9d9] border px-3 py-2 caret-black placeholder:font-canto bg-[#F5F5F5]'
                 placeholder='Last Name'
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -110,7 +114,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
             animate={{rotate: 360}}
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           >
-            <LoaderCircle />
+            <LoaderCircle color="#B7C1A4" size={30}/>
           </motion.div>
         </motion.div>
       }
