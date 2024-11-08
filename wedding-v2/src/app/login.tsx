@@ -64,17 +64,17 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
   }
 
   return (
-    <div className="relative bg-[#fff] w-full h-screen flex items-center justify-start pt-24 gap-10 flex-col">
-      <h1 className='font-canto text-5xl text-[#B7C1A4] font-bold'>A&J</h1>
+    <div className="relative bg-[#f5f5f5] w-full h-screen flex items-center justify-start pt-24 gap-10 flex-col">
+      <h1 className='font-canto text-5xl text-[#515B3E] font-bold'>A&J</h1>
       {!loading &&
         <div className='w-11/12 sm:w-5/12 md:w-6/12 xl:w-3/12 h-9/12 flex flex-col justify-center items-center gap-10 px-5 py-10'>
           <div className='w-auto flex flex-col items-center gap-2 font-proxima'>
-            <div className='flex w-full justify-center items-center gap-5 px-2 text-[#B7C1A4]'>
-              <hr className='w-full bg-[#B7C1A4] h-0.5'/>
+            <div className='flex w-full justify-center items-center gap-5 px-2 text-[#515B3E]'>
+              <hr className='w-full bg-[#515B3E] h-0.5'/>
               <h2 className='text-3xl font-bold'>Welcome</h2>
-              <hr className='w-full bg-[#B7C1A4] h-0.5'/>
+              <hr className='w-full bg-[#515B3E] h-0.5'/>
             </div>
-            <h3 className='text-md xl:text-lg text-[#666666]'>Please enter your name to access the site</h3>
+            <h3 className='text-md xl:text-lg text-[#575757]'>Please enter your name to access the site</h3>
           </div>
           <div className='w-full flex flex-col gap-5'>
             <div className='flex flex-col'>
@@ -102,7 +102,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
               />
             </div>
           </div>
-          <button className='p-1 bg-[#B7C1A4] w-full font-proxima text-2xl rounded-md text-white' onClick={handleLogin}>Login</button>
+          <button className='p-1 bg-[#515B3E] w-full font-proxima text-2xl rounded-md text-white' onClick={handleLogin}>Login</button>
         </div>
       }
       {loading && 
@@ -114,7 +114,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
             animate={{rotate: 360}}
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           >
-            <LoaderCircle color="#B7C1A4" size={30}/>
+            <LoaderCircle color="#515B3E" size={30}/>
           </motion.div>
         </motion.div>
       }

@@ -40,9 +40,8 @@ const Footer: React.FC<FooterProps> = ({  }) => {
           <p>Till We say &quot;I do!&quot;</p>
   */
   return (
-    <footer className= "bg-[#f5f5f5] font-canto text-2xl flex flex-col items-center min-h-54 py-10 text-black flex flex-col items-center justify-around">
+    <footer className= "bg-[#DADFD0] font-canto text-2xl flex flex-col items-center min-h-54 py-10 text-[#515B3E] flex flex-col items-center justify-around">
       <section className='w-full'>
-      <hr className='m-auto h-px w-8/12'/>
         <div className='flex flex-col items-center justify-center mb-5 lg:text-4xl pt-5'>
           <div className='flex items-center w-11/12 justify-center gap-10 font-canto font-semibold'>
             <div className='flex flex-col items-center'>

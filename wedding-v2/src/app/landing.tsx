@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
+import saveTheDate from './img/savethedatephoto.jpeg';
 import Gallery from './gallery'
 import img from './img/savethedate.jpg';
 import Link from 'next/link';
@@ -38,6 +39,26 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       }
     })
 
+    /*
+    <div className="w-full h-full flex flex-col items-center justify-center border-2 sm:gap-10 gap-3 border-black">
+      <h3 className="font-canto text-xl text-black sm:text-4xl">
+        Save The Date              
+      </h3>
+      <div className="flex flex-col items-center justify-center gap-2 font-semibold">
+        <h3 className="font-canto text-4xl text-black sm:text-7xl">
+          29th August, 2025             
+        </h3>
+        <hr className='h-1 border-black w-9/12 sm:w-11/12'/>
+      </div>
+      <h3 className="font-canto text-xl text-black sm:text-4xl">
+        Rock Creek Gardens             
+      </h3>
+      <h3 className="font-canto text-xl text-black sm:text-4xl">
+        3:00 PM           
+      </h3>
+    </div>
+    */
+
   return (
     <div className="relative"> 
       <section className="relative bg-neutral-500 h-svh lg:h-screen w-full flex">
@@ -49,24 +70,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
          </section>
       <section ref={ref} className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative">
         <div className="bg-[#f5f5f5] flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
-          <div className="xl:w-1/2 w-full h-1/2 xl:h-full p-5">
-            <div className="w-full h-full flex flex-col items-center justify-center border-2 sm:gap-10 gap-3 border-black">
-              <h3 className="font-canto text-xl text-black sm:text-4xl">
-                Save The Date              
-              </h3>
-              <div className="flex flex-col items-center justify-center gap-2 font-semibold">
-                <h3 className="font-canto text-4xl text-black sm:text-7xl">
-                  29th August, 2025             
-                </h3>
-                <hr className='h-1 border-black w-9/12 sm:w-11/12'/>
-              </div>
-              <h3 className="font-canto text-xl text-black sm:text-4xl">
-                Rock Creek Gardens             
-              </h3>
-              <h3 className="font-canto text-xl text-black sm:text-4xl">
-                3:00 PM           
-              </h3>
-            </div>
+          <div className="xl:w-1/2 w-full h-1/2 xl:h-full">
+            <Image src={saveTheDate} alt="Wedding Invitation Flyer" className="w-full h-full object-cover"/>
           </div>
           <motion.div 
             className="w-full flex lg:flex-row flex-col items-center justify-center h-screen absolute bg-[#B0A395]"
