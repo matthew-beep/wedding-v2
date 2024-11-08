@@ -40,50 +40,50 @@ const Footer: React.FC<FooterProps> = ({  }) => {
           <p>Till We say &quot;I do!&quot;</p>
   */
   return (
-    <footer className= "bg-[#DADFD0] font-canto text-2xl flex flex-col items-center min-h-54 py-10 text-[#515B3E] flex flex-col items-center justify-around">
+    <footer className= "bg-[#DADFD0] font-canto flex flex-col items-center min-h-54 py-10 text-[#515B3E] flex flex-col items-center justify-around">
       <section className='w-full'>
-        <div className='flex flex-col items-center justify-center mb-5 lg:text-4xl pt-5'>
-          <div className='flex items-center w-11/12 justify-center gap-10 font-canto font-semibold'>
-            <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center justify-center text-4xl mb-5 pt-5'>
+          <div className='flex items-center w-11/12 justify-center font-canto font-semibold'>
+            <div className='flex flex-col items-center w-full px-2'>
               <div>
                 {days}
               </div>
-              <div>
+              <div className='font-proxima text-base font-normal'>
                 Days
               </div>
             </div>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center border-l w-full border-[#515B3E] px-2'>
               <div>
                 {hours}
               </div>
-              <div>
+              <div className='font-proxima text-base font-normal'>
                 Hours
               </div>
             </div>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center border-l w-full border-[#515B3E] px-2'>
               <div>
                 {minutes}
               </div>
-              <div>
+              <div className='font-proxima text-base font-normal'>
                 Minutes
               </div>
             </div>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center border-l w-full border-[#515B3E] px-2'>
               <div>
                 {seconds}
               </div>
-              <div >
+              <div className='font-proxima text-base font-normal'>
                 Seconds
               </div>
             </div>
           </div>
-          <div className='mt-5'>
+          <div className='mt-5 text-xl'>
             Till We Say <span className='font-semibold'>&quot;I Do&quot;</span>
           </div>
         </div>
       </section>
       <section>
-        <hr className='m-auto h-px w-8/12'/>
+        <hr className='m-auto h-px w-10/12 border-[#515B3E]'/>
         <h5 className=' mt-5 text-center text-sm font-proxima lg:text-lg'>Designed and Developed by <span className='font-semibold underline'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
       </section>
     </footer>
