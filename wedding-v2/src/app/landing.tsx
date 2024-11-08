@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, AnimatePresence} from 'framer-motion'
-import saveTheDate from './img/savethedatephoto.jpeg';
+import saveTheDate from './img/savethedatephoto.jpg';
 import Gallery from './gallery'
 import img from './img/savethedate.jpg';
 import Link from 'next/link';
