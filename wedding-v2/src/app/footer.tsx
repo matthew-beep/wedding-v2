@@ -40,10 +40,10 @@ const Footer: React.FC<FooterProps> = ({  }) => {
           <p>Till We say &quot;I do!&quot;</p>
   */
   return (
-    <footer className= "bg-[#DADFD0] font-canto flex flex-col items-center min-h-54 py-10 text-[#515B3E] flex flex-col items-center justify-around">
+    <footer className= "bg-[#DADFD0] font-canto flex flex-col items-center min-h-54 py-10 text-[#515B3E] flex flex-col gap-2 items-center justify-around">
       <section className='w-full'>
-        <div className='flex flex-col items-center justify-center text-4xl mb-5 pt-5'>
-          <div className='flex items-center w-11/12 justify-center font-canto font-semibold'>
+        <div className='flex flex-col items-center justify-center text-4xl gap-5'>
+          <div className='flex items-center w-11/12 justify-center font-bold'>
             <div className='flex flex-col items-center w-full px-2'>
               <div>
                 {days}
@@ -77,7 +77,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               </div>
             </div>
           </div>
-          <div className='mt-5 text-xl'>
+          <div className='text-2xl'>
             Till We Say <span className='font-semibold'>&quot;I Do&quot;</span>
           </div>
         </div>
