@@ -64,17 +64,18 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
   }
 
   return (
-    <div className="relative bg-[#f5f5f5] w-full h-screen flex items-center justify-start pt-24 gap-10 flex-col">
-      <h1 className='font-canto text-5xl text-[#515B3E] font-bold'>A&J</h1>
+    <div className="relative bg-[#E0EEE0] w-full sm:h-screen h-svh flex items-center justify-start pt-24 gap-10 flex-col">
       {!loading &&
         <div className='w-11/12 sm:w-5/12 md:w-6/12 xl:w-3/12 h-9/12 flex flex-col justify-center items-center gap-10 px-5 py-10'>
-          <div className='w-auto flex flex-col items-center gap-2 font-proxima'>
-            <div className='flex w-full justify-center items-center gap-5 px-2 text-[#515B3E]'>
-              <hr className='w-full bg-[#515B3E] h-0.5'/>
-              <h2 className='text-3xl font-bold'>Welcome</h2>
-              <hr className='w-full bg-[#515B3E] h-0.5'/>
+          <div className='w-auto flex flex-col items-center gap-2 font-canto text-[#2E3105] w-full'>
+            <div className='flex w-1/3 justify-center items-center gap-2'>
+              <hr className='w-full border-t-[#2E3105] h-0.5'/>
+              <h1 className='font-canto text-3xl text-[#2E3105] font-bold'>A&J</h1>
+              <hr className='w-full border-t-[#2E3105] h-0.5'/>
             </div>
-            <h3 className='text-md xl:text-lg text-[#575757]'>Please enter your name to access the site</h3>
+            <h2 className='text-7xl font-bold'>Welcome</h2>
+            <h3 className='text-base xl:text-lg text-[#2E3105]'>Please enter your name</h3>
+            <hr className='w-1/4 mt-8 border-t-[#2E3105]  h-0.5'/>
           </div>
           <div className='w-full flex flex-col gap-5'>
             <div className='flex flex-col'>
@@ -82,7 +83,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
                 type="text"
                 id="firstName"
                 name="firstName"
-                className='text-xl font-canto text-black rounded-md focus:outline-none border-[#d9d9d9] border px-3 py-2 caret-black placeholder:font-canto bg-[#F5F5F5]'
+                className='text-xl font-canto text-black focus:outline-none focus:border-[#2E3105] border-[#999999] border px-3 py-2 caret-black placeholder:font-canto bg-[#FEFEFB] placeholder:text-[#878787]'
                 placeholder='First Name'
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -94,7 +95,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
                 type="text"
                 id="lastName"
                 name="lastName"
-                className='text-xl text-black font-canto rounded-md focus:outline-none border-[#d9d9d9] border px-3 py-2 caret-black placeholder:font-canto bg-[#F5F5F5]'
+                className='text-xl font-canto text-black focus:outline-none focus:border-[#2E3105] border-[#999999] border px-3 py-2 caret-black placeholder:font-canto bg-[#FEFEFB] placeholder:text-[#878787]'
                 placeholder='Last Name'
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -102,7 +103,9 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
               />
             </div>
           </div>
-          <button className='p-1 bg-[#515B3E] w-full font-proxima text-2xl rounded-md text-white' onClick={handleLogin}>Login</button>
+          <button className='p-2 bg-[#2E3105] w-full font-canto font-bold flex items-center justify-center text-2xl rounded-full text-[#DADFD0]' onClick={handleLogin}>
+            LOGIN
+          </button>
         </div>
       }
       {loading && 
