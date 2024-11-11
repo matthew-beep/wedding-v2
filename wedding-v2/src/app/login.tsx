@@ -103,7 +103,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
               />
             </div>
           </div>
-          <button className='p-2 bg-[#2E3105] w-full font-canto font-bold flex items-center justify-center text-2xl rounded-full text-[#DADFD0]' onClick={handleLogin}>
+          <button className='p-2 bg-[#2E3105] w-full font-canto font-bold flex items-center justify-center text-2xl rounded-full text-[#E0EEE0]' onClick={handleLogin}>
             LOGIN
           </button>
         </div>
