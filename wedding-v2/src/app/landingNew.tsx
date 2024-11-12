@@ -198,7 +198,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="lg:h-[200vh] h-auto min-h-[100vh] w-full relative bg-[#E0EEE0]">
+      <section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#E0EEE0]">
         <div className="flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <motion.div 
             className="w-full h-full relative"
