@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useRef} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import saveMobile from './img/saveMobile.jpg';
 import hero from './img/hero.jpg';
