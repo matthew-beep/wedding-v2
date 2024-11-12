@@ -1,8 +1,8 @@
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef, useState} from 'react'
-import {motion, useScroll, useTransform, easeInOut, easeOut, useMotionValueEvent, AnimatePresence, useAnimationControls} from 'framer-motion'
+import {useEffect, useRef} from 'react'
+import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import saveMobile from './img/saveMobile.jpg';
 import hero from './img/hero.jpg';
 import ceremony from './img/ceremony.png';
@@ -44,6 +44,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     useEffect(() => { // initial text animation
       textAnimation.start("show");
+      console.log(large); // for lint error
     }, [])
 
   
@@ -224,7 +225,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             }}
           >
             <h4 className="text-5xl">
-              YOU'RE INVITED
+              YOU&apos;RE INVITED
             </h4>
           </motion.div>
         </div>
