@@ -246,7 +246,7 @@ const prevClick = () => {
           </motion.div>
         }
       </div>
-      <div className="flex flex-col justify-between absolute bottom-0 left-0 w-full z-100 items-center landing  h-full">
+      <div className="flex flex-col justify-between absolute bottom-0 left-0 w-full z-100 items-center landing h-full">
         <div className="flex flex-col justify-between w-11/12 mb-4 h-full sm:h-[50vh]">
           <motion.div 
             className="flex flex-col items-center justify-center text-white font-canto w-auto h-auto mt-24 relative z-10 xl:mt-48"

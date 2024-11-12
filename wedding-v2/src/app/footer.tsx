@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
           <p>Till We say &quot;I do!&quot;</p>
   */
   return (
-    <footer className= "bg-[#DADFD0] font-canto flex flex-col items-center min-h-54 py-10 text-[#515B3E] flex flex-col gap-2 items-center justify-around">
+    <footer className= "bg-[#E0EEE0] font-canto flex flex-col items-center min-h-54 py-10 text-[#2E3105] flex flex-col gap-2 items-center justify-around">
       <section className='w-full'>
         <div className='flex flex-col items-center justify-center text-4xl gap-5'>
           <div className='flex items-center w-11/12 justify-center font-bold'>
@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
                 Days
               </div>
             </div>
-            <div className='flex flex-col items-center border-l w-full border-[#515B3E] px-2'>
+            <div className='flex flex-col items-center border-l w-full border-[#2E3105] px-2'>
               <div>
                 {hours}
               </div>
@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
                 Hours
               </div>
             </div>
-            <div className='flex flex-col items-center border-l w-full border-[#515B3E] px-2'>
+            <div className='flex flex-col items-center border-l w-full border-[#2E3105] px-2'>
               <div>
                 {minutes}
               </div>
@@ -68,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
                 Minutes
               </div>
             </div>
-            <div className='flex flex-col items-center border-l w-full border-[#515B3E] px-2'>
+            <div className='flex flex-col items-center border-l w-full border-[#2E3105] px-2'>
               <div>
                 {seconds}
               </div>
@@ -83,7 +83,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
         </div>
       </section>
       <section>
-        <hr className='m-auto h-px w-10/12 border-[#515B3E]'/>
+        <hr className='m-auto h-px w-10/12 border-[#2E3105]'/>
         <h5 className=' mt-5 text-center text-sm font-proxima lg:text-lg'>Designed and Developed by <span className='font-semibold underline'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
       </section>
     </footer>

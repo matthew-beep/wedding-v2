@@ -1,5 +1,5 @@
 'use client'
-import Landing from "./landing";
+import Landing from "./landingNew";
 import MobileNav from "./mobileNav";
 import Nav from "./nav";
 import Login from "./login";
