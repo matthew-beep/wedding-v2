@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import saveMobile from './img/saveMobile.jpg';
 import hero from './img/hero.jpg';
@@ -28,7 +28,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     const scale = useTransform(end, [0, 1], [1, 0.85]);
     const opacity = useTransform(end, [0, 1], [1, 0]);
     const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
-    const transformX = useTransform(start, [0.5, 1], ["100%", "0%"])
+    const transformX = useTransform(start, [0, 1], ["100%", "0%"])
+    
 
     useMotionValueEvent(end, "change", (latest) => {
       console.log("Page scroll: ", latest)
@@ -39,6 +40,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     })
     useMotionValueEvent(transformX, "change", (latest) => {
       console.log("translate: ", latest)
+
     })
 
 
@@ -199,7 +201,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
         </div>
       </section>
       <section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#E0EEE0]">
-        <div className="flex flex-col sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
+        <div className="flex flex-col w-screen sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <motion.div 
             className="w-full h-full relative"
             ref={ref}
@@ -225,7 +227,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             }}
           >
             <h4 className="text-5xl">
-              YOU&apos;RE INVITED
+              YOU&apos;RE INVITED 
             </h4>
           </motion.div>
         </div>

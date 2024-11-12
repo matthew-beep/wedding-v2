@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {days}
               </div>
-              <div className='font-proxima text-base font-normal'>
+              <div className='text-base font-normal'>
                 Days
               </div>
             </div>
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {hours}
               </div>
-              <div className='font-proxima text-base font-normal'>
+              <div className='text-base font-normal'>
                 Hours
               </div>
             </div>
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {minutes}
               </div>
-              <div className='font-proxima text-base font-normal'>
+              <div className='text-base font-normal'>
                 Minutes
               </div>
             </div>
@@ -72,19 +72,19 @@ const Footer: React.FC<FooterProps> = ({  }) => {
               <div>
                 {seconds}
               </div>
-              <div className='font-proxima text-base font-normal'>
+              <div className='text-base font-normal'>
                 Seconds
               </div>
             </div>
           </div>
           <div className='text-2xl'>
-            Till We Say <span className='font-semibold'>&quot;I Do&quot;</span>
+            Till We Say I Do
           </div>
         </div>
       </section>
       <section>
         <hr className='m-auto h-px w-10/12 border-[#2E3105]'/>
-        <h5 className=' mt-5 text-center text-sm font-proxima lg:text-lg'>Designed and Developed by <span className='font-semibold underline'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
+        <h5 className='mt-5 text-center text-sm lg:text-lg'>Designed and Developed by <span className='underline'><Link href="https://www.mherradura.com/" target='_blank'>Matthew Herradura</Link></span></h5>
       </section>
     </footer>
   );
