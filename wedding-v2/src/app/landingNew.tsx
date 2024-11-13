@@ -6,6 +6,7 @@ import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnim
 import saveMobile from './img/saveMobile.jpg';
 import hero from './img/hero.jpg';
 import ceremony from './img/ceremony.png';
+import video from './img/video.mp4';
 
 
 interface LandingProps {
@@ -192,11 +193,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
           {/* Image with lower z-index */}
           <div className="w-full h-full relative z-0">
-            <Image 
-              src={hero} 
-              alt="Wedding Photo" 
-              className="w-full h-full object-cover object-center"
-            />
+            <video className="w-full h-full object-cover" src={video} autoPlay loop muted preload="auto"/>
           </div>
         </div>
       </section>
