@@ -4,7 +4,7 @@ import React from 'react';
 import {useEffect, useRef} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import saveMobile from './img/saveMobile.jpg';
-import hero from './img/hero.jpg';
+// import hero from './img/hero.jpg';
 import ceremony from './img/ceremony.png';
 import video from './img/video.mp4';
 
