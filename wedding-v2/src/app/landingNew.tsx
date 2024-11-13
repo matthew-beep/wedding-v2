@@ -198,6 +198,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               autoPlay 
               loop 
               muted 
+              playsInline
             >
               <source src={video} type="video/mp4"/>
             </video>
