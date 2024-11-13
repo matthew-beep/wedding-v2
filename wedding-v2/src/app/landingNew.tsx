@@ -193,7 +193,14 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
           {/* Image with lower z-index */}
           <div className="w-full h-full relative z-0">
-            <video className="w-full h-full object-cover" src={video} autoPlay loop muted preload="auto"/>
+            <video 
+              className="w-full h-full object-cover" src={video} 
+              autoPlay 
+              loop 
+              muted 
+            >
+              <source src={video} type="video/mp4"/>
+            </video>
           </div>
         </div>
       </section>
