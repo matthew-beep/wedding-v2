@@ -15,7 +15,7 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ large }) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    //const sectionRef = useRef<HTMLDivElement | null>(null);
+    const sectionRef = useRef<HTMLDivElement | null>(null);
     const textAnimation = useAnimationControls();
     const { scrollYProgress: end } = useScroll({
       target: ref,
@@ -27,8 +27,15 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       offset: ["start end", "end end"]
     })
 
-    const scale = useTransform(end, [0, 1], [1, 2]);
+    const { scrollYProgress : section} = useScroll({
+      target: sectionRef,
+      offset: ["start start", "end end"]
+    })
+
+    const scale = useTransform(section, [0.3, 1], [1, 1.5]);
     const opacity = useTransform(end, [0, 1], [1, 0]);
+
+    const sectionOpacity = useTransform(section, [0.6, 1], [1, 0]);
     //const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
     
     const firstOpacity = useTransform(start, [0.3, 0.5], [0, 1]);
@@ -40,6 +47,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     useMotionValueEvent(start, "change", (latest) => {
       console.log("Container scroll: ", latest)
+    })
+
+    useMotionValueEvent(section, "change", (latest) => {
+      console.log("Section scroll: ", latest)
     })
 
 
@@ -203,7 +214,13 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <motion.section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#FFFDC1]">
+      <motion.section 
+        className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FFFDC1]"
+        ref={sectionRef}
+        style={{
+          opacity:sectionOpacity,
+        }}
+      >
         <div className="flex flex-col w-screen sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <motion.div 
             className="w-full h-full relative"
