@@ -15,6 +15,7 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ large }) => {
     const ref = useRef<HTMLDivElement | null>(null);
+    const scalreRef = useRef<HTMLDivElement | null>(null);
     const textAnimation = useAnimationControls();
     const { scrollYProgress: end } = useScroll({
       target: ref,
@@ -26,11 +27,12 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       offset: ["start end", "end end"]
     })
 
-    const scale = useTransform(end, [0, 1], [1, 0.85]);
+    const scale = useTransform(end, [0, 1], [1, 2]);
     const opacity = useTransform(end, [0, 1], [1, 0]);
     const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
-    const transformX = useTransform(start, [0, 0.5], ["100%", "0%"])
     
+    const firstOpacity = useTransform(start, [0.3, 0.5], [0, 1]);
+    const secondOpacity = useTransform(start, [0.5, 0.8], [0, 1]);
 
     useMotionValueEvent(end, "change", (latest) => {
       console.log("Page scroll: ", latest)
@@ -38,10 +40,6 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     useMotionValueEvent(start, "change", (latest) => {
       console.log("Container scroll: ", latest)
-    })
-    useMotionValueEvent(transformX, "change", (latest) => {
-      console.log("translate: ", latest)
-
     })
 
 
@@ -205,7 +203,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#E0EEE0]">
+      <section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#FFFDC1]">
         <div className="flex flex-col w-screen sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <motion.div 
             className="w-full h-full relative"
@@ -226,18 +224,27 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </motion.div>
           <motion.div 
             className="absolute z-10 font-canto text-white w-full flex items-center justify-center top-0 mt-24"
-            style={{
-              translateX: transformX,
-              opacity: textOpacity,
-            }}
           >
-            <h4 className="text-5xl">
-              YOU&apos;RE INVITED 
+            <h4 className="text-5xl flex gap-3">
+              <motion.span
+                style={{
+                  opacity:firstOpacity,
+                }}
+              >
+                YOU&apos;RE 
+              </motion.span>
+              <motion.span
+                style={{
+                  opacity:secondOpacity,
+                }}
+              >
+                INVITED
+              </motion.span>
             </h4>
           </motion.div>
         </div>
       </section>
-      <section className="bg-[#E0EEE0] h-auto py-10 relative flex flex-col sm:flex-row items-center font-canto text-[#2E3105] gap-16">
+      <section className="bg-[#FFFDC1] h-auto py-10 relative flex flex-col sm:flex-row items-center font-canto text-[#2E3105] gap-16">
         <motion.div 
           className="px-5 flex flex-col gap-5 w-full"
           initial={{ 
@@ -247,8 +254,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             opacity: 1,
           }}
           transition={{ 
-            duration: 1, 
-            delay:0.5
+            duration: 0.5, 
+            delay:0.2
           
           }}
           viewport={{
@@ -271,7 +278,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           whileInView={{ opacity: 1 }}
           transition={{ 
             duration: 0.5, 
-            delay:0.5 
+            delay:0.2
           }}
           viewport={{
             once: true,
@@ -288,12 +295,12 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <p className="text-xl underline decoration-1">11421 164th St E Puyallup, WA 98374</p>
         </motion.div>
         <motion.div 
-          className="px-5 flex flex-col gap-5 w-full border-2"
+          className="px-5 flex flex-col gap-5 w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
             duration: 0.5, 
-            delay:0.5 
+            delay:0.2 
           }}
           viewport={{
             once: true,
