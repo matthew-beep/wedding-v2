@@ -15,7 +15,7 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ large }) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    const scalreRef = useRef<HTMLDivElement | null>(null);
+    //const scalreRef = useRef<HTMLDivElement | null>(null);
     const textAnimation = useAnimationControls();
     const { scrollYProgress: end } = useScroll({
       target: ref,
