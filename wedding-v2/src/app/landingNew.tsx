@@ -29,7 +29,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     const scale = useTransform(end, [0, 1], [1, 0.85]);
     const opacity = useTransform(end, [0, 1], [1, 0]);
     const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
-    const transformX = useTransform(start, [0, 1], ["100%", "0%"])
+    const transformX = useTransform(start, [0, 0.5], ["100%", "0%"])
     
 
     useMotionValueEvent(end, "change", (latest) => {
