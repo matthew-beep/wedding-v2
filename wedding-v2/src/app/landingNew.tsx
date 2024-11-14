@@ -29,13 +29,13 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     const { scrollYProgress : section} = useScroll({
       target: sectionRef,
-      offset: ["start start", "end end"]
+      offset: ["start start", "end start"]
     })
 
     const scale = useTransform(section, [0.3, 1], [1, 1.5]);
     const opacity = useTransform(end, [0, 1], [1, 0]);
 
-    const sectionOpacity = useTransform(section, [0.6, 1], [1, 0]);
+    //const sectionOpacity = useTransform(section, [0.6, 1], [1, 0]);
     //const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
     
     const firstOpacity = useTransform(start, [0.3, 0.5], [0, 1]);
@@ -215,10 +215,9 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
         </div>
       </section>
       <motion.section 
-        className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FFFDC1]"
+        className="lg:h-[100vh] h-auto min-h-[100vh] w-full relative bg-[#FFFDC1]"
         ref={sectionRef}
         style={{
-          opacity:sectionOpacity,
         }}
       >
         <div className="flex flex-col w-screen sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
@@ -226,7 +225,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             className="w-full h-full relative"
             ref={ref}
             style={{
-              scale
+              scale,
             }}
           >
             <Image src={saveMobile} alt="Wedding Invitation Flyer" className="w-full h-full object-cover"/>
@@ -261,9 +260,9 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </motion.div>
         </div>
       </motion.section>
-      <section className="bg-[#FFFDC1] h-auto py-10 relative flex flex-col sm:flex-row items-center font-canto text-[#2E3105] gap-16">
+      <section className="bg-[#FFFDC1] h-auto py-10 relative flex flex-col sm:flex-row items-center font-canto text-[#333333] gap-16">
         <motion.div 
-          className="px-5 flex flex-col gap-5 w-full"
+          className="px-5 flex flex-col gap-8 w-full items-center justify-center"
           initial={{ 
             opacity: 0,
           }}
@@ -280,17 +279,19 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             amount: 1
           }}
         >
-          <div className="w-full flex items-center gap-3">
-            <h4 className="text-lg text-[#7A7F55]">
+          <div className="flex items-center gap-3">
+            <h4 className="text-lg">
               When
             </h4>
-            <hr className="w-full bg-[#7A7F55] h-0.5"/>
           </div>
           <p className="text-4xl">Friday, August 29th, 2025</p>
-          <p className="text-xl">Ceremony: 3pm</p>
+          <div className="flex flex-col items-center">
+            <p className="text-xl">Ceremony: 3pm-3:30pm</p>
+            <p className="text-xl">Reception: 5pm-10pm</p>           
+          </div>
         </motion.div>
         <motion.div 
-          className="px-5 flex flex-col gap-5 w-full"
+          className="px-5 flex flex-col gap-8 w-full items-center justify-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
@@ -302,14 +303,16 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             amount: 1
           }}
         >
-          <div className="w-full flex items-center gap-3">
-            <h4 className="text-lg text-[#7A7F55]">
+          <div className="flex items-center gap-3">
+            <h4 className="text-lg">
               Where
             </h4>
-            <hr className="w-full bg-[#7A7F55] h-0.5"/>
           </div>
           <p className="text-4xl">Rock Creek Gardens</p>
-          <p className="text-xl underline decoration-1">11421 164th St E Puyallup, WA 98374</p>
+          <div className="flex flex-col items-center">
+            <p className="text-xl underline decoration-1">11421 164th St E</p>
+            <p className="text-xl underline decoration-1">Puyallup, WA 98374</p>
+          </div>
         </motion.div>
         <motion.div 
           className="px-5 flex flex-col gap-5 w-full"
