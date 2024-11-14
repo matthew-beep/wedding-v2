@@ -15,7 +15,7 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ large }) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    //const scalreRef = useRef<HTMLDivElement | null>(null);
+    //const sectionRef = useRef<HTMLDivElement | null>(null);
     const textAnimation = useAnimationControls();
     const { scrollYProgress: end } = useScroll({
       target: ref,
@@ -29,7 +29,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     const scale = useTransform(end, [0, 1], [1, 2]);
     const opacity = useTransform(end, [0, 1], [1, 0]);
-    const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
+    //const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
     
     const firstOpacity = useTransform(start, [0.3, 0.5], [0, 1]);
     const secondOpacity = useTransform(start, [0.5, 0.8], [0, 1]);
@@ -203,7 +203,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#FFFDC1]">
+      <motion.section className="lg:h-[200vh] h-auto min-h-[200vh] w-full relative bg-[#FFFDC1]">
         <div className="flex flex-col w-screen sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
           <motion.div 
             className="w-full h-full relative"
@@ -243,7 +243,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </h4>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
       <section className="bg-[#FFFDC1] h-auto py-10 relative flex flex-col sm:flex-row items-center font-canto text-[#2E3105] gap-16">
         <motion.div 
           className="px-5 flex flex-col gap-5 w-full"
