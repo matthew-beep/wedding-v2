@@ -94,11 +94,11 @@ const Form: React.FC<RSVPProps> = ({ firstName, lastName, id }) => {
       <div className='flex gap-2'>
         <div className='flex flex-col'>
           <label htmlFor="firstName" className='text-lg font-bold'>First Name</label>
-          <input type='search' id="firstName" placeholder ="First Name" value={firstName} className='border-2 rounded-lg w-full p-2' disabled/>
+          <input type='search' id="firstName" placeholder ="First Name" value={firstName} className='border-2 rounded-lg w-full p-2'/>
         </div>
         <div className='flex flex-col'>
           <label htmlFor="lastName" className='text-lg font-bold'>Last Name</label>
-          <input type='search' id="lastName" placeholder ="Last Name" value={lastName} className='border-2 rounded-lg w-full p-2' disabled/>
+          <input type='search' id="lastName" placeholder ="Last Name" value={lastName} className='border-2 rounded-lg w-full p-2'/>
         </div>
       </div>
       <div>

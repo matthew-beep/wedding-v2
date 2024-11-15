@@ -31,7 +31,7 @@ const Timer: React.FC<TimerProps> = ({  }) => {
 
 
   return (
-    <section className='w-full flex items-center justify-center font-canto text-[#333333]'>
+    <section className='w-full flex items-center justify-center font-canto text-[#D69B43] flex-col gap-10'>
       <div className='flex items-center w-11/12 justify-center font-bold text-4xl'>
         <div className='flex flex-col items-center w-full px-2'>
           <div>
@@ -41,7 +41,7 @@ const Timer: React.FC<TimerProps> = ({  }) => {
             Days
           </div>
         </div>
-        <div className='flex flex-col items-center border-l w-full border-[#333333] px-2'>
+        <div className='flex flex-col items-center border-l w-full border-[#D69B43] px-2'>
           <div>
             {String(hours).padStart(2, '0')}
           </div>
@@ -49,7 +49,7 @@ const Timer: React.FC<TimerProps> = ({  }) => {
             Hours
           </div>
         </div>
-        <div className='flex flex-col items-center border-l w-full border-[#333333] px-2'>
+        <div className='flex flex-col items-center border-l w-full border-[#D69B43] px-2'>
           <div>
             {String(minutes).padStart(2, '0')}
           </div>
@@ -57,7 +57,7 @@ const Timer: React.FC<TimerProps> = ({  }) => {
             Minutes
           </div>
         </div>
-        <div className='flex flex-col items-center border-l w-full border-[#333333] px-2'>
+        <div className='flex flex-col items-center border-l w-full border-[#D69B43] px-2'>
           <div>
             {String(seconds).padStart(2, '0')}
           </div>

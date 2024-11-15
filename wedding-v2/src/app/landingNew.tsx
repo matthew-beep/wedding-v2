@@ -2,13 +2,14 @@
 import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef} from 'react'
-import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
+import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 // import saveMobile from './img/saveMobile.jpg';
 // import hero from './img/hero.jpg';
 import ceremony from './img/ceremony.png';
 import video from './img/video.mp4';
 import Link from 'next/link';
 import Timer from './timer';
+import { ExternalLink } from 'lucide-react';
 
 
 
@@ -41,8 +42,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     //const sectionOpacity = useTransform(section, [0.6, 1], [0, 0]);
     //const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
     
-    const firstOpacity = useTransform(section, [0.3, 0.5], [0, 1]);
-    const secondOpacity = useTransform(section, [0.5, 0.8], [0, 1]);
+    //const firstOpacity = useTransform(section, [0.3, 0.5], [0, 1]);
+    //const secondOpacity = useTransform(section, [0.5, 0.8], [0, 1]);
 
     useMotionValueEvent(end, "change", (latest) => {
       console.log("Page scroll: ", latest)
@@ -115,7 +116,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     /*
             <motion.section 
-          className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FFFDC1] z-10"
+          className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FDF6ED] z-10"
           ref={sectionRef}
           style={{
             opacity: sectionOpacity,
@@ -227,7 +228,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="border border-white p-2 w-1/3 text-2xl rounded-full sm:w-1/6 xl:w-1/12"
                 variants={childVariants}
               >
-                <Link href="#details" className="w-full h-full">
+                <Link href="#details" className="w-full h-full" scroll={true}>
                   Details
                 </Link>
               </motion.button>
@@ -248,40 +249,16 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="py-5 bg-[#FFFDC1]">
+      <section className="py-10 bg-[#FDF6ED]">
         <Timer />
       </section>
       <section 
-        className="relative bg-[#FFFDC1] parallax font-canto z-0 h-screen border-2"
-        ref={sectionRef}
-      >
-        <div className="w-full h-full bg-black opacity-25">
-
-        </div>
-        <h4 className="text-5xl flex gap-3 items-center justify-center fixed top-1/4 left-1/2 transform -translate-x-1/2 text-white border-2">
-          
-          <motion.span
-            style={{
-              opacity:firstOpacity,
-            }}
-          >
-            YOU&apos;RE 
-          </motion.span>
-          <motion.span
-            style={{
-              opacity:secondOpacity,
-            }}
-          >
-            INVITED
-          </motion.span>
-        </h4>
-      </section>
-      <section 
-        className="bg-[#FFFDC1] h-auto flex flex-col sm:flex-row items-center font-canto text-[#333333] gap-16 relative z-10 py-20"
+        className="bg-[#FDF6ED] h-auto flex flex-col sm:flex-row font-canto text-[#333333] gap-16 relative z-10 py-20 px-5"
         id="details"
       >
+        <h3 className="text-[#333333] text-5xl">DETAILS</h3>
         <motion.div 
-          className="px-5 flex flex-col gap-8 w-full items-center justify-center"
+          className="flex flex-col gap-8 w-full"
           initial={{ 
             opacity: 0,
           }}
@@ -298,47 +275,49 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             amount: 1
           }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full ">
             <h4 className="text-lg">
-              When
+              WHEN
             </h4>
           </div>
-          <p className="text-4xl">Friday, August 29th, 2025</p>
-          <div className="flex flex-col items-center">
-            <p className="text-xl">Ceremony: 3pm-3:30pm</p>
-            <p className="text-xl">Reception: 5pm-10pm</p>           
+          <p className="text-4xl text-[#D69B43] w-full">Friday, August 29th, 2025</p>
+          <div className="flex flex-col w-full">
+            <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
+            <p className="text-xl">RECEPTION: 5pm-10pm</p>           
           </div>
         </motion.div>
         <motion.div 
-          className="px-5 flex flex-col gap-8 w-full items-center justify-center"
+          className="flex flex-col gap-8 w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
-            duration: 0.5, 
+            duration: 0.3, 
             delay:0.2
           }}
           viewport={{
             once: true,
-            amount: 1
+            amount: 0.5
           }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full ">
             <h4 className="text-lg">
-              Where
+              WHERE
             </h4>
           </div>
-          <p className="text-4xl">Rock Creek Gardens</p>
-          <div className="flex flex-col items-center">
-            <p className="text-xl underline decoration-1">11421 164th St E</p>
-            <p className="text-xl underline decoration-1">Puyallup, WA 98374</p>
+          <p className="text-4xl text-[#D69B43] w-full">Rock Creek Gardens</p>
+          <div className="flex flex-col">
+            <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
+              <p className="text-xl underline decoration-1">11421 164th St E</p>
+              <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
+            </Link>
           </div>
         </motion.div>
         <motion.div 
-          className="px-5 flex flex-col gap-5 w-full"
+          className="flex flex-col gap-5 w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
-            duration: 0.5, 
+            duration: 0.3, 
             delay:0.2 
           }}
           viewport={{
@@ -349,7 +328,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <Image 
             src={ceremony} 
             alt="Rock Creek Garden" 
-            className="w-full h-96 object-cover object-center"
+            className="w-full h-full object-cover object-center"
           />
         </motion.div>
       </section>
