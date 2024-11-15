@@ -328,7 +328,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           }}
         >
           <div className="flex items-center gap-3 w-full ">
-            <h4 className="text-lg">
+            <h4 className="text-base">
               FROM THE BRIDE AND GROOM:
             </h4>
           </div>
@@ -339,8 +339,69 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             However, please avoid wearing the color <span className="font-bold text-[#D69B43]">yellow</span>. If you have any other questions, check out our <span className="underline cursor-pointer"><Link href="/faq">FAQ page</Link></span> and don&apos;t forget 
             to <span className="font-bold text-[#D69B43]">RSVP</span> by <span className="font-bold text-[#D69B43]">February 28th</span>!
           </p>
-
           <hr className="bg-[#333333] w-1/4  mt-10 h-0.5"/>
+        </motion.div>
+        <motion.div 
+          className="flex flex-col w-full items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 0.3, 
+            delay:0.2
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5
+          }}
+        >
+          <div className="flex items-center w-full flex-col text-left">
+            <h4 className="text-4xl w-full">
+              XX Days, XX Hours,
+            </h4>
+            <h4 className="text-4xl w-full">
+              XX Minutes, XX Seconds
+            </h4>
+          </div>
+          <h5 className="text-xl text-[#D69B43] w-full">Till We Say &quot;I Do&quot;</h5>
+          <button className="w-full border py-2 items-center justify-center border-[#333333] text-3xl mt-5"><Link href="/rsvp" className="w-full h-full">I&apos;LL BE THERE</Link></button>
+        </motion.div>
+        <motion.div 
+          className="flex flex-col gap-5 w-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 0.3, 
+            delay:0.2 
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5
+          }}
+        >
+          <Image 
+            src={ceremony} 
+            alt="Rock Creek Garden" 
+            className="w-full h-full object-cover object-center"
+          />
+        </motion.div>
+        <motion.div 
+          className="flex flex-col gap-5 w-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 0.3, 
+            delay:0.2 
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5
+          }}
+        >
+          <Image 
+            src={ceremony} 
+            alt="Rock Creek Garden" 
+            className="w-full h-full object-cover object-center"
+          />
         </motion.div>
         <motion.div 
           className="flex flex-col gap-5 w-full"
