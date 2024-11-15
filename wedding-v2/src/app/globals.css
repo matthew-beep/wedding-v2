@@ -39,7 +39,7 @@ body {
   background-image: url("./img/saveMobile.jpg");
 
   /* Set a specific height */
-  height: 100vh; 
+  min-height: 100vh;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;

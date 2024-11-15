@@ -252,13 +252,13 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
         <Timer />
       </section>
       <section 
-        className="relative h-auto bg-[#FFFDC1] parallax font-canto z-0"
+        className="relative bg-[#FFFDC1] parallax font-canto z-0 h-screen border-2"
         ref={sectionRef}
       >
         <div className="w-full h-full bg-black opacity-25">
 
         </div>
-        <h4 className="text-5xl flex gap-3 items-center justify-center fixed top-1/4 left-1/2 transform -translate-x-1/2 text-white">
+        <h4 className="text-5xl flex gap-3 items-center justify-center fixed top-1/4 left-1/2 transform -translate-x-1/2 text-white border-2">
           
           <motion.span
             style={{
