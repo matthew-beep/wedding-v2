@@ -46,5 +46,11 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-backface-visibility: hidden;
+}
+
+
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll; /* Disable fixed attachment on mobile */
+  }
 }
