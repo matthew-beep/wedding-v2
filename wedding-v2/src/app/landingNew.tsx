@@ -249,14 +249,14 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="py-10 bg-[#FDF6ED]">
-        <Timer />
-      </section>
       <section 
-        className="bg-[#FDF6ED] h-auto flex flex-col sm:flex-row font-canto text-[#333333] gap-16 relative z-10 py-20 px-5"
+        className="bg-[#FDF6ED] h-auto flex flex-col sm:flex-row font-canto text-[#333333] gap-16 relative z-10 py-12 px-5"
         id="details"
       >
-        <h3 className="text-[#333333] text-5xl">DETAILS</h3>
+        <div>
+          <h4 className="text-[#919191] text-base">We&apos;re Getting Married</h4>
+          <h3 className="text-[#333333] text-5xl">DETAILS</h3>
+        </div>
         <motion.div 
           className="flex flex-col gap-8 w-full"
           initial={{ 
@@ -277,7 +277,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
         >
           <div className="flex items-center gap-3 w-full ">
             <h4 className="text-lg">
-              WHEN
+              WHEN:
             </h4>
           </div>
           <p className="text-4xl text-[#D69B43] w-full">Friday, August 29th, 2025</p>
@@ -285,6 +285,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
             <p className="text-xl">RECEPTION: 5pm-10pm</p>           
           </div>
+          <hr className="bg-[#333333] w-full h-0.5"/>
         </motion.div>
         <motion.div 
           className="flex flex-col gap-8 w-full"
@@ -301,7 +302,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
         >
           <div className="flex items-center gap-3 w-full ">
             <h4 className="text-lg">
-              WHERE
+              WHERE:
             </h4>
           </div>
           <p className="text-4xl text-[#D69B43] w-full">Rock Creek Gardens</p>
@@ -311,6 +312,35 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
             </Link>
           </div>
+          <hr className="bg-[#333333] w-full h-0.5"/>
+        </motion.div>
+        <motion.div 
+          className="flex flex-col gap-3 w-full items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 0.3, 
+            delay:0.2
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5
+          }}
+        >
+          <div className="flex items-center gap-3 w-full ">
+            <h4 className="text-lg">
+              FROM THE BRIDE AND GROOM:
+            </h4>
+          </div>
+          <p className="text-xl text-[#333333] w-full">
+            Hi everyone, welcome to our wedding website! Some things to know about our special day: 
+            The <span className="font-bold text-[#D69B43]">ceremony</span> and <span className="font-bold text-[#D69B43]">reception</span> will be at the <span className="font-bold text-[#D69B43]">same venue</span> so no need to travel in between locations. 
+            Our dress code for the event is <span className="font-bold text-[#D69B43]">garden party</span> so we encourage wearing <span className="font-bold text-[#D69B43]">florals</span>, <span className="font-bold text-[#D69B43]">pastels</span>, and <span className="font-bold text-[#D69B43]">ruffles</span>. 
+            However, please avoid wearing the color <span className="font-bold text-[#D69B43]">yellow</span>. If you have any other questions, check out our <span className="underline cursor-pointer"><Link href="/faq">FAQ page</Link></span> and don&apos;t forget 
+            to <span className="font-bold text-[#D69B43]">RSVP</span> by <span className="font-bold text-[#D69B43]">February 28th</span>!
+          </p>
+
+          <hr className="bg-[#333333] w-1/4  mt-10 h-0.5"/>
         </motion.div>
         <motion.div 
           className="flex flex-col gap-5 w-full"

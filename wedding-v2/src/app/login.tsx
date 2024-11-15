@@ -103,7 +103,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
               />
             </div>
           </div>
-          <button className='p-2 bg-[#D69B43] w-full font-canto flex items-center justify-center text-2xl rounded-full text-[#FDF6ED]' onClick={handleLogin}>
+          <button className='p-2 bg-[#D69B43] w-1/3 sm:1/4 font-canto flex text-center items-center justify-center text-2xl rounded-full text-[#FDF6ED]' onClick={handleLogin}>
             LOGIN
           </button>
         </div>
@@ -112,12 +112,16 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
         <motion.div 
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
-          transition={{ duration: 0.1 }}>
+          transition={{ duration: 0.1 }}
+          className='sm:w-96 sm:h-96 w-48 h-48 flex items-center justify-center'
+        >
+          
           <motion.div
             animate={{rotate: 360}}
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            className='w-9/12 h-9/12 flex items-center justify-center'
           >
-            <LoaderCircle color="#515B3E" size={30}/>
+            <LoaderCircle color="#333333" size={24} className='w-full h-full border-2'/>
           </motion.div>
         </motion.div>
       }
