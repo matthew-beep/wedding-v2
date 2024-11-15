@@ -3,11 +3,12 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef} from 'react'
 import {motion, useScroll, useTransform, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
-import saveMobile from './img/saveMobile.jpg';
+// import saveMobile from './img/saveMobile.jpg';
 // import hero from './img/hero.jpg';
 import ceremony from './img/ceremony.png';
 import video from './img/video.mp4';
 import Link from 'next/link';
+import Timer from './timer';
 
 
 
@@ -31,17 +32,17 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
     const { scrollYProgress : section} = useScroll({
       target: sectionRef,
-      offset: ["start start", "end end"]
+      offset: ["start end", "end start"]
     })
 
-    const scale = useTransform(section, [0.3, 1], [1, 1.5]);
-    const opacity = useTransform(end, [0, 1], [1, 0]);
+    //const scale = useTransform(section, [0.3, 1], [1, 1.5]);
+    //const opacity = useTransform(end, [0, 1], [1, 0]);
 
-    const sectionOpacity = useTransform(section, [0.6, 1], [1, 0]);
+    //const sectionOpacity = useTransform(section, [0.6, 1], [0, 0]);
     //const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
     
-    const firstOpacity = useTransform(start, [0.3, 0.5], [0, 1]);
-    const secondOpacity = useTransform(start, [0.5, 0.8], [0, 1]);
+    const firstOpacity = useTransform(section, [0.3, 0.5], [0, 1]);
+    const secondOpacity = useTransform(section, [0.5, 0.8], [0, 1]);
 
     useMotionValueEvent(end, "change", (latest) => {
       console.log("Page scroll: ", latest)
@@ -113,110 +114,57 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     }
 
     /*
-    <div className="w-full h-full flex flex-col items-center justify-center border-2 sm:gap-10 gap-3 border-black">
-      <h3 className="font-canto text-xl text-black sm:text-4xl">
-        Save The Date              
-      </h3>
-      <div className="flex flex-col items-center justify-center gap-2 font-semibold">
-        <h3 className="font-canto text-4xl text-black sm:text-7xl">
-          29th August, 2025             
-        </h3>
-        <hr className='h-1 border-black w-9/12 sm:w-11/12'/>
-      </div>
-      <h3 className="font-canto text-xl text-black sm:text-4xl">
-        Rock Creek Gardens             
-      </h3>
-      <h3 className="font-canto text-xl text-black sm:text-4xl">
-        3:00 PM           
-      </h3>
-    </div>
-
-
-
-
-
-
-
-    <section className="bg-[#FFFDC1] h-auto flex flex-col sm:flex-row items-center font-canto text-[#333333] gap-16">
-          <div className="h-[50vh]"></div>
-          <motion.div 
-            className="px-5 flex flex-col gap-8 w-full items-center justify-center"
-            initial={{ 
-              opacity: 0,
-            }}
-            whileInView={{ 
-              opacity: 1,
-            }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2
-            
-            }}
-            viewport={{
-              once: true,
-              amount: 1
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <h4 className="text-lg">
-                When
+            <motion.section 
+          className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FFFDC1] z-10"
+          ref={sectionRef}
+          style={{
+            opacity: sectionOpacity,
+          }}
+        >
+          <div className="flex flex-col w-full sm:flex-row h-screen overflow-y-hidden lg:overflow-x-hidden">
+            <motion.div 
+              className="w-full h-full relative"
+              ref={ref}
+              style={{
+                scale,
+              }}
+            >
+              <Image src={saveMobile} alt="Wedding Invitation Flyer" className="w-full h-full object-cover"/>
+            </motion.div>
+            <motion.div 
+              className="w-full h-full absolute inset-0 bg-neutral-950/30"
+              style={{
+                opacity,
+                scale
+              }}
+            >
+            </motion.div>
+            <motion.div 
+              className="absolute z-10 font-canto text-white w-full flex items-center justify-center top-0 mt-24"
+            >
+              <h4 className="text-5xl flex gap-3">
+                <motion.span
+                  style={{
+                    opacity:firstOpacity,
+                  }}
+                >
+                  YOU&apos;RE 
+                </motion.span>
+                <motion.span
+                  style={{
+                    opacity:secondOpacity,
+                  }}
+                >
+                  INVITED
+                </motion.span>
               </h4>
-            </div>
-            <p className="text-4xl">Friday, August 29th, 2025</p>
-            <div className="flex flex-col items-center">
-              <p className="text-xl">Ceremony: 3pm-3:30pm</p>
-              <p className="text-xl">Reception: 5pm-10pm</p>           
-            </div>
-          </motion.div>
-          <motion.div 
-            className="px-5 flex flex-col gap-8 w-full items-center justify-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2
-            }}
-            viewport={{
-              once: true,
-              amount: 1
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <h4 className="text-lg">
-                Where
-              </h4>
-            </div>
-            <p className="text-4xl">Rock Creek Gardens</p>
-            <div className="flex flex-col items-center">
-              <p className="text-xl underline decoration-1">11421 164th St E</p>
-              <p className="text-xl underline decoration-1">Puyallup, WA 98374</p>
-            </div>
-          </motion.div>
-          <motion.div 
-            className="px-5 flex flex-col gap-5 w-full"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2 
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5
-            }}
-          >
-            <Image 
-              src={ceremony} 
-              alt="Rock Creek Garden" 
-              className="w-full h-96 object-cover object-center"
-            />
-          </motion.div>
-        </section>
+            </motion.div>
+          </div>
+        </motion.section>
     */
-
   return (
     <div className="relative"> 
-      <section className="bg-neutral-500 h-svh lg:h-screen w-full flex sticky top-0">
+      <section className="bg-neutral-500 h-svh lg:h-screen w-full flex">
         <div className="w-full h-full relative">
           {/* Text container with higher z-index */}
           <div className="w-full h-full absolute z-10 top-0 left-0 pt-24 lg:pt-40 landing">
@@ -300,132 +248,110 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
+      <section className="py-5 bg-[#FFFDC1]">
+        <Timer />
+      </section>
+      <section 
+        className="relative h-auto bg-[#FFFDC1] parallax font-canto z-0"
+        ref={sectionRef}
+      >
+        <div className="w-full h-full bg-black opacity-25">
 
-      <section className="relative h-auto bg-[#FFFDC1]">
-        <motion.section 
-          className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FFFDC1] z-10"
-          ref={sectionRef}
-          style={{
-            opacity: sectionOpacity,
+        </div>
+        <h4 className="text-5xl flex gap-3 items-center justify-center fixed top-1/4 left-1/2 transform -translate-x-1/2 text-white">
+          
+          <motion.span
+            style={{
+              opacity:firstOpacity,
+            }}
+          >
+            YOU&apos;RE 
+          </motion.span>
+          <motion.span
+            style={{
+              opacity:secondOpacity,
+            }}
+          >
+            INVITED
+          </motion.span>
+        </h4>
+      </section>
+      <section 
+        className="bg-[#FFFDC1] h-auto flex flex-col sm:flex-row items-center font-canto text-[#333333] gap-16 relative z-10 py-20"
+        id="details"
+      >
+        <motion.div 
+          className="px-5 flex flex-col gap-8 w-full items-center justify-center"
+          initial={{ 
+            opacity: 0,
+          }}
+          whileInView={{ 
+            opacity: 1,
+          }}
+          transition={{ 
+            duration: 0.5, 
+            delay:0.2
+          
+          }}
+          viewport={{
+            once: true,
+            amount: 1
           }}
         >
-          <div className="flex flex-col w-full sm:flex-row sticky top-0 h-screen overflow-y-hidden lg:overflow-x-hidden">
-            <motion.div 
-              className="w-full h-full relative"
-              ref={ref}
-              style={{
-                scale,
-              }}
-            >
-              <Image src={saveMobile} alt="Wedding Invitation Flyer" className="w-full h-full object-cover"/>
-            </motion.div>
-            <motion.div 
-              className="w-full h-full absolute inset-0 bg-neutral-950/30"
-              style={{
-                opacity,
-                scale
-              }}
-            >
-            </motion.div>
-            <motion.div 
-              className="absolute z-10 font-canto text-white w-full flex items-center justify-center top-0 mt-24"
-            >
-              <h4 className="text-5xl flex gap-3">
-                <motion.span
-                  style={{
-                    opacity:firstOpacity,
-                  }}
-                >
-                  YOU&apos;RE 
-                </motion.span>
-                <motion.span
-                  style={{
-                    opacity:secondOpacity,
-                  }}
-                >
-                  INVITED
-                </motion.span>
-              </h4>
-            </motion.div>
+          <div className="flex items-center gap-3">
+            <h4 className="text-lg">
+              When
+            </h4>
           </div>
-        </motion.section>
-        <section 
-          className="bg-[#FFFDC1] h-auto flex flex-col sm:flex-row items-center font-canto text-[#333333] gap-16"
-          id="details"
+          <p className="text-4xl">Friday, August 29th, 2025</p>
+          <div className="flex flex-col items-center">
+            <p className="text-xl">Ceremony: 3pm-3:30pm</p>
+            <p className="text-xl">Reception: 5pm-10pm</p>           
+          </div>
+        </motion.div>
+        <motion.div 
+          className="px-5 flex flex-col gap-8 w-full items-center justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 0.5, 
+            delay:0.2
+          }}
+          viewport={{
+            once: true,
+            amount: 1
+          }}
         >
-          <motion.div 
-            className="px-5 flex flex-col gap-8 w-full items-center justify-center"
-            initial={{ 
-              opacity: 0,
-            }}
-            whileInView={{ 
-              opacity: 1,
-            }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2
-            
-            }}
-            viewport={{
-              once: true,
-              amount: 1
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <h4 className="text-lg">
-                When
-              </h4>
-            </div>
-            <p className="text-4xl">Friday, August 29th, 2025</p>
-            <div className="flex flex-col items-center">
-              <p className="text-xl">Ceremony: 3pm-3:30pm</p>
-              <p className="text-xl">Reception: 5pm-10pm</p>           
-            </div>
-          </motion.div>
-          <motion.div 
-            className="px-5 flex flex-col gap-8 w-full items-center justify-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2
-            }}
-            viewport={{
-              once: true,
-              amount: 1
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <h4 className="text-lg">
-                Where
-              </h4>
-            </div>
-            <p className="text-4xl">Rock Creek Gardens</p>
-            <div className="flex flex-col items-center">
-              <p className="text-xl underline decoration-1">11421 164th St E</p>
-              <p className="text-xl underline decoration-1">Puyallup, WA 98374</p>
-            </div>
-          </motion.div>
-          <motion.div 
-            className="px-5 flex flex-col gap-5 w-full"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2 
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5
-            }}
-          >
-            <Image 
-              src={ceremony} 
-              alt="Rock Creek Garden" 
-              className="w-full h-96 object-cover object-center"
-            />
-          </motion.div>
-        </section>
+          <div className="flex items-center gap-3">
+            <h4 className="text-lg">
+              Where
+            </h4>
+          </div>
+          <p className="text-4xl">Rock Creek Gardens</p>
+          <div className="flex flex-col items-center">
+            <p className="text-xl underline decoration-1">11421 164th St E</p>
+            <p className="text-xl underline decoration-1">Puyallup, WA 98374</p>
+          </div>
+        </motion.div>
+        <motion.div 
+          className="px-5 flex flex-col gap-5 w-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 0.5, 
+            delay:0.2 
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5
+          }}
+        >
+          <Image 
+            src={ceremony} 
+            alt="Rock Creek Garden" 
+            className="w-full h-96 object-cover object-center"
+          />
+        </motion.div>
       </section>
     </div>
   );
