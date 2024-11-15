@@ -8,7 +8,7 @@ import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls}
 import ceremony from './img/ceremony.png';
 import video from './img/video.mp4';
 import Link from 'next/link';
-import Timer from './timer';
+//import Timer from './timer';
 import { ExternalLink } from 'lucide-react';
 
 
