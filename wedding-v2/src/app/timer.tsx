@@ -30,7 +30,19 @@ const Timer: React.FC<TimerProps> = ({  }) => {
   }, []);
 
 
-  return (
+  /*
+    <div className="flex items-center w-full flex-col text-left">
+      <h4 className="text-4xl w-full">
+        XX Days, XX Hours,
+      </h4>
+      <h4 className="text-4xl w-full">
+        XX Minutes, XX Seconds
+      </h4>
+    </div>
+
+
+
+  ----------------
     <section className='w-full flex items-center justify-center font-canto text-[#D69B43] flex-col gap-10'>
       <div className='flex items-center w-11/12 justify-center font-bold text-4xl'>
         <div className='flex flex-col items-center w-full px-2'>
@@ -67,6 +79,18 @@ const Timer: React.FC<TimerProps> = ({  }) => {
         </div>
       </div>
     </section>
+
+
+  */
+  return (
+    <div className="flex items-center w-full flex-col text-left">
+      <h4 className="text-4xl w-full">
+        {String(days).padStart(2, '0')} Days, {String(hours).padStart(2, '0')} Hours,
+      </h4>
+      <h4 className="text-4xl w-full">
+        {String(minutes).padStart(2, '0')} Minutes, {String(seconds).padStart(2, '0')} Seconds
+      </h4>
+    </div>
   );
 }
 
