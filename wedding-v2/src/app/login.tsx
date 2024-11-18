@@ -121,7 +121,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
             className='w-9/12 h-9/12 flex items-center justify-center'
           >
-            <LoaderCircle color="#333333" size={24} className='w-full h-full border-2'/>
+            <LoaderCircle color="#333333" size={24} className='w-full h-full'/>
           </motion.div>
         </motion.div>
       }
