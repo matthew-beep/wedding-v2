@@ -3,10 +3,11 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef} from 'react'
 import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
-import savethedate from './img/savethedate.jpg';
-import hero from './img/hero.jpg';
 import rsvp from './img/rsvp.jpg';
 import video from './img/video.mp4';
+import photo1 from './img/mainpage-horizontalscroll1.jpg';
+import photo2 from './img/mainpage-horizontalscroll2.jpg';
+import photo3 from './img/mainpage-horizontalscroll3.jpg';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 
@@ -357,8 +358,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <hr className="bg-[#333333] w-1/4 mt-10 mx-auto h-0.5"/>
         </section>
         <section className="flex flex-col">
-          <h1 className="text-3xl">ANITA & JESUS</h1>
-          <h2>Bride & Groom</h2>
+          <h1 className="text-3xl text-[#486A51]">ANITA & JESUS</h1>
+          <h2 className="text-[#919191]">Bride & Groom</h2>
           <div className="flex gap-3 w-auto overflow-scroll">
             <motion.div 
               className="flex flex-col min-w-64 aspect-square"
@@ -373,8 +374,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               }}
             >
               <Image 
-                src={hero} 
-                alt="Anita and Jesus sitting" 
+                src={photo1} 
+                alt="Jesus taking a photo of Anita" 
                 className="w-full h-full object-cover object-center" 
               />
             </motion.div>
@@ -391,8 +392,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               }}
             >
               <Image 
-                src={savethedate} 
-                alt="Rock Creek Garden" 
+                src={photo2} 
+                alt="Anita holding flowers" 
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
@@ -409,8 +410,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               }}
             >
               <Image 
-                src={savethedate} 
-                alt="Rock Creek Garden" 
+                src={photo3} 
+                alt="Jesus and Anita standing together" 
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
@@ -441,7 +442,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <div>
               <h2 className="text-3xl text-[#486A51]">SEE YOU THERE?</h2>
-              <h3>RSVP</h3>
+              <h3 className="text-[#919191]">RSVP</h3>
             </div>
             <p className="text-lg">Please remember to RSVP by February 28th. Even if you are unable to attend, 
               your response will help us in our planning. For more information please refer to our FAQs. 
