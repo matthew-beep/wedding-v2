@@ -38,6 +38,7 @@ async function checkMatch(firstname:string, lastname:string): Promise<string> {
         console.log("Document ID:", userId);
         //console.log("Data:", doc.data());
         if (submitted) {
+          alert("A response was already submitted for " + firstname + " " + lastname); 
           throw new Error("Response has already been submitted");
         }
       });
@@ -52,7 +53,7 @@ async function checkMatch(firstname:string, lastname:string): Promise<string> {
   } 
 }
 
-async function checkRsvp(id:string): Promise<boolean> {
+async function checkRsvp(id:string, firstname:string, lastname:string): Promise<boolean> {
   try {
     // now check rsvp if guest has already submitted form
     const rsvpRef = doc(db, 'attending', id);
@@ -60,7 +61,9 @@ async function checkRsvp(id:string): Promise<boolean> {
     
 
     if (docSnap.exists()) {
+      
       console.log("Rsvp already exists");
+      alert("A response was already submitted for " + firstname + " " + lastname); 
       throw new Error(" RSVP has already been submitted");
     } else {
       console.log("No rsvp found for this guest");
@@ -144,7 +147,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
       const id = await checkMatch(firstName, lastName);
 
       // and check that no RSVP was already submitted
-      await checkRsvp(id);
+      await checkRsvp(id, firstName, lastName);
 
       // need to add the info to the docs 
       const attendanceRef = doc(db, 'attending', id);
