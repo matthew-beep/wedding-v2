@@ -2,7 +2,6 @@
 import React from 'react';
 import Form from './form'
 import { motion, easeOut } from 'framer-motion'
-import banner from '../img/rsvp-banner.JPG';
 
 
 interface RSVPProps {
@@ -34,9 +33,8 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
       <section className="h-auto relative flex flex-col items-center ">
         <div className="h-[50svh] md:h-[70vh] border-gray-700 w-full flex">
           <div 
-            className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto"
+            className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto rsvp"
             style={{
-              backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "100%",

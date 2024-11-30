@@ -4,12 +4,12 @@ declare module '*.mp4' {
   }
 
   declare module "*.jpg" {
-    const content: any;
+    const content: string;
     export default content;
   }
   
   declare module "*.JPG" {
-    const content: any;
+    const content: string;
     export default content;
   }
   
