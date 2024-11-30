@@ -6,10 +6,8 @@ import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls}
 import savethedate from './img/savethedate.jpg';
 import hero from './img/hero.jpg';
 import rsvp from './img/rsvp.jpg';
-//import ceremony from './img/ceremony.png';
 import video from './img/video.mp4';
 import Link from 'next/link';
-import Timer from './timer';
 import { ExternalLink } from 'lucide-react';
 
 
@@ -166,7 +164,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     */
   return (
     <div className="relative"> 
-      <section className="bg-neutral-500 h-svh lg:h-screen w-full flex">
+      <section className="bg-[#FAFBF7] h-svh lg:h-screen w-full flex">
         <div className="w-full h-full relative">
           {/* Text container with higher z-index */}
           <div className="w-full h-full absolute z-10 top-0 left-0 pt-24 lg:pt-40 landing">
@@ -250,219 +248,219 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section 
-        className="bg-[#FDF6ED] h-auto flex flex-col sm:flex-row font-canto text-[#333333] gap-16 relative z-10 py-12 px-5"
-        id="details"
-      >
-        <div>
-          <motion.h4 
-            className="text-[#919191] text-base"
-            initial={{ 
-              opacity:0,
-              filter: "blur(5px)"
-            }}
-            whileInView={{
-
-              opacity:1,
-              filter: "blur(0px)"
-            }}
-            transition={{
-              duration: 0.5
-            }}
-          
-          >
-              We&apos;re Getting Married
-          </motion.h4>
-          <h3 className="text-[#333333] text-5xl">DETAILS</h3>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3 w-full ">
-              <h4 className="text-lg">
-                WHEN:
-              </h4>
-          </div>
-          <motion.div 
-            className="flex flex-col gap-8 w-full"
-            initial={{ 
-              opacity: 0,
-              filter: "blur(5px)" 
-            }}
-            whileInView={{ 
-              opacity: 1,
-              filter: "blur(0px)" 
-            }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2
-            
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3
-            }}
-          >
-            <p className="text-4xl text-[#D69B43] w-full">Friday, August 29th, 2025</p>
-            <div className="flex flex-col w-full">
-              <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
-              <p className="text-xl">RECEPTION: 5pm-10pm</p>           
-            </div>
-            <hr className="bg-[#333333] w-full h-0.5"/>
-          </motion.div>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3 w-full ">
-              <h4 className="text-lg">
-                WHERE:
-              </h4>
-          </div>
-          <motion.div 
-            className="flex flex-col gap-8 w-full"
-            initial={{ 
-              opacity: 0,
-              filter: "blur(5px)" 
-            }}
-            whileInView={{ 
-              opacity: 1,
-              filter: "blur(0px)" 
-            }}
-            transition={{ 
-              duration: 0.5, 
-              delay:0.2
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3
-            }}
-          >
-            <p className="text-4xl text-[#D69B43] w-full">Rock Creek Gardens</p>
-            <div className="flex flex-col">
-              <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
-                <p className="text-xl underline decoration-1">11421 164th St E</p>
-                <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
-              </Link>
-            </div>
-            <hr className="bg-[#333333] w-full h-0.5"/>
-          </motion.div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center w-full ">
-              <h4 className="text-base">
-                FROM THE BRIDE AND GROOM:
-              </h4>
-          </div>
-          <motion.div 
-            className="flex flex-col gap-3 w-full items-center"
-            initial={{ 
-              opacity: 0,
-              filter: "blur(5px)" 
-            }}
-            whileInView={{ 
-              opacity: 1,
-              filter: "blur(0px)" 
-            }}
-            transition={{ 
-              duration: 0.3, 
-              delay:0.2
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3
-            }}
-          >
-            <p className="text-xl text-[#333333] w-full">
-              Hi everyone, welcome to our wedding website! Some things to know about our special day: 
-              The <span className="font-bold text-[#D69B43]">ceremony</span> and <span className="font-bold text-[#D69B43]">reception</span> will be at the <span className="font-bold text-[#D69B43]">same venue</span> so no need to travel in between locations. 
-              Our dress code for the event is <span className="font-bold text-[#D69B43]">garden party</span> so we encourage wearing <span className="font-bold text-[#D69B43]">florals</span>, <span className="font-bold text-[#D69B43]">pastels</span>, and <span className="font-bold text-[#D69B43]">ruffles</span>. 
-              However, please avoid wearing the color <span className="font-bold text-[#D69B43]">yellow</span>. If you have any other questions, check out our <span className="underline cursor-pointer"><Link href="/faq">FAQ page</Link></span> and don&apos;t forget 
-              to <span className="font-bold text-[#D69B43]">RSVP</span> by <span className="font-bold text-[#D69B43]">February 28th</span>!
-            </p>
-            <hr className="bg-[#333333] w-1/4  mt-10 h-0.5"/>
-          </motion.div>
-        </div>
-        <motion.div 
-          className="flex flex-col w-full items-center"
-          initial={{ 
-            opacity: 0,
-            translateY: "50%"
-          }}
-          whileInView={{ 
-            opacity: 1,
-            translateY: "0%" 
-          }}
-          transition={{ 
-            duration: 0.3, 
-            delay:0.2
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2
-          }}
+      <section className="font-canto bg-[#FAFBF7] flex flex-col sm:flex-row gap-12 px-5">
+        <section 
+          className="h-screen font-canto flex flex-col text-[#333333] gap-12 relative z-10 py-12"
+          id="details"
         >
-          <Timer />
-          <h5 className="text-xl text-[#D69B43] w-full">Till We Say &quot;I Do&quot;</h5>
-          <button className="w-full border py-2 items-center justify-center border-[#333333] text-3xl mt-5"><Link href="/rsvp" className="w-full h-full">I&apos;LL BE THERE</Link></button>
-        </motion.div>
-        <section className="flex flex-col gap-3">
-          <motion.div 
-            className="flex flex-col w-full"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.3, 
-              delay:0.2 
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5
-            }}
-          >
-            <Image 
-              src={hero} 
-              alt="Anita and Jesus sitting" 
-              className="w-full h-full object-cover object-center" 
-            />
-          </motion.div>
-          <motion.div 
-            className="flex flex-col gap-5 w-full"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.3, 
-              delay:0.2 
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5
-            }}
-          >
-            <Image 
-              src={savethedate} 
-              alt="Rock Creek Garden" 
-              className="w-full h-full object-cover object-center"
-            />
-          </motion.div>
-          <motion.div 
-            className="flex flex-col gap-5 w-full"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.3, 
-              delay:0.2 
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5
-            }}
-          >
-            <Image 
-              src={rsvp} 
-              alt="Rock Creek Garden" 
-              className="w-full h-full object-cover object-center"
-            />
-          </motion.div>
+
+          <div>
+            <motion.h4 
+              className="text-[#486A51] text-4xl"
+              initial={{ 
+                opacity:0,
+                filter: "blur(5px)"
+              }}
+              whileInView={{
+
+                opacity:1,
+                filter: "blur(0px)"
+              }}
+              transition={{
+                duration: 0.5
+              }}
+              viewport={{
+                once: true
+              }}
+            
+            >
+                WE&apos;RE GETTING MARRIED
+            </motion.h4>
+            <h3 className="text-[#919191]">DETAILS</h3>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-3 w-full ">
+                <h4 className="text-lg">
+                  WHEN:
+                </h4>
+            </div>
+            <motion.div 
+              className="flex flex-col gap-8 w-full"
+              initial={{ 
+                opacity: 0,
+                filter: "blur(5px)" 
+              }}
+              whileInView={{ 
+                opacity: 1,
+                filter: "blur(0px)" 
+              }}
+              transition={{ 
+                duration: 0.5, 
+                delay:0.2
+              
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3
+              }}
+            >
+              <p className="text-4xl text-[#486A51] w-full">Friday, August 29th, 2025</p>
+              <div className="flex flex-col w-full">
+                <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
+                <p className="text-xl">RECEPTION: 5pm-10pm</p>           
+              </div>
+              <hr className="bg-[#333333] w-full h-0.5"/>
+            </motion.div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-3 w-full ">
+                <h4 className="text-lg">
+                  WHERE:
+                </h4>
+            </div>
+            <motion.div 
+              className="flex flex-col gap-8 w-full"
+              initial={{ 
+                opacity: 0,
+                filter: "blur(5px)" 
+              }}
+              whileInView={{ 
+                opacity: 1,
+                filter: "blur(0px)" 
+              }}
+              transition={{ 
+                duration: 0.5, 
+                delay:0.2
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3
+              }}
+            >
+              <p className="text-4xl text-[#486A51] w-full">Rock Creek Gardens</p>
+              <div className="flex flex-col">
+                <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
+                  <p className="text-xl underline decoration-1">11421 164th St E</p>
+                  <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
+                </Link>
+              </div>
+              <hr className="bg-[#333333] w-full h-0.5"/>
+            </motion.div>
+          </div>
+          <Link href="#rsvp" className="w-full h-auto">
+            <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+              I&apos;LL BE THERE
+            </button>
+          </Link>
+          <hr className="bg-[#333333] w-1/4 mt-10 mx-auto h-0.5"/>
         </section>
+        <section className="flex flex-col">
+          <h1 className="text-3xl">ANITA & JESUS</h1>
+          <h2>Bride & Groom</h2>
+          <div className="flex gap-3 w-auto overflow-scroll">
+            <motion.div 
+              className="flex flex-col min-w-64 aspect-square"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 0.3
+              }}
+              viewport={{
+                once: true,
+                amount: 0.1
+              }}
+            >
+              <Image 
+                src={hero} 
+                alt="Anita and Jesus sitting" 
+                className="w-full h-full object-cover object-center" 
+              />
+            </motion.div>
+            <motion.div 
+              className="flex flex-col w-full min-w-64 aspect-square"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 0.3
+              }}
+              viewport={{
+                once: true,
+                amount: 0.1
+              }}
+            >
+              <Image 
+                src={savethedate} 
+                alt="Rock Creek Garden" 
+                className="w-full h-full object-cover object-center"
+              />
+            </motion.div>
+            <motion.div 
+              className="flex flex-col w-full min-w-64 aspect-square"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 0.3
+              }}
+              viewport={{
+                once: true,
+                amount: 0.1
+              }}
+            >
+              <Image 
+                src={savethedate} 
+                alt="Rock Creek Garden" 
+                className="w-full h-full object-cover object-center"
+              />
+            </motion.div>
+          </div>
+        </section>
+        <section 
+          className="flex flex-col gap-5 py-5"
+          id="rsvp"
+        >
+            <motion.div 
+              className="flex flex-col w-full h-[50vh]"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 0.3, 
+                delay:0.2 
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5
+              }}
+            >
+              <Image 
+                src={rsvp} 
+                alt="Rock Creek Garden" 
+                className="w-full h-full object-cover object-center"
+              />
+            </motion.div>
+            <div>
+              <h2 className="text-3xl text-[#486A51]">SEE YOU THERE?</h2>
+              <h3>RSVP</h3>
+            </div>
+            <p className="text-lg">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+              your response will help us in our planning. For more information please refer to our FAQs. 
+              Can&apos;t wait to celebrate this day with you there!
+            </p>
+            <div className="flex flex-col gap-2">
+              <Link href="/faq" className="w-full h-auto">
+                <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+                  FAQ
+                </button>
+              </Link>
+              <Link href="/rsvp" className="w-full h-auto">
+                <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full">
+                  RSVP
+                </button>
+              </Link>
+
+            </div>
+          </section>
       </section>
     </div>
   );

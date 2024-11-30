@@ -64,18 +64,18 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
   }
 
   return (
-    <div className="relative bg-[#FDF6ED] w-full sm:h-screen h-svh flex items-center justify-start pt-24 gap-10 flex-col">
+    <div className="relative bg-[#FAFBF7] w-full sm:h-screen h-svh flex items-center justify-start pt-24 gap-10 flex-col">
       {!loading &&
         <div className='w-11/12 sm:w-5/12 md:w-6/12 xl:w-3/12 h-9/12 flex flex-col justify-center items-center gap-10 px-5 py-10'>
           <div className='w-auto flex flex-col items-center gap-2 font-canto text-[#333333] w-full'>
             <div className='flex w-1/3 justify-center items-center gap-2'>
-              <hr className='w-full border-t-[#D69B43] h-0.5'/>
-              <h1 className='font-canto text-3xl text-[#D69B43] font-bold'>A&J</h1>
-              <hr className='w-full border-t-[#D69B43] h-0.5'/>
+              <hr className='w-full border-t-[#486A51] h-0.5'/>
+              <h1 className='font-canto text-3xl text-[#486A51] font-bold'>A&J</h1>
+              <hr className='w-full border-t-[#486A51] h-0.5'/>
             </div>
             <h2 className='text-7xl font-bold'>Welcome</h2>
-            <h3 className='text-base xl:text-lg text-[#D69B43]'>Please enter your name</h3>
-            <hr className='w-1/4 mt-8 border-t-[#D69B43]  h-0.5'/>
+            <h3 className='text-base xl:text-lg text-[#486A51]'>Please enter your name</h3>
+            <hr className='w-1/4 mt-8 border-t-[#486A51]  h-0.5'/>
           </div>
           <div className='w-full flex flex-col gap-5'>
             <div className='flex flex-col'>
@@ -103,7 +103,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
               />
             </div>
           </div>
-          <button className='p-2 bg-[#D69B43] w-1/3 sm:1/4 font-canto flex text-center items-center justify-center text-2xl rounded-full text-[#FDF6ED]' onClick={handleLogin}>
+          <button className='p-2 bg-[#486A51] w-1/3 sm:1/4 font-canto flex text-center items-center justify-center text-2xl rounded-full text-[#FAFBF7]' onClick={handleLogin}>
             LOGIN
           </button>
         </div>

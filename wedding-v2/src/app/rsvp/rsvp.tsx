@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import Search from './search'
+import React from 'react';
 import Form from './form'
 import { motion, easeOut } from 'framer-motion'
 import banner from '../img/rsvp.jpg';
@@ -12,12 +11,6 @@ interface RSVPProps {
 
 
 const RSVP: React.FC<RSVPProps> = ({ }) => {
-  const [search, setSearch] = useState<boolean>(true);
-  const [form, setForm] = useState<boolean>(false);
-  // const [submitted, setSubmitted] = useState<boolean>(false);
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [id, setId] = useState<string>("");
 
   const textAnimation = {
     hidden: {              
@@ -35,14 +28,6 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
       }
     }
   }
-  useEffect(() => {
-    console.log("search stage: " + search)
-    console.log("form stage: " + form)
-  }, [search, form])
-
-  useEffect(() => {
-    console.log(firstName + " " + lastName + ", " + id)
-  }, [firstName, lastName])
 
   return (
     <div className="relative bg-[#f5f5f5]"> 
@@ -70,12 +55,14 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
       </div>
       <div className='py-5 w-full text-black'>
         <div className='text-center flex flex-col gap-2 items-center'>
-          <h1 className='text-3xl font-canto font-bold'>Will you be joining us?</h1>
-          <h2 className='text-xl font-canto w-10/12'>Please let us know if you will be attending our celebration by searching for your name and filling out the RSVP form by <span className='font-bold'>February 28th</span>.</h2>
+          <h1 className='text-3xl font-canto font-semiBold'>Our Day To Remember</h1>
+          <h2 className='text-lg font-canto w-10/12'>Friday, August 29th, 2025, 3:00 PM</h2>
+          <h2 className='text-lg font-canto w-10/12'>Rock Creek Gardens</h2>
+          <h2 className='text-lg font-canto w-10/12'>Attire: A glamorous garden soirée where the goal is to be extravagantly overdressed. Aim for ruffles, pastels, and florals—outshine everyone with your most show-stopping look!</h2>
           <hr className='h-px mt-2 mb-5 w-9/12'/>
         </div>
-        {search && <Search setSearch={setSearch} setForm={setForm} setFirstName={setFirstName} setLastName={setLastName} setId={setId}/>}
-        {form && <Form firstName={firstName} lastName={lastName} id={id} />}
+
+        <Form />
       </div>
       </section>
     </div>

@@ -251,7 +251,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                   variants={links}
                 >
                   <Link href="/ceremony">
-                    Ceremony
+                    Dress Code
                   </Link>
                 </motion.li>
                 <motion.li 

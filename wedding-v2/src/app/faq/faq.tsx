@@ -76,7 +76,7 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
     {
       id: 10,
       q: "Can I bring my own alcohol?",
-      a: ""
+      a: "The venue has security and we would appreciate it if you do not bring your own alcohol or other substances onto the property. However, we do have an open bar for our guests, so we hope you enjoy that service! "
     },
     {
       id: 11,
