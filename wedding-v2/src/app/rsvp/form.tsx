@@ -186,45 +186,45 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   )
 
   const form = (
-    <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
-      <div className='flex gap-2'>
-        <div className='flex flex-col'>
-          <label htmlFor="firstName" className='text-lg'>First Name <span className='text-sm text-[#666666]'>(required)</span></label>
+    <form className='flex flex-col gap-5 bg-[#FAFBF7] w-full px-5 lg:items-center lg:justify-center' onSubmit={handleSubmit}>
+      <div className='flex gap-2 lg:w-4/12 items-center justify-center'>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="firstName" className='text-xl text-[#486A51]'>First Name <span className='text-sm text-[#919191]'>(required)</span></label>
           <input 
             type='search' 
             id="firstName" 
             placeholder ="First Name" 
             value={firstName} 
             onChange={handleFirst}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333]'/>
+            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
         </div>
-        <div className='flex flex-col'>
-          <label htmlFor="lastName" className='text-lg'>Last Name <span className='text-sm text-[#666666]'>(required)</span></label>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="lastName" className='text-xl text-[#486A51]'>Last Name <span className='text-sm text-[#919191]'>(required)</span></label>
           <input 
             type='search' 
             id="lastName" 
             placeholder ="Last Name" 
             value={lastName}
             onChange={handleLast} 
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333]'/>
+            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
         </div>
       </div>
-      <div>
+      <div className='lg:w-4/12'>
         <div className='flex flex-col'>
-          <label htmlFor="email" className='text-lg'>Email</label>
+          <label htmlFor="email" className='text-xl text-[#486A51]'>Email</label>
           <input 
             type='search' 
             id="email" 
             placeholder ="Email" 
             value={email} 
             onChange={handleEmail}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333]'/>
+            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
         </div>
       </div>
-      <div>
+      <div className='flex flex-col gap-1 lg:w-4/12'>
         <div className='flex items-center gap-1'>
-          <h3 className='text-xl'>Will you be Attending?</h3>
-          <h4 className='text-sm text-[#666666]'>(required)</h4>
+          <h3 className='text-xl text-[#486A51]'>Can we look forward to see you there?</h3>
+          <h4 className='text-sm text-[#919191]'>(required)</h4>
         </div>
         <div className='flex gap-2'>
           <input 
@@ -234,7 +234,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             value="accept"
             onChange={handleSelect}
           />
-          <label htmlFor="attendance" className='text-lg'>Joyfully Accepts</label>
+          <label htmlFor="attendance" className='text-lg'>Yes! Can&apos;t wait to celebrate!</label>
         </div>
         <div className='flex gap-2'>
           <input 
@@ -244,32 +244,32 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             value="decline" 
             onChange={handleSelect}
           />
-          <label htmlFor="attendance" className='text-lg'>Respectfully Declines</label>
+          <label htmlFor="attendance" className='text-lg'>Sad to miss, but sending love from afars</label>
         </div>
       </div>
-      <div>
+      <div className='lg:w-4/12'>
         <div className='flex flex-col'>
-          <label htmlFor="diet" className='text-lg'>Please list any dietary restrictions:</label>
+          <label htmlFor="diet" className='text-lg text-[#486A51]'>Please list any dietary restrictions:</label>
           <input 
             type='search' 
             id="diet" 
             placeholder ="Ex: Peanuts, shellfish, etc." 
             value={diet} 
             onChange={handleDiet}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333]'/>
+            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
         </div>
       </div>
-      <div>
+      <div className='lg:w-4/12'>
         <div className='flex flex-col'>
-          <label htmlFor="text" className='text-lg'>Any Questions / Comments?</label>
+          <label htmlFor="text" className='text-lg text-[#486A51]'>Any Questions / Comments?</label>
           <textarea
             id="text" 
             value={text} 
             onChange={handleText}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333]'/>
+            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
         </div>
       </div>
-      <button type="submit" className="py-2 w-full bg-black text-white font-canto text-3xl rounded-lg mt-10">Submit</button>
+      <button type="submit" className="bg-[#486A51] lg:w-4/12 py-2 w-full text-white font-canto text-3xl rounded-full">Submit</button>
     </form>
   )
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import Form from './form'
 import { motion, easeOut } from 'framer-motion'
-import banner from '../img/rsvp.jpg';
+import banner from '../img/rsvp-banner.jpg';
 
 
 interface RSVPProps {
@@ -30,40 +30,40 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
   }
 
   return (
-    <div className="relative bg-[#f5f5f5]"> 
-      <section className="h-auto relative flex flex-col items-center">
-      <div className="h-[50svh] border-gray-700 w-full flex">
-        <div 
-          className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto"
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "100%",
-            width: "100%",
-          }}
-        >
-          <motion.h2 
-            className="text-3xl xl:text-8xl font-bold"
-            variants={textAnimation}
-            initial="hidden"
-            animate="show"
+    <div className="relative bg-[#FAFBF7]"> 
+      <section className="h-auto relative flex flex-col items-center ">
+        <div className="h-[50svh] md:h-[70vh] border-gray-700 w-full flex">
+          <div 
+            className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "100%",
+              width: "100%",
+            }}
           >
-            RSVP
-          </motion.h2>
+            <motion.h2 
+              className="text-3xl xl:text-8xl font-bold"
+              variants={textAnimation}
+              initial="hidden"
+              animate="show"
+            >
+              RSVP
+            </motion.h2>
+          </div>
         </div>
-      </div>
-      <div className='py-5 w-full text-black'>
-        <div className='text-center flex flex-col gap-2 items-center'>
-          <h1 className='text-3xl font-canto font-semiBold'>Our Day To Remember</h1>
-          <h2 className='text-lg font-canto w-10/12'>Friday, August 29th, 2025, 3:00 PM</h2>
-          <h2 className='text-lg font-canto w-10/12'>Rock Creek Gardens</h2>
-          <h2 className='text-lg font-canto w-10/12'>Attire: A glamorous garden soirée where the goal is to be extravagantly overdressed. Aim for ruffles, pastels, and florals—outshine everyone with your most show-stopping look!</h2>
-          <hr className='h-px mt-2 mb-5 w-9/12'/>
-        </div>
+        <div className='py-5 w-full text-black bg-[#FAFBF7]'>
+          <div className='text-center flex flex-col gap-5 items-center'>
+            <h1 className='text-4xl text-[#486A51] font-canto font-semiBold'>Our Day To Remember</h1>
+            <h2 className='text-lg font-canto w-10/12'>Friday, August 29th, 2025, 3:00 PM</h2>
+            <h2 className='text-lg font-canto w-10/12'>Rock Creek Gardens</h2>
+            <h2 className='text-lg font-canto w-10/12'>Attire: A glamorous garden soirée where the goal is to be extravagantly overdressed. Aim for ruffles, pastels, and florals—outshine everyone with your most show-stopping look!</h2>
+            <hr className='h-px mt-2 mb-5 w-9/12'/>
+          </div>
 
-        <Form />
-      </div>
+          <Form />
+        </div>
       </section>
     </div>
   );
