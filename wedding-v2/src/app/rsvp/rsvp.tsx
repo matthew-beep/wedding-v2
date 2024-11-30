@@ -2,7 +2,7 @@
 import React from 'react';
 import Form from './form'
 import { motion, easeOut } from 'framer-motion'
-import banner from '../img/rsvp-banner.jpg';
+import banner from '../img/rsvp-banner.JPG';
 
 
 interface RSVPProps {

@@ -5,9 +5,9 @@ import {useEffect, useRef} from 'react'
 import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import rsvp from './img/rsvp.jpg';
 import video from './img/video.mp4';
-import photo1 from './img/mainpage-horizontalscroll1.jpg';
-import photo2 from './img/mainpage-horizontalscroll2.jpg';
-import photo3 from './img/mainpage-horizontalscroll3.jpg';
+import photo1 from './img/mainpage-horizontalscroll1.JPG';
+import photo2 from './img/mainpage-horizontalscroll2.JPG';
+import photo3 from './img/mainpage-horizontalscroll3.JPG';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 
