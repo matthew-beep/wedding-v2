@@ -104,10 +104,12 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       } 
     }
   }
-
+  /*
   const onClick = () => {
     console.log("Clicked!");
   }
+  */
+
   return (
     <div className="relative"> 
       <section className="bg-[#FAFBF7] h-svh lg:h-screen w-full flex">
