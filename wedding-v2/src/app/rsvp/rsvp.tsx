@@ -3,11 +3,9 @@ import React from 'react';
 import Form from './form'
 import { motion, easeOut } from 'framer-motion'
 
-
 interface RSVPProps {
   windowWidth? : number;
 }
-
 
 const RSVP: React.FC<RSVPProps> = ({ }) => {
 
@@ -52,11 +50,11 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
           </div>
         </div>
         <div className='py-5 w-full text-black bg-[#FAFBF7]'>
-          <div className='text-center flex flex-col gap-5 items-center'>
-            <h1 className='text-4xl text-[#486A51] font-canto font-semiBold'>Our Day To Remember</h1>
+          <div className='text-center flex flex-col gap-5 py-5 items-center'>
+            <h1 className='text-4xl lg:text-6xl text-[#486A51] font-canto font-semiBold'>Our Day To Remember</h1>
             <h2 className='text-lg font-canto w-10/12'>Friday, August 29th, 2025, 3:00 PM</h2>
             <h2 className='text-lg font-canto w-10/12'>Rock Creek Gardens</h2>
-            <h2 className='text-lg font-canto w-10/12'>Attire: A glamorous garden soirée where the goal is to be extravagantly overdressed. Aim for ruffles, pastels, and florals—outshine everyone with your most show-stopping look!</h2>
+            <h2 className='text-lg font-canto w-10/12 lg:w-4/12'>Attire: A glamorous garden soirée where the goal is to be extravagantly overdressed. Aim for ruffles, pastels, and florals—outshine everyone with your most show-stopping look!</h2>
             <hr className='h-px mt-2 mb-5 w-9/12'/>
           </div>
 

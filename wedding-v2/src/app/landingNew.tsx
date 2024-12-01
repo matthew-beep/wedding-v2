@@ -18,151 +18,96 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ large }) => {
-    const ref = useRef<HTMLDivElement | null>(null);
-    const sectionRef = useRef<HTMLDivElement | null>(null);
-    const textAnimation = useAnimationControls();
-    const { scrollYProgress: end } = useScroll({
-      target: ref,
-      offset: ["end end", "end start"]
-    })
+  const ref = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const textAnimation = useAnimationControls();
+  const { scrollYProgress: end } = useScroll({
+    target: ref,
+    offset: ["end end", "end start"]
+  })
 
-    const { scrollYProgress: start } = useScroll({
-      target: ref,
-      offset: ["start end", "end end"]
-    })
+  const { scrollYProgress: start } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"]
+  })
 
-    const { scrollYProgress : section} = useScroll({
-      target: sectionRef,
-      offset: ["start end", "end start"]
-    })
+  const { scrollYProgress : section} = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  })
 
-    //const scale = useTransform(section, [0.3, 1], [1, 1.5]);
-    //const opacity = useTransform(end, [0, 1], [1, 0]);
+  useMotionValueEvent(end, "change", (latest) => {
+    console.log("Page scroll: ", latest)
+  })
 
-    //const sectionOpacity = useTransform(section, [0.6, 1], [0, 0]);
-    //const textOpacity = useTransform(start, [0.5, 1], [0, 1]);
-    
-    //const firstOpacity = useTransform(section, [0.3, 0.5], [0, 1]);
-    //const secondOpacity = useTransform(section, [0.5, 0.8], [0, 1]);
+  useMotionValueEvent(start, "change", (latest) => {
+    console.log("Container scroll: ", latest)
+  })
 
-    useMotionValueEvent(end, "change", (latest) => {
-      console.log("Page scroll: ", latest)
-    })
-
-    useMotionValueEvent(start, "change", (latest) => {
-      console.log("Container scroll: ", latest)
-    })
-
-    useMotionValueEvent(section, "change", (latest) => {
-      console.log("Section scroll: ", latest)
-    })
+  useMotionValueEvent(section, "change", (latest) => {
+    console.log("Section scroll: ", latest)
+  })
 
 
-    useEffect(() => { // initial text animation
-      textAnimation.start("show");
-      console.log(large); // for lint error
-    }, [])
+  useEffect(() => { // initial text animation
+    textAnimation.start("show");
+    console.log(large); // for lint error
+  }, [])
 
-  
 
-    const parentVariants = { // header text animation 
-      hidden: {              
-        opacity: 0,
-        translateY: '50%'
-      },
-      show: {
-        opacity: 1,
-        translateY: '0%',
-        filter:'blur(0px)', 
-        transition: { 
-          duration: 0.5, ease: easeInOut,
-          staggerChildren: 0.2
-        }
-      },
-      exit: { 
-        opacity: 0,
-        translateY: '50%',
-        filter:'blur(10px)', 
-        transition: { 
-          duration: 0.5, ease: easeInOut,
-          staggerChildren: 1,
-          staggerDirection: -1
-        } 
+
+  const parentVariants = { // header text animation 
+    hidden: {              
+      opacity: 0,
+      translateY: '50%'
+    },
+    show: {
+      opacity: 1,
+      translateY: '0%',
+      filter:'blur(0px)', 
+      transition: { 
+        duration: 0.5, ease: easeInOut,
+        staggerChildren: 0.2
       }
-  
-    }
-  
-    const childVariants = { // header text animation
-      hidden: { 
-        opacity: 0,
-        filter:'blur(10px)',
-        translateY: '50%' 
-      },
-      show: { 
-        opacity: 1, 
-        translateY: '0%',
-        filter:'blur(0px)',
-        transition: { duration: 0.5, ease: easeInOut} 
-      },
-      exit: { 
-        opacity: 0,
-        translateY: '50%',
-        filter:'blur(10px)', 
-        transition: { 
-          duration: 0.3, ease: easeInOut,
-        } 
-      }
+    },
+    exit: { 
+      opacity: 0,
+      translateY: '50%',
+      filter:'blur(10px)', 
+      transition: { 
+        duration: 0.5, ease: easeInOut,
+        staggerChildren: 1,
+        staggerDirection: -1
+      } 
     }
 
-    /*
-            <motion.section 
-          className="lg:h-[150vh] h-auto min-h-[150vh] w-full relative bg-[#FDF6ED] z-10"
-          ref={sectionRef}
-          style={{
-            opacity: sectionOpacity,
-          }}
-        >
-          <div className="flex flex-col w-full sm:flex-row h-screen overflow-y-hidden lg:overflow-x-hidden">
-            <motion.div 
-              className="w-full h-full relative"
-              ref={ref}
-              style={{
-                scale,
-              }}
-            >
-              <Image src={saveMobile} alt="Wedding Invitation Flyer" className="w-full h-full object-cover"/>
-            </motion.div>
-            <motion.div 
-              className="w-full h-full absolute inset-0 bg-neutral-950/30"
-              style={{
-                opacity,
-                scale
-              }}
-            >
-            </motion.div>
-            <motion.div 
-              className="absolute z-10 font-canto text-white w-full flex items-center justify-center top-0 mt-24"
-            >
-              <h4 className="text-5xl flex gap-3">
-                <motion.span
-                  style={{
-                    opacity:firstOpacity,
-                  }}
-                >
-                  YOU&apos;RE 
-                </motion.span>
-                <motion.span
-                  style={{
-                    opacity:secondOpacity,
-                  }}
-                >
-                  INVITED
-                </motion.span>
-              </h4>
-            </motion.div>
-          </div>
-        </motion.section>
-    */
+  }
+
+  const childVariants = { // header text animation
+    hidden: { 
+      opacity: 0,
+      filter:'blur(10px)',
+      translateY: '50%' 
+    },
+    show: { 
+      opacity: 1, 
+      translateY: '0%',
+      filter:'blur(0px)',
+      transition: { duration: 0.5, ease: easeInOut} 
+    },
+    exit: { 
+      opacity: 0,
+      translateY: '50%',
+      filter:'blur(10px)', 
+      transition: { 
+        duration: 0.3, ease: easeInOut,
+      } 
+    }
+  }
+
+  const onClick = () => {
+    console.log("Clicked!");
+  }
   return (
     <div className="relative"> 
       <section className="bg-[#FAFBF7] h-svh lg:h-screen w-full flex">
@@ -249,12 +194,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="font-canto bg-[#FAFBF7] flex flex-col sm:flex-row gap-12 px-5">
+      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 px-5">
         <section 
-          className="h-screen font-canto flex flex-col text-[#333333] gap-12 relative z-10 py-12"
+          className="h-screen w-full font-canto flex flex-col text-[#333333] gap-12 relative z-10 pt-12"
           id="details"
         >
-
           <div>
             <motion.h4 
               className="text-[#486A51] text-4xl"
@@ -358,11 +302,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <hr className="bg-[#333333] w-1/4 mt-10 mx-auto h-0.5"/>
         </section>
         <section className="flex flex-col">
-          <h1 className="text-3xl text-[#486A51]">ANITA & JESUS</h1>
-          <h2 className="text-[#919191]">Bride & Groom</h2>
-          <div className="flex gap-3 w-auto overflow-scroll">
+          <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
+          <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
+          <div className="flex gap-5 overflow-x-scroll scrollbar-hide w-full ">
             <motion.div 
-              className="flex flex-col min-w-64 aspect-square"
+              className="min-w-80 aspect-square"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -380,7 +324,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               />
             </motion.div>
             <motion.div 
-              className="flex flex-col w-full min-w-64 aspect-square"
+              className="min-w-80 aspect-square"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -393,12 +337,12 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             >
               <Image 
                 src={photo2} 
-                alt="Anita holding flowers" 
-                className="w-full h-full object-cover object-center"
+                alt="Anita Holding Flowers" 
+                className="w-full h-full object-cover object-center" 
               />
             </motion.div>
             <motion.div 
-              className="flex flex-col w-full min-w-64 aspect-square"
+              className="min-w-80 aspect-square"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -444,7 +388,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <h2 className="text-3xl text-[#486A51]">SEE YOU THERE?</h2>
               <h3 className="text-[#919191]">RSVP</h3>
             </div>
-            <p className="text-lg">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+            <p className="text-lg text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
               your response will help us in our planning. For more information please refer to our FAQs. 
               Can&apos;t wait to celebrate this day with you there!
             </p>

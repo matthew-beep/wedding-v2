@@ -29,6 +29,7 @@ async function checkMatch(firstname:string, lastname:string): Promise<string> {
     const snapshot = await getDocs(q);
     
     if (snapshot.empty) {
+      alert("Invite not found for " + firstname + " " + lastname + ". Please enter your name exactly as it was written on the invite");
       throw new Error("Invite not found for " + firstname + " " + lastname + ". Please enter your name exactly as it was written on the invite");
     } else {
       console.log("Found invite for " + firstname + " " + lastname);
@@ -74,7 +75,6 @@ async function checkRsvp(id:string, firstname:string, lastname:string): Promise<
     console.error("Error getting documents: ", error);
     throw error;
   }
-  return true;
 }
 
 
