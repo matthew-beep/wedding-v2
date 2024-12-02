@@ -9,7 +9,7 @@ import photo1 from './img/mainpage-horizontalscroll1.JPG';
 import photo2 from './img/mainpage-horizontalscroll2.JPG';
 import photo3 from './img/mainpage-horizontalscroll3.JPG';
 import Link from 'next/link';
-import { ExternalLink, X } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 
 
