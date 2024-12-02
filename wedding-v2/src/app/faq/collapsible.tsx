@@ -33,7 +33,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
         transform: 'rotate(-180deg)'
       })
       header.start({
-        backgroundColor: 'rgba(229,231,235, 1)'
+        backgroundColor: 'rgba(226,229,222, 1)'
       })
     } else {
       setOpen(false);
@@ -41,7 +41,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
         transform: 'rotate(0deg)'
       })
       header.start({
-        backgroundColor: 'rgba(229,231,235, 0)'
+        backgroundColor: 'rgba(226,229,222, 0)'
       })
     }
   }
@@ -63,7 +63,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
 
   return (
     <motion.div 
-      className="flex flex-col font-canto text-black border sm:border-2 rounded-lg mb-5 border-gray-200 w-full cursor-pointer shadow-sm"
+      className="flex flex-col font-canto text-black border sm:border-2 rounded-lg mb-5 border-[#486A51] w-full cursor-pointer shadow-sm overflow-hidden"
     >
       <motion.div 
         className='flex items-center justify-between py-5 px-3 lg:py-8 lg:px-6' onClick={handleClick}
@@ -75,7 +75,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
           () => {
             if (!opened) {
               header.start({
-                backgroundColor: 'rgba(229,231,235, 1)'
+                backgroundColor: 'rgba(226,229,222, 1)'
               })
             }
           }
@@ -84,14 +84,14 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
           () => {
             if (!opened) {
               header.start({
-                backgroundColor: 'rgba(229,231,235, 0)'
+                backgroundColor: 'rgba(226,229,222, 0)'
               })
             }
           }
         }
 
       >
-        <h2 className='font-bold text-xl sm:text-2xl xl:text-3xl'>
+        <h2 className='font-bold text-xl sm:text-2xl xl:text-3xl text-[#486A51]'>
           {q}
         </h2>
         <motion.div
@@ -101,7 +101,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
             backgroundColor: 'rgba(0, 0, 0, 0.2)'
           }}
         >
-          <ChevronDown size={35} strokeWidth={1} className="w-full h-full text-xl cursor-pointer" />
+          <ChevronDown size={35} strokeWidth={1} color="#486A51" className="w-full h-full text-xl cursor-pointer" />
         </motion.div>
       </motion.div>
       <AnimatePresence>

@@ -84,19 +84,10 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
       a: "If you still have any questions that are not answered here, please feel free to call or text Anita or Jesus! We appreciate you taking the time to read this through and hope this can alleviate any questions/concerns."
     }
   ]
-  // className="h-full w-full z-0 flex justify-center text-black font-canto"
-  /*
-    style={{
-      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url(${banner.src})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      height: "100%",
-      width: "100%",
-    }}
-  */  
+
   return (
-    <div className="relative bg-[#f5f5f5]"> 
-      <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col  items-center">
+    <div className="relative bg-[#FAFBF7]"> 
+      <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col items-center">
         <div className="h-auto border-gray-700 w-full flex pt-32 pb-4 xl:pt-32">
             <div 
               className="h-full w-full z-0 flex justify-center text-black font-canto"
@@ -107,9 +98,9 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
                 initial="hidden"
                 animate="show"
               >
-                <hr className='h-px flex-grow border-black'/>
-                <h2 className='mx-5'>FAQs</h2>
-                <hr className='h-px flex-grow border-black'/>
+                <hr className='h-px flex-grow border-[#486A51]'/>
+                <h2 className='mx-5 text-[#486A51]'>FAQs</h2>
+                <hr className='h-px flex-grow border-[#486A51]'/>
               </motion.div>
             </div>
         </div>

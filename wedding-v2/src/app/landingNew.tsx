@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import rsvp from './img/rsvp.jpg';
 import video from './img/video.mp4';
@@ -9,7 +9,7 @@ import photo1 from './img/mainpage-horizontalscroll1.JPG';
 import photo2 from './img/mainpage-horizontalscroll2.JPG';
 import photo3 from './img/mainpage-horizontalscroll3.JPG';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, X } from 'lucide-react';
 
 
 
@@ -20,6 +20,7 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ large }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [modal, setModal] = useState<boolean>(false);
   const textAnimation = useAnimationControls();
   const { scrollYProgress: end } = useScroll({
     target: ref,
@@ -111,7 +112,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   */
 
   return (
-    <div className="relative"> 
+    <div className="relative">
       <section className="bg-[#FAFBF7] h-svh lg:h-screen w-full flex">
         <div className="w-full h-full relative">
           {/* Text container with higher z-index */}
@@ -198,7 +199,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       </section>
       <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 px-5">
         <section 
-          className="h-screen w-full font-canto flex flex-col text-[#333333] gap-12 relative z-10 pt-12"
+          className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 relative z-10 py-12"
           id="details"
         >
           <div>
@@ -301,14 +302,13 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               I&apos;LL BE THERE
             </button>
           </Link>
-          <hr className="bg-[#333333] w-1/4 mt-10 mx-auto h-0.5"/>
         </section>
-        <section className="flex flex-col">
+        <section className="flex flex-col relative">
           <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
           <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
-          <div className="flex gap-5 overflow-x-scroll scrollbar-hide w-full ">
+          <div className="flex gap-5 overflow-x-scroll scrollbar-hide w-full">
             <motion.div 
-              className="min-w-80 aspect-square"
+              className="min-w-80 md:min-w-96 aspect-square lg:shrink-0 lg:w-[30rem]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -326,7 +326,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               />
             </motion.div>
             <motion.div 
-              className="min-w-80 aspect-square"
+              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -344,7 +344,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               />
             </motion.div>
             <motion.div 
-              className="min-w-80 aspect-square"
+              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -364,7 +364,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </section>
         <section 
-          className="flex flex-col gap-5 py-5"
+          className="flex flex-col gap-8 py-12"
           id="rsvp"
         >
             <motion.div 
@@ -394,7 +394,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               your response will help us in our planning. For more information please refer to our FAQs. 
               Can&apos;t wait to celebrate this day with you there!
             </p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               <Link href="/faq" className="w-full h-auto">
                 <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
                   FAQ
