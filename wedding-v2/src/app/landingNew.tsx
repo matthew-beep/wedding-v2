@@ -20,7 +20,7 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ large }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const [modal, setModal] = useState<boolean>(false);
+  //const [modal, setModal] = useState<boolean>(false);
   const textAnimation = useAnimationControls();
   const { scrollYProgress: end } = useScroll({
     target: ref,
