@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { motion, easeOut } from 'framer-motion'
+import { motion, easeInOut } from 'framer-motion'
 // import banner from '../img/faq.jpg';
 import Collapsible from './collapsible';
 
@@ -9,23 +9,6 @@ interface FAQProps {
 }
 
 const FAQ: React.FC<FAQProps> = ({ }) => {
-
-  const textAnimation = {
-    hidden: {              
-      opacity: 0,
-      translateY: '50%',
-      filter:'blur(10px)', 
-    },
-    show: {
-      opacity: 1,
-      translateY: '0%',
-      filter:'blur(0px)', 
-      transition: { 
-        duration: 0.5, 
-        ease: easeOut,
-      }
-    }
-  }
 
   const questions =[
     {
@@ -85,6 +68,36 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
     }
   ]
 
+  const variants = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1,
+      transition: { 
+        duration: 0.5, 
+        ease: easeInOut,
+        staggerChildren: 0.1 
+      },
+    }
+
+  }
+
+  const childVariants = {
+    hidden: {
+      translateY:"25%",
+      opacity: 0
+    },
+    show: {
+      translateY:"0%",
+      opacity: 1,
+      transition: {        
+        duration: 0.5, 
+        ease: easeInOut,
+      }
+    }
+  }
+
   return (
     <div className="relative bg-[#FAFBF7]"> 
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col items-center">
@@ -92,23 +105,60 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
             <div 
               className="h-full w-full z-0 flex justify-center text-black font-canto"
             >
-              <motion.div 
+              <div 
                 className="text-3xl xl:text-7xl font-bold flex items-center justify-center w-11/12 md:w-1/2 px-5"
-                variants={textAnimation}
-                initial="hidden"
-                animate="show"
               >
-                <hr className='h-px flex-grow border-[#486A51]'/>
+                <motion.hr 
+                  className='h-px flex-grow border-[#486A51]'
+                  initial={{
+                    scaleX:0
+                  }}
+                  animate={{
+                    scaleX:1,
+                    transition: { 
+                      delay: 0.2,
+                      duration: 0.2, ease: easeInOut,
+                    } 
+                  }}
+                  style={{
+                    originX:1,
+                  }}
+                />
                 <h2 className='mx-5 text-[#486A51]'>FAQs</h2>
-                <hr className='h-px flex-grow border-[#486A51]'/>
-              </motion.div>
+                <motion.hr 
+                  className='h-px flex-grow border-[#486A51]'
+                  initial={{
+                    scaleX:0
+                  }}
+                  animate={{
+                    scaleX:1,
+                    transition: { 
+                      delay: 0.2,
+                      duration: 0.2, ease: easeInOut,
+                    } 
+                  }}
+                  style={{
+                    originX:0,
+                  }}
+                />
+              </div>
             </div>
         </div>
-        <div className='flex flex-col w-11/12 xl:w-6/12 mt-5'>
-          {questions.map(question => 
-            <Collapsible key={question.id} question={question} />  // Pass the question as a prop to the Collapsible component
+        <motion.div 
+          className='flex flex-col w-11/12 xl:w-6/12 mt-5'
+          variants={variants}
+          initial={"hidden"}
+          animate={"show"}
+        >
+          {questions.map(question => // Pass the question as a prop to the Collapsible component
+            <motion.div
+              variants={childVariants}
+              key={question.id}
+            >
+              <Collapsible question={question} /> 
+            </motion.div>
           )}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

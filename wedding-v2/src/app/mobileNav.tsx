@@ -187,7 +187,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
         <motion.section 
           className="flex w-full justify-center h-20 items-center relative z-20"
           initial={{
-            color: pathname != '/faq' ? 'white' : 'black',
+            color: pathname != '/faq' ? 'white' : '#486A51',
             boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)'
           }}
           animate={controls}
