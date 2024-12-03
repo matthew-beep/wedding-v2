@@ -258,7 +258,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
                   className="text-[#486A51] py-4 px-4 text-3xl"
                   variants={links}
                 >
-                  Registry
+                  <Link href="https://www.amazon.com/wedding/share/anitajesusregistry" target='_blank'>
+                    Registry
+                  </Link>
                 </motion.li>
                 <motion.li 
                   className="text-[#486A51] py-4 px-4 text-3xl"

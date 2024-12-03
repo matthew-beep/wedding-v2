@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import rsvp from './img/rsvp.jpg';
 import video from './img/video.mp4';
@@ -9,7 +9,7 @@ import photo1 from './img/mainpage-horizontalscroll1.JPG';
 import photo2 from './img/mainpage-horizontalscroll2.JPG';
 import photo3 from './img/mainpage-horizontalscroll3.JPG';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, X } from 'lucide-react';
 
 
 
@@ -20,7 +20,7 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ large }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  //const [modal, setModal] = useState<boolean>(false);
+  const [modal, setModal] = useState<boolean>(false);
   const textAnimation = useAnimationControls();
   const { scrollYProgress: end } = useScroll({
     target: ref,
@@ -54,6 +54,19 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     textAnimation.start("show");
     console.log(large); // for lint error
   }, [])
+
+  useEffect(() => {
+
+    if (modal) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = ''; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = ''; // Ensure scrolling is enabled when component unmounts
+    };
+  }, [modal]);
 
 
 
@@ -105,14 +118,40 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       } 
     }
   }
-  /*
-  const onClick = () => {
+  
+  const handleClick = () => {
     console.log("Clicked!");
+    setModal(true);
   }
-  */
+
+  const handleClose =() => {
+    setModal(false);
+  }
+  
 
   return (
     <div className="relative">
+
+      {modal &&
+        <div className="fixed top-0 z-40 w-screen h-screen bg-black/60 flex items-center justify-center">
+          <X color="#fff" onClick={handleClose}/>
+          <motion.div 
+            className="w-1/2 h-1/2 bg-white"
+            initial={{
+              scale: 0.5
+            }}
+            animate={{
+              scale: 1,
+              transition: {
+                duration: 0.2,
+                ease: easeInOut,
+              }
+            }}
+          >
+            <Image alt="picture "src={photo1} className="w-full h-full object-cover"/>
+          </motion.div>
+        </div>
+      }
       <section className="bg-[#FAFBF7] h-svh lg:h-screen w-full flex">
         <div className="w-full h-full relative">
           {/* Text container with higher z-index */}
@@ -323,6 +362,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 src={photo1} 
                 alt="Jesus taking a photo of Anita" 
                 className="w-full h-full object-cover object-center" 
+                onClick={handleClick}
               />
             </motion.div>
             <motion.div 

@@ -83,7 +83,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
                 type="text"
                 id="firstName"
                 name="firstName"
-                className='text-xl font-canto text-black focus:outline-none focus:border-[#333333] border-[#999999] border px-3 py-2 caret-black placeholder:font-canto bg-[#FEFEFB] placeholder:text-[#878787]'
+                className='text-xl font-canto text-black rounded-none focus:outline-none focus:border-[#486A51] border-[#999999] border px-3 py-2 caret-black placeholder:font-canto bg-[#FEFEFB] placeholder:text-[#878787]'
                 placeholder='First Name'
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -95,7 +95,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
                 type="text"
                 id="lastName"
                 name="lastName"
-                className='text-xl font-canto text-black focus:outline-none focus:border-[#333333] border-[#999999] border px-3 py-2 caret-black placeholder:font-canto bg-[#FEFEFB] placeholder:text-[#878787]'
+                className='text-xl font-canto text-black rounded-none focus:outline-none focus:border-[#486A51] border-[#999999] border px-3 py-2 caret-black placeholder:font-canto bg-[#FEFEFB] placeholder:text-[#878787]'
                 placeholder='Last Name'
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
