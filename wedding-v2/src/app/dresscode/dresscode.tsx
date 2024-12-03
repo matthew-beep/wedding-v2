@@ -4,6 +4,7 @@ import { motion, easeOut } from 'framer-motion';
 import men from '../img/men.jpeg'
 import women from '../img/women.jpeg'
 import Image from "next/image";
+import Link from 'next/link';
 
 interface DresscodeProps {
   windowWidth? : number;
@@ -43,7 +44,7 @@ const Dresscode: React.FC<DresscodeProps> = ({ }) => {
   
 */
   return (
-    <div className="relative bg-[#f5f5f5]"> 
+    <div className="relative bg-[#FAFBF7]"> 
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col">
         <div className="h-[50svh]">
           <div 
@@ -65,7 +66,25 @@ const Dresscode: React.FC<DresscodeProps> = ({ }) => {
             </motion.h2>
           </div>
         </div>
-        <section className='h-auto'>
+        <section className='h-auto font-canto p-5 flex flex-col gap-5'>
+          <div className='flex flex-col gap-5'>
+            <div className='flex flex-col'>
+              <h2 className='text-[#486A51] text-2xl flex flex-col'>
+                WEDDING DAY DRESS CODE
+              </h2>
+              <h3 className='text-[#919191]'>
+                Information & Inspiration
+              </h3>
+            </div>
+            <p className='text-[#333333] text-lg'>
+              We&apos;d love to see our friends and family dress up on our big day! Please come in an elegant garden party where the goal is to dress to impress. 
+              Embrace ruffles, pastels, and florals—bring your most stunning and standout style! We kindly ask that you avoid wearing silk pastel yellow, 
+              as it&apos;s reserved for our bridal party. We can&apos;t wait to capture everlasting moments with you in your fantastic outfits!
+            </p>
+            <p className='text-[#333333] text-lg'>
+              If you need more help and inspiration on what to wear, check out this <Link href="https://pin.it/56ZtGr2Jr" target='_blank' className='underline text-[#486A51] pointer'>Pinterest Board!</Link> 
+            </p>
+          </div>
           <div className='flex'>
             <Image 
               src={men} 
