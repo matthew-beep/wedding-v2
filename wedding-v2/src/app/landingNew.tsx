@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React from 'react';
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useRef} from 'react'
 import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
 import rsvp from './img/rsvp.jpg';
 import video from './img/video.mp4';
