@@ -179,14 +179,14 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   }
 
   const thankYou = (
-    <div className='font-canto flex flex-col items-center'>
+    <div className='font-canto flex flex-col items-center bg-[#FAFBF7]'>
       <h4 className='text-2xl font-bold'>Thank You</h4>
       <p>Your response has been submitted.</p>
     </div>
   )
 
   const form = (
-    <form className='flex flex-col gap-5 bg-[#FAFBF7] w-full px-5 lg:items-center lg:justify-center' onSubmit={handleSubmit}>
+    <form className='flex flex-col gap-8 bg-[#FAFBF7] w-full px-5 lg:items-center lg:justify-center' onSubmit={handleSubmit}>
       <div className='flex gap-2 lg:w-4/12 items-center justify-center'>
         <div className='flex flex-col w-full'>
           <label htmlFor="firstName" className='text-xl text-[#486A51]'>First Name <span className='text-sm text-[#919191]'>(required)</span></label>
@@ -196,7 +196,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             placeholder ="First Name" 
             value={firstName} 
             onChange={handleFirst}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'/>
         </div>
         <div className='flex flex-col w-full'>
           <label htmlFor="lastName" className='text-xl text-[#486A51]'>Last Name <span className='text-sm text-[#919191]'>(required)</span></label>
@@ -206,7 +206,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             placeholder ="Last Name" 
             value={lastName}
             onChange={handleLast} 
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'/>
         </div>
       </div>
       <div className='lg:w-4/12'>
@@ -218,7 +218,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             placeholder ="Email" 
             value={email} 
             onChange={handleEmail}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'/>
         </div>
       </div>
       <div className='flex flex-col gap-1 lg:w-4/12'>
@@ -256,7 +256,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             placeholder ="Ex: Peanuts, shellfish, etc." 
             value={diet} 
             onChange={handleDiet}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'/>
         </div>
       </div>
       <div className='lg:w-4/12'>
@@ -266,7 +266,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             id="text" 
             value={text} 
             onChange={handleText}
-            className='border-2 rounded-none w-full p-2 focus:outline-none focus:border-[#333333] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 min-h-32 focus:outline-none focus:border-[#486A51] bg-white'/>
         </div>
       </div>
       <button type="submit" className="bg-[#486A51] lg:w-4/12 py-2 w-full text-white font-canto text-3xl rounded-full">Submit</button>
