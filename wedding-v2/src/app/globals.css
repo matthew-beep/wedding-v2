@@ -38,6 +38,11 @@ body {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url('./img/rsvp-banner.JPG');
 }
 
+.dress {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0.15) 30%), url('./img/dresscode-banner.JPG');
+}
+
+
 @media (max-width: 768px) {
   .parallax {
     background-attachment: scroll; /* Disable fixed attachment on mobile */

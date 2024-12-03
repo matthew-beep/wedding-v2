@@ -1,5 +1,5 @@
 'use client'
-import Ceremony from "./ceremony";
+import Dresscode from "./dresscode";
 import MobileNav from "../mobileNav";
 import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
@@ -90,7 +90,7 @@ export default function Home() {
           {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight}/>}
           </header>
           <main className="bg-[#fdfdfd]">
-            <Ceremony />
+            <Dresscode />
           </main>
           <Footer />
         </div>
