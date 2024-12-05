@@ -101,7 +101,10 @@ const Table: React.FC<TableProps> = ({ }) => {
                 <tr>
                   <th className='border-2 p-1'>First Name</th>
                   <th className='border-2 p-1'>Last Name</th>
+                  <th className='border-2 p-1'>Email</th>
                   <th className='border-2 p-1'>Attending</th>
+                  <th className='border-2 p-1'>Dietary Restrictions</th>
+                  <th className='border-2 p-1'>Comments</th>
                 </tr>
               </thead>
               <tbody>
