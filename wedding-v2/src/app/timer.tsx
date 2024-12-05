@@ -81,7 +81,7 @@ const Timer: React.FC<TimerProps> = ({  }) => {
   */
   return (
     <section className='w-full flex items-center justify-center font-canto text-[#486A51] flex-col gap-10'>
-      <div className='flex items-center w-11/12 justify-center font-bold text-4xl'>
+      <div className='flex items-center w-11/12 lg:w-1/2 justify-center font-bold text-4xl'>
         <div className='flex flex-col items-center w-full px-2'>
           <div>
             {String(days).padStart(2, '0')}
