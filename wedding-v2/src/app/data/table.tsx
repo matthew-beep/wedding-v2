@@ -23,6 +23,9 @@ interface RSVPAttending {
   firstName: string;
   lastName: string;
   attending: boolean;
+  diet: string;
+  email: string;
+  text: string;
 }
 
 const Table: React.FC<TableProps> = ({ }) => {
@@ -112,7 +115,10 @@ const Table: React.FC<TableProps> = ({ }) => {
                   >
                     <td className='p-1'>{item.firstName}</td>
                     <td className='p-1'>{item.lastName}</td>
+                    <td className='p-1'>{item.email}</td>
                     <td className='p-1'>{item.attending + " "}</td>
+                    <td className='p-1'>{item.diet}</td>
+                    <td className='p-1'>{item.text}</td>
                   </tr>
                 ))}
               </tbody>
