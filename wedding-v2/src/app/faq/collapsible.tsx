@@ -107,7 +107,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({ question }) => {
       <AnimatePresence>
         {opened && 
             <motion.div
-              className='font-proxima text-lg sm:text-2xl overflow-y-hidden'
+              className='font-canto text-lg sm:text-2xl text-[#333333] overflow-y-hidden'
               variants={collapse}
               initial="hidden"
               animate="show"

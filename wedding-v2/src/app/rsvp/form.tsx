@@ -234,7 +234,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             value="accept"
             onChange={handleSelect}
           />
-          <label htmlFor="attendance" className='text-lg'>Yes! Can&apos;t wait to celebrate!</label>
+          <label htmlFor="attendance" className='text-lg text-[#333333]'>Yes! Can&apos;t wait to celebrate!</label>
         </div>
         <div className='flex gap-2'>
           <input 
@@ -244,7 +244,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             value="decline" 
             onChange={handleSelect}
           />
-          <label htmlFor="attendance" className='text-lg'>Sad to miss, but sending love from afars</label>
+          <label htmlFor="attendance" className='text-lg text-[#333333]'>Sad to miss, but sending love from afar</label>
         </div>
       </div>
       <div className='lg:w-4/12'>

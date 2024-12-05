@@ -136,14 +136,14 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
             </motion.h2>
           </div>
           <motion.ul 
-              className="flex w-full h-full text-xl items-center gap-10  justify-end"
+              className="flex w-full h-full text-xl items-center gap-10 justify-end"
               variants={linkSection}
               initial={"hidden"}
               animate={"show"}
               exit={"exit"}
             >
               <motion.li 
-                className="py-4 px-4 text-3xl cursor-pointer"
+                className="py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
@@ -154,18 +154,18 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black py-4 px-4 text-3xl cursor-pointer"
+                className="text-black py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
                 animate={textColor}
               >
-                <Link href="/ceremony">
-                  Ceremony
+                <Link href="/dresscode">
+                  Dress Code
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black py-4 px-4 text-3xl cursor-pointer"
+                className="text-black py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
@@ -174,7 +174,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 Registry
               </motion.li>
               <motion.li 
-                className="text-black py-4 px-4 text-3xl cursor-pointer"
+                className="text-black py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
@@ -185,7 +185,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black px-4 py-2 text-3xl bg-black text-white cursor-pointer"
+                className="text-black px-4 py-2 text-2xl bg-black text-white cursor-pointer"
               >
                   <Link href="/rsvp">
                     RSVP

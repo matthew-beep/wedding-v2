@@ -130,7 +130,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   
 
   return (
-    <div className="relative">
+    <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
         <div className="fixed top-0 z-40 w-screen h-screen bg-black/60 flex items-center justify-center">
@@ -236,14 +236,14 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 px-5">
+      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 px-5 lg:w-9/12">
         <section 
-          className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 relative z-10 py-12"
+          className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 lg:gap-24 relative z-10 py-12"
           id="details"
         >
           <div>
             <motion.h4 
-              className="text-[#486A51] text-4xl"
+              className="text-[#486A51] text-3xl lg:text-6xl"
               initial={{ 
                 opacity:0,
                 filter: "blur(5px)"
@@ -263,81 +263,82 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             >
                 WE&apos;RE GETTING MARRIED
             </motion.h4>
-            <h3 className="text-[#919191]">DETAILS</h3>
+            <h3 className="text-[#919191] lg:text-xl">DETAILS</h3>
           </div>
-
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 w-full ">
-                <h4 className="text-lg">
-                  WHEN:
-                </h4>
-            </div>
-            <motion.div 
-              className="flex flex-col gap-8 w-full"
-              initial={{ 
-                opacity: 0,
-                filter: "blur(5px)" 
-              }}
-              whileInView={{ 
-                opacity: 1,
-                filter: "blur(0px)" 
-              }}
-              transition={{ 
-                duration: 0.5, 
-                delay:0.2
-              
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3
-              }}
-            >
-              <p className="text-4xl text-[#486A51] w-full">Friday, August 29th, 2025</p>
-              <div className="flex flex-col w-full">
-                <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
-                <p className="text-xl">RECEPTION: 5pm-10pm</p>           
+          <div className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-around">
+            <div className="flex flex-col gap-3 lg:items-center">
+              <div className="flex items-center gap-3">
+                  <h4 className="text-lg">
+                    WHEN:
+                  </h4>
               </div>
-              <hr className="bg-[#333333] w-full h-0.5"/>
-            </motion.div>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 w-full ">
-                <h4 className="text-lg">
-                  WHERE:
-                </h4>
+              <motion.div 
+                className="flex flex-col gap-8 lg:items-center"
+                initial={{ 
+                  opacity: 0,
+                  filter: "blur(5px)" 
+                }}
+                whileInView={{ 
+                  opacity: 1,
+                  filter: "blur(0px)" 
+                }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay:0.2
+                
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3
+                }}
+              >
+                <p className="text-4xl text-[#486A51] w-full">Friday, August 29th, 2025</p>
+                <div className="flex flex-col">
+                  <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
+                  <p className="text-xl">RECEPTION: 5pm-10pm</p>           
+                </div>
+                <hr className="bg-[#333333] w-full lg:w-1/4 h-0.5"/>
+              </motion.div>
             </div>
-            <motion.div 
-              className="flex flex-col gap-8 w-full"
-              initial={{ 
-                opacity: 0,
-                filter: "blur(5px)" 
-              }}
-              whileInView={{ 
-                opacity: 1,
-                filter: "blur(0px)" 
-              }}
-              transition={{ 
-                duration: 0.5, 
-                delay:0.2
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3
-              }}
-            >
-              <p className="text-4xl text-[#486A51] w-full">Rock Creek Gardens</p>
-              <div className="flex flex-col">
-                <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
-                  <p className="text-xl underline decoration-1">11421 164th St E</p>
-                  <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
-                </Link>
+
+            <div className="flex flex-col gap-3 lg:items-center">
+              <div className="flex items-center gap-3">
+                  <h4 className="text-lg">
+                    WHERE:
+                  </h4>
               </div>
-              <hr className="bg-[#333333] w-full h-0.5"/>
-            </motion.div>
+              <motion.div 
+                className="flex flex-col gap-8 lg:items-center"
+                initial={{ 
+                  opacity: 0,
+                  filter: "blur(5px)" 
+                }}
+                whileInView={{ 
+                  opacity: 1,
+                  filter: "blur(0px)" 
+                }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay:0.2
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3
+                }}
+              >
+                <p className="text-4xl text-[#486A51] w-full">Rock Creek Gardens</p>
+                <div className="flex flex-col">
+                  <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
+                    <p className="text-xl underline decoration-1">11421 164th St E</p>
+                    <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
+                  </Link>
+                </div>
+                <hr className="bg-[#333333] w-full lg:w-1/4 h-0.5"/>
+              </motion.div>
+            </div>
           </div>
           <Link href="#rsvp" className="w-full h-auto">
-            <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+            <button className="w-full lg:w-2/12 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
               I&apos;LL BE THERE
             </button>
           </Link>
@@ -404,7 +405,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </section>
         <section 
-          className="flex flex-col gap-8 py-12"
+          className="flex flex-col gap-8 py-12 lg:flex-row-reverse"
           id="rsvp"
         >
             <motion.div 
@@ -426,26 +427,27 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
-            <div>
-              <h2 className="text-3xl text-[#486A51]">SEE YOU THERE?</h2>
-              <h3 className="text-[#919191]">RSVP</h3>
-            </div>
-            <p className="text-lg text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
-              your response will help us in our planning. For more information please refer to our FAQs. 
-              Can&apos;t wait to celebrate this day with you there!
-            </p>
-            <div className="flex flex-col gap-3">
-              <Link href="/faq" className="w-full h-auto">
-                <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
-                  FAQ
-                </button>
-              </Link>
-              <Link href="/rsvp" className="w-full h-auto">
-                <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full">
-                  RSVP
-                </button>
-              </Link>
-
+            <div className="flex flex-col gap-8">
+              <div>
+                <h2 className="text-3xl text-[#486A51] lg:text-6xl">SEE YOU THERE?</h2>
+                <h3 className="text-[#919191] lg:text-xl">RSVP</h3>
+              </div>
+              <p className="text-lg lg:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+                your response will help us in our planning. For more information please refer to our FAQs. 
+                Can&apos;t wait to celebrate this day with you there!
+              </p>
+              <div className="flex flex-col gap-3 lg:flex-row">
+                <Link href="/faq" className="w-full h-auto">
+                  <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+                    FAQ
+                  </button>
+                </Link>
+                <Link href="/rsvp" className="w-full h-auto">
+                  <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full">
+                    RSVP
+                  </button>
+                </Link>
+              </div>
             </div>
           </section>
       </section>
