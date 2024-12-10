@@ -270,7 +270,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <div className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-around">
             <div className="flex flex-col gap-3 lg:items-center">
               <div className="flex items-center gap-3">
-                  <h4 className="text-lg">
+                  <h4 className="text-lg lg:text-2xl">
                     WHEN:
                   </h4>
               </div>
@@ -294,10 +294,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   amount: 0.3
                 }}
               >
-                <p className="text-4xl text-[#486A51] w-full">Friday, August 29th, 2025</p>
+                <p className="text-4xl lg:text-5xl text-[#486A51] w-full">Friday, August 29th, 2025</p>
                 <div className="flex flex-col">
-                  <p className="text-xl">CEREMONY: 3pm-3:30pm</p>
-                  <p className="text-xl">RECEPTION: 5pm-10pm</p>           
+                  <p className="text-xl lg:text-2xl">CEREMONY: 3pm-3:30pm</p>
+                  <p className="text-xl lg:text-2xl">RECEPTION: 5pm-10pm</p>           
                 </div>
                 <hr className="bg-[#333333] w-full lg:w-1/4 h-0.5"/>
               </motion.div>
@@ -305,7 +305,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
 
             <div className="flex flex-col gap-3 lg:items-center">
               <div className="flex items-center gap-3">
-                  <h4 className="text-lg">
+                  <h4 className="text-lg lg:text-2xl">
                     WHERE:
                   </h4>
               </div>
@@ -328,11 +328,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   amount: 0.3
                 }}
               >
-                <p className="text-4xl text-[#486A51] w-full">Rock Creek Gardens</p>
+                <p className="text-4xl lg:text-5xl text-[#486A51] w-full">Rock Creek Gardens</p>
                 <div className="flex flex-col">
                   <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
-                    <p className="text-xl underline decoration-1">11421 164th St E</p>
-                    <p className="text-xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
+                    <p className="text-xl lg:text-2xl underline decoration-1">11421 164th St E</p>
+                    <p className="text-xl lg:text-2xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
                   </Link>
                 </div>
                 <hr className="bg-[#333333] w-full lg:w-1/4 h-0.5"/>
@@ -413,7 +413,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           id="rsvp"
         >
             <motion.div 
-              className="flex flex-col w-full h-[50vh]"
+              className="flex flex-col w-full lg:w-1/2 h-[50vh]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -431,7 +431,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between">
               <div>
                 <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
                 <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>

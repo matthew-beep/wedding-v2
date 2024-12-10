@@ -10,9 +10,10 @@ import Link from 'next/link';
 interface MobileNavProps {
   scroll : number;
   height : number;
+  threshold : number;
 }
 
-const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
+const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
   const [downAnimation, setDownAnimation] = useState<boolean>(false);
   const [navDisplay, setNavDisplay] = useState<boolean>(false);
   const [iconOpacity, setIconOpacity] = useState<number>(0);
@@ -131,7 +132,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height }) => {
   }, [downAnimation])
 
   useEffect(() => {
-    if (scroll > (0.75 * height) && scrollDown) { // hide navbar when scrolling down
+    if (scroll > (threshold * height) && scrollDown) { // hide navbar when scrolling down
       if(!navDisplay) {
         controls.start({
           y: '-100%',

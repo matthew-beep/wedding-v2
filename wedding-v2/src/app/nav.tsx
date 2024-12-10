@@ -72,11 +72,11 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
     if (downAnimation == true) {
       setIconOpacity(1);
       textColor.start({
-        color: "black"
+        color: '#486A51'
       })
       controls.start({
         color: 'black',
-        backgroundColor: 'rgba(245, 245, 245, 1)',
+        backgroundColor: 'rgba(250, 251, 247, 1)',
         boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.2)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
@@ -87,7 +87,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
       })
       controls.start({
         color: 'white',
-        backgroundColor: 'rgba(245, 245, 245, 0)',
+        backgroundColor: 'rgba(250, 251, 247, 0)',
         boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
@@ -125,7 +125,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
         >
           <div className="flex justify-between w-11/12 items-center">
             <motion.h2 
-              className="text-4xl"
+              className="text-4xl text-[#486A51]"
               style={{
                 opacity: iconOpacity
               }}
@@ -185,7 +185,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black px-4 py-2 text-2xl bg-black text-white cursor-pointer"
+                className="text-black px-4 py-2 text-2xl text-white cursor-pointer bg-[#486A51]"
               >
                   <Link href="/rsvp">
                     RSVP

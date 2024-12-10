@@ -68,7 +68,7 @@ export default function Home() {
       ) : (
         <div className="relative bg-white">
           <header className="fixed top-0 left-0 z-40 w-screen">
-            {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight} />}
+            {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight} threshold={0.75}/>}
             {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight} />}
           </header>
           <main className="bg-white">

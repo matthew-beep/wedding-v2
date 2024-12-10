@@ -1,6 +1,7 @@
 'use client'
 import FAQ from "./faq";
 import MobileNav from "../mobileNav";
+import Nav from "../nav";
 import {useScroll, useMotionValueEvent} from 'framer-motion'
 import { useEffect, useState } from "react";
 import Footer from "../footer";
@@ -9,7 +10,7 @@ export default function Home() {
   const { scrollY } = useScroll();
   const [scrollYProgress, setScrollYProgress] = useState<number>(scrollY.get());
   const [windowHeight, setWindowHeight] = useState<number>(0);
-  
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // console.log("Page scroll: ", latest)
@@ -39,13 +40,30 @@ export default function Home() {
     }
   });
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+      const handleMediaChange = (event: MediaQueryListEvent) => {
+        setIsLargeScreen(event.matches);
+      };
+
+      setIsLargeScreen(mediaQuery.matches);
+      mediaQuery.addEventListener("change", handleMediaChange);
+
+      return () => {
+        mediaQuery.removeEventListener("change", handleMediaChange);
+      };
+    }
+  }, [isLargeScreen]);
   
   
   return (
     <div className="relative bg-[#fdfdfd]">
-      <header className="fixed top-0 left-0 z-40 w-screen">
-        <MobileNav scroll={scrollYProgress} height={windowHeight}/>
-      </header>
+          <header className="fixed top-0 left-0 z-40 w-screen">
+            {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight} threshold={0.1}/>}
+            {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight} />}
+          </header>
       <main className="bg-[#fdfdfd]">
         <FAQ />
       </main>
