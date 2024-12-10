@@ -21,6 +21,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [modal, setModal] = useState<boolean>(false);
+  const [modalPic, setModalPic] = useState<string>(photo1);
   const textAnimation = useAnimationControls();
   const { scrollYProgress: end } = useScroll({
     target: ref,
@@ -119,9 +120,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     }
   }
   
-  const handleClick = () => {
+  const handleClick = (photo:string) => {
     console.log("Clicked!");
     setModal(true);
+    setModalPic(photo);
   }
 
   const handleClose =() => {
@@ -133,10 +135,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
-        <div className="fixed top-0 z-40 w-screen h-screen bg-black/60 flex items-center justify-center">
-          <X color="#fff" onClick={handleClose}/>
+        <div className="fixed top-0 z-40 w-screen h-screen bg-black/60 flex items-center flex-col justify-center ">
+          <X color="#fff" className="cursor-pointer absolute right-0 top-0 m-5" onClick={handleClose}/>
           <motion.div 
-            className="w-1/2 h-1/2 bg-white"
+            className="w-3/4 h-1/2 bg-white lg:w-11/12 lg:h-11/12"
             initial={{
               scale: 0.5
             }}
@@ -148,7 +150,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               }
             }}
           >
-            <Image alt="picture "src={photo1} className="w-full h-full object-cover"/>
+            <Image alt="picture "src={modalPic} className="w-full h-full object-cover"/>
           </motion.div>
         </div>
       }
@@ -362,8 +364,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <Image 
                 src={photo1} 
                 alt="Jesus taking a photo of Anita" 
-                className="w-full h-full object-cover object-center" 
-                onClick={handleClick}
+                className="w-full h-full object-cover object-center cursor-pointer" 
+                onClick={() => handleClick(photo1)}
               />
             </motion.div>
             <motion.div 
@@ -381,7 +383,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <Image 
                 src={photo2} 
                 alt="Anita Holding Flowers" 
-                className="w-full h-full object-cover object-center" 
+                className="w-full h-full object-cover object-center cursor-pointer" 
+                onClick={() => handleClick(photo2)}
               />
             </motion.div>
             <motion.div 
@@ -399,7 +402,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <Image 
                 src={photo3} 
                 alt="Jesus and Anita standing together" 
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center cursor-pointer"
+                onClick={() => handleClick(photo3)}
               />
             </motion.div>
           </div>
@@ -429,10 +433,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <div className="flex flex-col gap-8">
               <div>
-                <h2 className="text-3xl text-[#486A51] lg:text-6xl">SEE YOU THERE?</h2>
-                <h3 className="text-[#919191] lg:text-xl">RSVP</h3>
+                <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
+                <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
               </div>
-              <p className="text-lg lg:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+              <p className="text-lg md:text-xl lg:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
                 your response will help us in our planning. For more information please refer to our FAQs. 
                 Can&apos;t wait to celebrate this day with you there!
               </p>
