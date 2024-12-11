@@ -135,15 +135,17 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
-        <div className="fixed top-0 z-40 w-screen h-screen bg-black/60 flex items-center flex-col justify-center ">
+        <div className="fixed top-0 z-40 w-screen h-screen bg-black/75 flex items-center flex-col justify-center ">
           <X color="#fff" className="cursor-pointer absolute right-0 top-0 m-5" onClick={handleClose}/>
           <motion.div 
             className="w-3/4 h-1/2 bg-white lg:w-11/12 lg:h-11/12"
             initial={{
-              scale: 0.5
+              scale: 0.5,
+              opacity: 0,
             }}
             animate={{
               scale: 1,
+              opacity: 1,
               transition: {
                 duration: 0.2,
                 ease: easeInOut,
@@ -238,7 +240,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 px-5 lg:w-9/12">
+      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-24 px-5 lg:w-9/12">
         <section 
           className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 lg:gap-24 relative z-10 py-12"
           id="details"
@@ -278,15 +280,15 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="flex flex-col gap-8 lg:items-center"
                 initial={{ 
                   opacity: 0,
-                  filter: "blur(5px)" 
+                  translateY: '15%' 
                 }}
                 whileInView={{ 
                   opacity: 1,
-                  filter: "blur(0px)" 
+                  translateY: '0%'  
                 }}
                 transition={{ 
                   duration: 0.5, 
-                  delay:0.2
+                  delay:0.1
                 
                 }}
                 viewport={{
@@ -299,7 +301,24 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   <p className="text-xl lg:text-2xl">CEREMONY: 3pm-3:30pm</p>
                   <p className="text-xl lg:text-2xl">RECEPTION: 5pm-10pm</p>           
                 </div>
-                <hr className="bg-[#333333] w-full lg:w-1/4 h-0.5"/>
+                <motion.hr 
+                  className="bg-[#333333] w-full lg:w-1/4 h-0.5"
+                  initial={{
+                    scaleX:0
+                  }}
+                  whileInView={{
+                    scaleX:1,
+                    originX:0,
+                    transition: { 
+                      duration: 0.4, 
+                      ease: easeInOut
+                    }
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.3
+                  }}
+                />
               </motion.div>
             </div>
 
@@ -313,15 +332,15 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="flex flex-col gap-8 lg:items-center"
                 initial={{ 
                   opacity: 0,
-                  filter: "blur(5px)" 
+                  translateY: '15%' 
                 }}
                 whileInView={{ 
                   opacity: 1,
-                  filter: "blur(0px)" 
+                  translateY: '0%'  
                 }}
                 transition={{ 
                   duration: 0.5, 
-                  delay:0.2
+                  delay:0.1
                 }}
                 viewport={{
                   once: true,
@@ -335,7 +354,24 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                     <p className="text-xl lg:text-2xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
                   </Link>
                 </div>
-                <hr className="bg-[#333333] w-full lg:w-1/4 h-0.5"/>
+                <motion.hr 
+                  className="bg-[#333333] w-full lg:w-1/4 h-0.5"
+                  initial={{
+                    scaleX:0
+                  }}
+                  whileInView={{
+                    scaleX:1,
+                    originX:0,
+                    transition: { 
+                      duration: 0.4, 
+                      ease: easeInOut
+                    }
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.3
+                  }}
+                />
               </motion.div>
             </div>
           </div>
@@ -409,7 +445,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </section>
         <section 
-          className="flex flex-col gap-8 py-12 lg:flex-row-reverse"
+          className="flex flex-col gap-8 lg:gap-32 py-12 lg:flex-row-reverse"
           id="rsvp"
         >
             <motion.div 

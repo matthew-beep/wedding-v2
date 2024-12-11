@@ -182,6 +182,10 @@ const Form: React.FC<RSVPProps> = ({  }) => {
     <div className='font-canto flex flex-col items-center bg-[#FAFBF7]'>
       <h4 className='text-2xl font-bold'>Thank You</h4>
       <p>Your response has been submitted.</p>
+      <div className='flex'>
+        <button>Submit Another Response</button>
+        <button>Add Event to Calendar</button>
+      </div>
     </div>
   )
 
