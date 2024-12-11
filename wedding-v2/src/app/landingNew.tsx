@@ -138,7 +138,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
         <div className="fixed top-0 z-40 w-screen h-screen bg-black/75 flex items-center flex-col justify-center ">
           <X color="#fff" className="cursor-pointer absolute right-0 top-0 m-5" onClick={handleClose}/>
           <motion.div 
-            className="w-3/4 h-1/2 bg-white lg:w-11/12 lg:h-11/12"
+            className="w-3/4 h-1/2 bg-white lg:w-5/12 lg:h-5/6"
             initial={{
               scale: 0.5,
               opacity: 0,
@@ -280,7 +280,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="flex flex-col gap-8 lg:items-center"
                 initial={{ 
                   opacity: 0,
-                  translateY: '15%' 
+                  translateY: '25%' 
                 }}
                 whileInView={{ 
                   opacity: 1,
@@ -289,7 +289,6 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 transition={{ 
                   duration: 0.5, 
                   delay:0.1
-                
                 }}
                 viewport={{
                   once: true,
@@ -332,7 +331,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="flex flex-col gap-8 lg:items-center"
                 initial={{ 
                   opacity: 0,
-                  translateY: '15%' 
+                  translateY: '25%' 
                 }}
                 whileInView={{ 
                   opacity: 1,
@@ -375,11 +374,31 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               </motion.div>
             </div>
           </div>
-          <Link href="#rsvp" className="w-full h-auto">
-            <button className="w-full lg:w-2/12 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
-              I&apos;LL BE THERE
-            </button>
-          </Link>
+          <motion.div
+            className="w-full h-auto"
+            initial={{ 
+              opacity: 0,
+              translateY: '25%' 
+            }}
+            whileInView={{ 
+              opacity: 1,
+              translateY: '0%'  
+            }}
+            transition={{ 
+              duration: 0.5, 
+              delay:0.1
+            }}
+            viewport={{
+              once: true,
+              amount: 0.3
+            }}
+          >
+            <Link href="#rsvp" className="w-full h-auto">
+              <button className="w-full lg:w-2/12 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+                I&apos;LL BE THERE
+              </button>
+            </Link>
+          </motion.div>
         </section>
         <section className="flex flex-col relative">
           <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
