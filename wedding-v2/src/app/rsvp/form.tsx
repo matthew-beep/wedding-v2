@@ -137,6 +137,15 @@ const Form: React.FC<RSVPProps> = ({  }) => {
     setAttending(e.target.value === 'accept')
   }
 
+  const handleResponse = () => {
+    setIsSubmitted(false);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setDiet("");
+    setText("");
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -179,12 +188,16 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   }
 
   const thankYou = (
-    <div className='font-canto flex flex-col items-center bg-[#FAFBF7]'>
-      <h4 className='text-2xl font-bold'>Thank You</h4>
+    <div className='font-canto flex flex-col items-center bg-[#FAFBF7] w-full text-[#333333]'>
+      <h4 className='text-5xl font-bold'>Thank You</h4>
       <p>Your response has been submitted.</p>
       <div className='flex'>
-        <button>Submit Another Response</button>
-        <button>Add Event to Calendar</button>
+        <button
+          onClick={handleResponse}
+          className='h-full flex py-2 items-center justify-center text-[#486A51] text-xl rounded-full'
+        >
+          Submit Another Response
+        </button>
       </div>
     </div>
   )
@@ -278,11 +291,11 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   )
 
   return (
-    <div className="relative bg-[#f5f5f5] text-black"> 
+    <div className="relative bg-[#FAFBF7] text-black"> 
       <section className="h-auto relative flex flex-col items-center font-canto">
         {!isSubmitted && !isLoading && form}
         {isLoading && 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 0.1 }}>
