@@ -127,7 +127,9 @@ const Table: React.FC<TableProps> = ({ }) => {
               </tbody>
             </table>
             <p>Total Attendees: {attendanceNum}</p>
-            <button className='px-5 py-2 rounded-md font-proxima font-bold text-white bg-green-400 my-5'><CsvDownloadButton data={attendingList} /></button>
+            <button className='px-5 py-2 rounded-md font-proxima font-bold text-white bg-green-400 my-5'>
+              <CsvDownloadButton data={attendingList} delimiter={","}/>
+            </button>
           </div>
         }
       </div> 

@@ -240,9 +240,9 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-24 px-5 lg:w-9/12">
+      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-32 px-5 lg:w-8/12">
         <section 
-          className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 lg:gap-24 relative z-10 py-12"
+          className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 lg:gap-32 relative z-10 py-12 lg:py-24"
           id="details"
         >
           <div>
@@ -269,7 +269,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.h4>
             <h3 className="text-[#919191] lg:text-xl">DETAILS</h3>
           </div>
-          <div className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-around">
+          <div className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-between">
             <div className="flex flex-col gap-3 lg:items-center">
               <div className="flex items-center gap-3">
                   <h4 className="text-lg lg:text-2xl">
@@ -464,7 +464,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </section>
         <section 
-          className="flex flex-col gap-8 lg:gap-32 py-12 lg:flex-row-reverse"
+          className="flex flex-col gap-8 h-auto lg:gap-32 py-24 lg:flex-row-reverse"
           id="rsvp"
         >
             <motion.div 
