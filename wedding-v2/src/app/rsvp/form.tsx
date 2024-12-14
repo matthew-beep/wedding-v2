@@ -5,6 +5,7 @@ import { collection, setDoc, doc, updateDoc, query, where, getDocs, getDoc } fro
 import { db } from '../firebase';
 import { LoaderCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import 'add-to-calendar-button';
 
 interface RSVPProps {
   windowWidth? : number;
@@ -90,7 +91,6 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   const [attending, setAttending] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
 
   useEffect(() => {
     if (value) {
@@ -191,12 +191,32 @@ const Form: React.FC<RSVPProps> = ({  }) => {
     <div className='font-canto flex flex-col items-center bg-[#FAFBF7] w-full text-[#333333]'>
       <h4 className='text-5xl font-bold'>Thank You</h4>
       <p>Your response has been submitted.</p>
-      <div className='flex'>
+      <div className='flex items-center justify-center gap-5 p-5'>
         <button
           onClick={handleResponse}
           className='h-full flex py-2 items-center justify-center text-[#486A51] text-xl rounded-full'
         >
           Submit Another Response
+        </button>
+        <button className=''>
+          <add-to-calendar-button
+            name="Anita & Jesus Get Married"
+            description="A nice description does not hurt"
+            startDate="2025-08-29"
+            endDate="2025-08-29"
+            startTime="14:00"
+            endTime="21:00"
+            location="Rock Creek Gardens, Puyallap"
+            options="['Apple','Google','iCal','Outlook.com']"
+            timeZone="Europe/Berlin"
+            trigger="click"
+            inline
+            listStyle="modal"
+            iCalFileName="Reminder-Event"
+            buttonStyle='round'
+            styleLight="--btn-background: #486A51; --btn-text: #fff; --font: Canto, 'Times New Roman', Times, serif;"
+            styleDark="--btn-background: #000;"
+          />
         </button>
       </div>
     </div>

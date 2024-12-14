@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-// import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 import {useEffect, useState} from 'react'
 import {motion, useAnimationControls, easeInOut} from 'framer-motion'
 import Link from 'next/link';
@@ -18,6 +18,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
   const [scrollDown, setScrollDown] = useState<boolean>(false);
   const controls = useAnimationControls();
   const textColor = useAnimationControls();
+    const pathname = usePathname();
 
   const linkSection = {
     hidden: {
@@ -83,7 +84,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
     } else {
       setIconOpacity(0);
       textColor.start({
-        color: "white"
+        color: pathname != '/faq' ? 'white' : '#486A51'
       })
       controls.start({
         color: 'white',
