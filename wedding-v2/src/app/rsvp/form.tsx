@@ -201,14 +201,14 @@ const Form: React.FC<RSVPProps> = ({  }) => {
         <button className=''>
           <add-to-calendar-button
             name="Anita & Jesus Get Married"
-            description="A nice description does not hurt"
+            description="Come celebrate our love!"
             startDate="2025-08-29"
             endDate="2025-08-29"
-            startTime="14:00"
+            startTime="15:00"
             endTime="21:00"
             location="Rock Creek Gardens, Puyallap"
             options="['Apple','Google','iCal','Outlook.com']"
-            timeZone="Europe/Berlin"
+            timeZone="America/Los_Angeles"
             trigger="click"
             inline
             listStyle="modal"
