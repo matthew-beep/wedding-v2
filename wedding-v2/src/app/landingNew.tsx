@@ -123,7 +123,17 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   }
 
   const infoContainer = {
-    hidden: {
+
+  }
+
+  const infoAnimation = {
+
+  }
+
+
+
+  const photoContainer = {
+    initial: {
       opacity: 0,
       filter:'blur(10px)',
     },
@@ -138,7 +148,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     }
   }
 
-  const infoAnimation = {
+  const photoAnimation = {
     hidden: {
       opacity: 0,
       filter:'blur(10px)',
@@ -314,7 +324,6 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 filter: "blur(5px)"
               }}
               whileInView={{
-
                 opacity:1,
                 filter: "blur(0px)"
               }}
@@ -330,8 +339,14 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.h4>
             <h3 className="text-[#919191] lg:text-xl">DETAILS</h3>
           </div>
-          <div className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-between">
-            <div className="flex flex-col gap-3 lg:items-center">
+          <motion.div 
+            className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-between"
+            variants={infoContainer}
+          >
+            <motion.div 
+              className="flex flex-col gap-3 lg:items-center"
+              variants={infoAnimation}
+            >
               <div className="flex items-center gap-3">
                   <h4 className="text-lg lg:text-2xl">
                     WHEN:
@@ -380,9 +395,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   }}
                 />
               </motion.div>
-            </div>
-
-            <div className="flex flex-col gap-3 lg:items-center">
+            </motion.div>
+            <motion.div 
+              className="flex flex-col gap-3 lg:items-center"
+              variants={infoAnimation}
+            >
               <div className="flex items-center gap-3">
                   <h4 className="text-lg lg:text-2xl">
                     WHERE:
@@ -433,8 +450,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   }}
                 />
               </motion.div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           <motion.div
             className="w-full h-auto"
             initial={{ 
@@ -485,7 +502,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <motion.div 
             className="flex gap-5 overflow-x-scroll scrollbar-hide w-full"
             ref={scrollRef}
-            variants={infoContainer}
+            variants={photoContainer}
             initial={"hidden"}
             whileInView={"show"}
             viewport={{
@@ -495,7 +512,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           >
             <motion.div 
               className="min-w-80 md:min-w-96 lg:shrink-0 lg:w-[30rem]"
-              variants={infoAnimation}
+              variants={photoAnimation}
             >
               <Image 
                 src={photo1} 
@@ -506,7 +523,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <motion.div 
               className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
-              variants={infoAnimation}
+              variants={photoAnimation}
             >
               <Image 
                 src={photo2} 
@@ -517,7 +534,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <motion.div 
               className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
-              variants={infoAnimation}
+              variants={photoAnimation}
             >
               <Image 
                 src={photo3} 
