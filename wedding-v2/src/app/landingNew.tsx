@@ -123,27 +123,41 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   }
 
   const infoContainer = {
-
-  }
-
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5
+      },
+    },
+  };
+  
   const infoAnimation = {
-
-  }
+    hidden: { opacity: 0, translateY: '25%' },
+    show: { 
+      opacity: 1, 
+      translateY: '0%',      
+      transition: { 
+      duration: 0.5, 
+      ease: easeInOut
+      }  
+    },
+  };
 
 
 
   const photoContainer = {
     initial: {
       opacity: 0,
-      filter:'blur(10px)',
+      filter:'blur(5px)',
     },
     show: {
       opacity: 1, 
       filter:'blur(0px)',
       transition: { 
-        duration: 0.5, 
+        duration: 0.3, 
         ease: easeInOut,
-        staggerChildren: 0.1 
+        staggerChildren: 0.2
       } 
     }
   }
@@ -151,17 +165,14 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   const photoAnimation = {
     hidden: {
       opacity: 0,
-      filter:'blur(10px)',
       translateY: '10%'
     },
     show: {
       opacity: 1, 
-      filter:'blur(0px)',
       translateY: '0%',
       transition: { 
         duration: 0.5, 
-        ease: easeInOut,
-        staggerChildren: 0.1 
+        ease: easeInOut
       } 
     }
   }
@@ -204,7 +215,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
-        <div className="fixed top-0 z-40 w-screen h-screen bg-black/90 flex items-center flex-col justify-start gap-5">
+        <div className="fixed top-0 z-40 w-screen h-svh h-screen bg-black/90 flex items-center flex-col justify-start gap-5">
           <div className="w-full flex justify-end">
             <X className="text-white cursor-pointer right-0 top-0 m-5 hover:text-[#999999] duration-100 transition-all" onClick={handleClose}/>
           </div>
@@ -507,7 +518,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             whileInView={"show"}
             viewport={{
               once: true,
-              amount: 0.1
+              amount: 0.4
             }}
           >
             <motion.div 
@@ -545,7 +556,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
           </motion.div>
         </section>
-        <section 
+        <motion.section 
           className="flex flex-col gap-8 h-auto lg:gap-32 py-24 lg:flex-row-reverse"
           id="rsvp"
         >
@@ -568,7 +579,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
-            <div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between">
+            <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between">
               <div>
                 <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
                 <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
@@ -589,8 +600,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   </button>
                 </Link>
               </div>
-            </div>
-          </section>
+            </motion.div>
+          </motion.section>
       </section>
     </div>
   );
