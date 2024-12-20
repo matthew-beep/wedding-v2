@@ -31,7 +31,7 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
       <section className="h-auto relative flex flex-col items-center ">
         <div className="h-[50svh] md:h-[70vh] border-gray-700 w-full flex">
           <div 
-            className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto rsvp"
+            className="h-full w-full z-0 flex justify-center pt-32 text-white font-canto rsvp lg:items-center"
             style={{
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -40,7 +40,7 @@ const RSVP: React.FC<RSVPProps> = ({ }) => {
             }}
           >
             <motion.h2 
-              className="text-3xl xl:text-8xl font-bold"
+              className="text-3xl xl:text-6xl font-bold"
               variants={textAnimation}
               initial="hidden"
               animate="show"

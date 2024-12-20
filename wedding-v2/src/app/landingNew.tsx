@@ -240,7 +240,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-32 px-5 lg:w-8/12">
+      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-32 px-5 lg:w-10/12 xl:w-8/12">
         <section 
           className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 lg:gap-32 relative z-10 py-12 lg:py-24"
           id="details"
@@ -295,7 +295,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   amount: 0.3
                 }}
               >
-                <p className="text-4xl lg:text-5xl text-[#486A51] w-full">Friday, August 29th, 2025</p>
+                <p className="text-4xl lg:text-5xl lg:text-center text-[#486A51] w-full">Friday, August 29th, 2025</p>
                 <div className="flex flex-col">
                   <p className="text-xl lg:text-2xl">CEREMONY: 3pm-3:30pm</p>
                   <p className="text-xl lg:text-2xl">RECEPTION: 5pm-10pm</p>           
@@ -346,7 +346,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                   amount: 0.3
                 }}
               >
-                <p className="text-4xl lg:text-5xl text-[#486A51] w-full">Rock Creek Gardens</p>
+                <p className="text-4xl lg:text-5xl text-[#486A51] w-full lg:text-center">Rock Creek Gardens</p>
                 <div className="flex flex-col">
                   <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
                     <p className="text-xl lg:text-2xl underline decoration-1">11421 164th St E</p>
@@ -394,7 +394,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             }}
           >
             <Link href="#rsvp" className="w-full h-auto">
-              <button className="w-full lg:w-2/12 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+              <button className="w-full lg:w-auto lg:px-2 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
                 I&apos;LL BE THERE
               </button>
             </Link>

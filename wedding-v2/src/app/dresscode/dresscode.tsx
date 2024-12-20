@@ -32,9 +32,9 @@ const Dresscode: React.FC<DresscodeProps> = ({ }) => {
   return (
     <div className="relative bg-[#FAFBF7]"> 
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col">
-        <div className="h-[50svh] lg:h-[60vh]">
+        <div className="h-[50svh] md:h-[70vh]">
           <div 
-          className="h-auto w-full z-0 flex pt-24 justify-center text-white font-canto dress"
+          className="h-auto w-full z-0 flex pt-24 lg:pt-0 justify-center text-white font-canto dress lg:items-center"
           style={{
             backgroundSize: "cover",
             backgroundPosition: "center",
