@@ -121,6 +121,40 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       } 
     }
   }
+
+  const infoContainer = {
+    hidden: {
+      opacity: 0,
+      filter:'blur(10px)',
+    },
+    show: {
+      opacity: 1, 
+      filter:'blur(0px)',
+      transition: { 
+        duration: 0.5, 
+        ease: easeInOut,
+        staggerChildren: 0.1 
+      } 
+    }
+  }
+
+  const infoAnimation = {
+    hidden: {
+      opacity: 0,
+      filter:'blur(10px)',
+      translateY: '10%'
+    },
+    show: {
+      opacity: 1, 
+      filter:'blur(0px)',
+      translateY: '0%',
+      transition: { 
+        duration: 0.5, 
+        ease: easeInOut,
+        staggerChildren: 0.1 
+      } 
+    }
+  }
   
   const handleClick = (photo:string) => {
     console.log("Clicked!");
@@ -143,6 +177,18 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }    
   }
+
+  /*
+                initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 0.3
+              }}
+              viewport={{
+                once: true,
+                amount: 0.1
+              }}
+  */
 
   return (
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
@@ -363,7 +409,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               >
                 <p className="text-4xl lg:text-5xl text-[#486A51] w-full lg:text-center">Rock Creek Gardens</p>
                 <div className="flex flex-col">
-                  <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank">
+                  <Link href="https://maps.app.goo.gl/Pigf5jMHBtSDvwVi6" target="_blank" className="lg:text-center">
                     <p className="text-xl lg:text-2xl underline decoration-1">11421 164th St E</p>
                     <p className="text-xl lg:text-2xl underline decoration-1 flex gap-2">Puyallup, WA 98374 <span><ExternalLink/></span></p>
                   </Link>
@@ -436,21 +482,20 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               />
             </div>
           </div>
-          <div 
+          <motion.div 
             className="flex gap-5 overflow-x-scroll scrollbar-hide w-full"
             ref={scrollRef}
+            variants={infoContainer}
+            initial={"hidden"}
+            whileInView={"show"}
+            viewport={{
+              once: true,
+              amount: 0.1
+            }}
           >
             <motion.div 
               className="min-w-80 md:min-w-96 lg:shrink-0 lg:w-[30rem]"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.3
-              }}
-              viewport={{
-                once: true,
-                amount: 0.1
-              }}
+              variants={infoAnimation}
             >
               <Image 
                 src={photo1} 
@@ -461,15 +506,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <motion.div 
               className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.3
-              }}
-              viewport={{
-                once: true,
-                amount: 0.1
-              }}
+              variants={infoAnimation}
             >
               <Image 
                 src={photo2} 
@@ -480,15 +517,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <motion.div 
               className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.3
-              }}
-              viewport={{
-                once: true,
-                amount: 0.1
-              }}
+              variants={infoAnimation}
             >
               <Image 
                 src={photo3} 
@@ -497,7 +526,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 onClick={() => handleClick(photo3)}
               />
             </motion.div>
-          </div>
+          </motion.div>
         </section>
         <section 
           className="flex flex-col gap-8 h-auto lg:gap-32 py-24 lg:flex-row-reverse"
