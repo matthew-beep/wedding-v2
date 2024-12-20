@@ -135,10 +135,12 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
-        <div className="fixed top-0 z-40 w-screen h-screen bg-black/75 flex items-center flex-col justify-center ">
-          <X color="#fff" className="cursor-pointer absolute right-0 top-0 m-5" onClick={handleClose}/>
+        <div className="fixed top-0 z-40 w-screen h-screen bg-black/90 flex items-center flex-col justify-center ">
+          <div className="w-full flex justify-end">
+            <X color="#fff" className="cursor-pointer right-0 top-0 m-5" onClick={handleClose}/>
+          </div>
           <motion.div 
-            className="w-3/4 h-1/2 bg-white lg:w-5/12 lg:h-5/6"
+            className="w-full h-5/6 bg-white lg:w-auto lg:h-11/12"
             initial={{
               scale: 0.5,
               opacity: 0,
@@ -394,7 +396,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             }}
           >
             <Link href="#rsvp" className="w-full h-auto">
-              <button className="w-full lg:w-auto lg:px-2 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+              <button className="w-full lg:w-auto lg:px-10 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
                 I&apos;LL BE THERE
               </button>
             </Link>
