@@ -240,7 +240,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </div>
         </div>
       </section>
-      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-32 px-5 lg:w-10/12 xl:w-8/12">
+      <section className="font-canto bg-[#FAFBF7] flex flex-col gap-12 lg:gap-32 px-5 lg:w-10/12 2xl:w-8/12">
         <section 
           className="h-auto w-full font-canto flex flex-col text-[#333333] gap-12 lg:gap-32 relative z-10 py-12 lg:py-24"
           id="details"
