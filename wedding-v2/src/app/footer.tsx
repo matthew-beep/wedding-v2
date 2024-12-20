@@ -13,13 +13,13 @@ const Footer: React.FC<FooterProps> = ({  }) => {
     <footer className= "bg-[#E2E5DE] font-canto flex flex-col min-h-54 py-10 text-[#486A51] flex flex-col gap-5 items-center justify-center">
       <Timer />
       <section className='flex flex-col items-start w-11/12 px-2 mt-10'>
-        <div className='flex gap-5 text-[#333333] text-xl w-full'>
-          <div className='flex flex-col gap-5 items-center w-full text-[#486A51]'>
+        <div className='flex gap-5 text-[#333333] text-xl lg:text-2xl w-full'>
+          <div className='flex flex-col gap-5 lg:gap-10 items-center w-full text-[#486A51]'>
             <Link href="/" >Save The Date</Link>
             <Link href="/dresscode" >Dress Code</Link>
             <Link href="https://www.amazon.com/wedding/share/anitajesusregistry" target='_blank' >Registry</Link>
             <Link href="/faq">FAQ</Link>
-            <Link href="/rsvp">RSVP</Link>
+            <Link href="/rsvp" className='bg-[#486A51] px-5 py-2 text-[#FAFBF7]'>RSVP</Link>
           </div>
         </div>
       </section>

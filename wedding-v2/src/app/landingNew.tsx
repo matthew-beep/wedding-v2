@@ -9,7 +9,7 @@ import photo1 from './img/mainpage-horizontalscroll1.JPG';
 import photo2 from './img/mainpage-horizontalscroll2.JPG';
 import photo3 from './img/mainpage-horizontalscroll3.JPG';
 import Link from 'next/link';
-import { ExternalLink, X } from 'lucide-react';
+import { ExternalLink, X, CircleArrowLeft, CircleArrowRight } from 'lucide-react';
 
 
 
@@ -23,6 +23,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
   const [modal, setModal] = useState<boolean>(false);
   const [modalPic, setModalPic] = useState<string>(photo1);
   const textAnimation = useAnimationControls();
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const scrollAmount = 300;
   const { scrollYProgress: end } = useScroll({
     target: ref,
     offset: ["end end", "end start"]
@@ -130,14 +132,25 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
     setModal(false);
   }
   
+  const scrollLeft =() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    }    
+  }
+
+  const scrollRight =() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }    
+  }
 
   return (
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
-        <div className="fixed top-0 z-40 w-screen h-screen bg-black/90 flex items-center flex-col justify-center ">
+        <div className="fixed top-0 z-40 w-screen h-screen bg-black/90 flex items-center flex-col justify-start gap-5">
           <div className="w-full flex justify-end">
-            <X color="#fff" className="cursor-pointer right-0 top-0 m-5" onClick={handleClose}/>
+            <X className="text-white cursor-pointer right-0 top-0 m-5 hover:text-[#999999] duration-100 transition-all" onClick={handleClose}/>
           </div>
           <motion.div 
             className="w-full h-5/6 bg-white lg:w-auto lg:h-11/12"
@@ -396,16 +409,37 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             }}
           >
             <Link href="#rsvp" className="w-full h-auto">
-              <button className="w-full lg:w-auto lg:px-10 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+              <button className="w-full lg:w-auto lg:px-10 lg:m-auto h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
                 I&apos;LL BE THERE
               </button>
             </Link>
           </motion.div>
         </section>
         <section className="flex flex-col relative">
-          <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
-          <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
-          <div className="flex gap-5 overflow-x-scroll scrollbar-hide w-full">
+          <div className="flex items-center justify-between h-auto">
+            <div>
+              <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
+              <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
+            </div>
+            <div className="lg:flex h-full hidden">
+              <CircleArrowLeft 
+                size={50} 
+                strokeWidth={0.75} 
+                className="text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
+                onClick={scrollLeft}
+              />
+              <CircleArrowRight 
+                size={50} 
+                strokeWidth={0.75} 
+                className="text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
+                onClick={scrollRight}
+              />
+            </div>
+          </div>
+          <div 
+            className="flex gap-5 overflow-x-scroll scrollbar-hide w-full"
+            ref={scrollRef}
+          >
             <motion.div 
               className="min-w-80 md:min-w-96 lg:shrink-0 lg:w-[30rem]"
               initial={{ opacity: 0 }}

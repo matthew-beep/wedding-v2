@@ -48,3 +48,12 @@ body {
     background-attachment: scroll; /* Disable fixed attachment on mobile */
   }
 }
+
+.scrollbar-hide {
+  overflow: auto; /* Keeps scrolling enabled */
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari, and Edge */
+}
