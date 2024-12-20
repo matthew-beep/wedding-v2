@@ -405,7 +405,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
           <div className="flex gap-5 overflow-x-scroll scrollbar-hide w-full">
             <motion.div 
-              className="min-w-80 md:min-w-96 aspect-square lg:shrink-0 lg:w-[30rem]"
+              className="min-w-80 md:min-w-96 lg:shrink-0 lg:w-[30rem]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
