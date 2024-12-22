@@ -209,13 +209,17 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 once: true,
                 amount: 0.1
               }}
+
+
+
+              lg:aspect-auto lg:shrink-0
   */
 
   return (
     <div className="relative bg-[#FAFBF7] lg:flex lg:flex-col lg:items-center">
 
       {modal &&
-        <div className="fixed top-0 z-40 w-screen h-svh h-screen bg-black/90 flex items-center flex-col justify-start gap-5">
+        <div className="fixed top-0 z-40 w-screen h-dvh h-screen bg-black/90 flex items-center flex-col justify-start gap-5">
           <div className="w-full flex justify-end">
             <X className="text-white cursor-pointer right-0 top-0 m-5 hover:text-[#999999] duration-100 transition-all" onClick={handleClose}/>
           </div>
@@ -489,29 +493,35 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </Link>
           </motion.div>
         </section>
-        <section className="flex flex-col relative h-screen">
-          <div className="flex items-center justify-between h-auto">
+        <section className="flex flex-col relative border-2">
+          <div className="flex items-center justify-between h-auto border-2">
             <div>
               <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
               <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
             </div>
-            <div className="lg:flex h-full hidden">
-              <CircleArrowLeft 
-                size={50} 
-                strokeWidth={0.75} 
-                className="text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
+            <div className="lg:flex hidden">
+              <button
+                className="flex text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
                 onClick={scrollLeft}
-              />
-              <CircleArrowRight 
-                size={50} 
-                strokeWidth={0.75} 
-                className="text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
+              >
+                <CircleArrowLeft 
+                  size={50} 
+                  strokeWidth={0.75} 
+                />
+              </button>
+              <button
+                className="flex text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
                 onClick={scrollRight}
-              />
+              >
+                <CircleArrowRight 
+                  size={50} 
+                  strokeWidth={0.75} 
+                />
+              </button>
             </div>
           </div>
           <motion.div 
-            className="flex gap-5 overflow-x-scroll scrollbar-hide w-full"
+            className="flex gap-2 overflow-x-scroll scrollbar-hide w-full border-amber-400 border-2"
             ref={scrollRef}
             variants={photoContainer}
             initial={"hidden"}
@@ -522,7 +532,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             }}
           >
             <motion.div 
-              className="min-w-80 md:min-w-96 lg:shrink-0 lg:w-[30rem]"
+              className="min-w-80 md:min-w-96 aspect-square lg:w-[30rem]"
               variants={photoAnimation}
             >
               <Image 
@@ -533,7 +543,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               />
             </motion.div>
             <motion.div 
-              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
+              className="min-w-80 md:min-w-96 aspect-square lg:w-[30rem]"
               variants={photoAnimation}
             >
               <Image 
@@ -544,7 +554,18 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               />
             </motion.div>
             <motion.div 
-              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:shrink-0 lg:w-[30rem]"
+              className="min-w-80 md:min-w-96 aspect-square lg:w-[30rem]"
+              variants={photoAnimation}
+            >
+              <Image 
+                src={photo3} 
+                alt="Jesus and Anita standing together" 
+                className="w-full h-full object-cover object-center cursor-pointer"
+                onClick={() => handleClick(photo3)}
+              />
+            </motion.div>
+            <motion.div 
+              className="min-w-80 md:min-w-96 aspect-square lg:w-[30rem]"
               variants={photoAnimation}
             >
               <Image 
@@ -560,48 +581,48 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           className="flex flex-col gap-8 h-auto lg:gap-32 py-10 lg:flex-row-reverse border-2"
           id="rsvp"
         >
-            <motion.div 
-              className="flex flex-col w-full lg:w-1/2 h-[50vh] border-2"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.3, 
-                delay:0.2 
-              }}
-              viewport={{
-                once: true,
-                amount: 0.5
-              }}
-            >
-              <Image 
-                src={rsvp} 
-                alt="Rock Creek Garden" 
-                className="w-full h-full object-cover object-center"
-              />
-            </motion.div>
-            <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between border-2">
-              <div>
-                <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE <br className="hidden"/> YOU THERE?</h2>
-                <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
-              </div>
-              <p className="text-lg md:text-xl lg:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
-                your response will help us in our planning. For more information please refer to our FAQs. 
-                Can&apos;t wait to celebrate this day with you there!
-              </p>
-              <div className="flex flex-col gap-3 lg:flex-row">
-                <Link href="/faq" className="w-full h-auto">
-                  <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
-                    FAQ
-                  </button>
-                </Link>
-                <Link href="/rsvp" className="w-full h-auto">
-                  <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full">
-                    RSVP
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-          </motion.section>
+          <motion.div 
+            className="flex flex-col h-[50vh] w-full lg:w-1/2 border-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ 
+              duration: 0.3, 
+              delay:0.2 
+            }}
+            viewport={{
+              once: true,
+              amount: 0.5
+            }}
+          >
+            <Image 
+              src={rsvp} 
+              alt="Rock Creek Garden" 
+              className="w-full h-full object-cover object-center"
+            />
+          </motion.div>
+          <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between border-2">
+            <div>
+              <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br/> THERE?</h2>
+              <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
+            </div>
+            <p className="text-lg md:text-xl lg:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+              your response will help us in our planning. For more information please refer to our FAQs. 
+              Can&apos;t wait to celebrate this day with you there!
+            </p>
+            <div className="flex flex-col gap-3 lg:flex-row">
+              <Link href="/faq" className="w-full h-auto">
+                <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
+                  FAQ
+                </button>
+              </Link>
+              <Link href="/rsvp" className="w-full h-auto">
+                <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full">
+                  RSVP
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        </motion.section>
       </section>
     </div>
   );
