@@ -557,11 +557,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </motion.div>
         </section>
         <motion.section 
-          className="flex flex-col gap-8 h-auto lg:gap-32 py-24 lg:flex-row-reverse"
+          className="flex flex-col gap-8 h-auto lg:gap-32 py-10 lg:flex-row-reverse border-2"
           id="rsvp"
         >
             <motion.div 
-              className="flex flex-col w-full lg:w-1/2 h-[50vh]"
+              className="flex flex-col w-full lg:w-1/2 h-[50vh] border-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ 
@@ -581,7 +581,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </motion.div>
             <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between">
               <div>
-                <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
+                <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE <br className="hidden"/> YOU THERE?</h2>
                 <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
               </div>
               <p className="text-lg md:text-xl lg:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
@@ -590,7 +590,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               </p>
               <div className="flex flex-col gap-3 lg:flex-row">
                 <Link href="/faq" className="w-full h-auto">
-                  <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full">
+                  <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
                     FAQ
                   </button>
                 </Link>

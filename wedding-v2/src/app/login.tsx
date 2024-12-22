@@ -113,19 +113,19 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ duration: 0.1 }}
-          className='sm:w-96 sm:h-96 w-48 h-48 flex items-center justify-center'
+          className='sm:w-96 sm:h-96 w-48 h-48 flex flex-col items-center justify-center gap-5'
         >
           
           <motion.div
             animate={{rotate: 360}}
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-            className='w-9/12 h-9/12 flex items-center justify-center'
+            className='w-5/12 h-5/12 flex items-center justify-center'
           >
             <LoaderCircle color="#333333" size={24} className='w-full h-full'/>
           </motion.div>
+          <h3 className='font-canto text-3xl text-[#333333] font-semibold'>Loading...</h3>
         </motion.div>
       }
-      
     </div>
   );
 }
