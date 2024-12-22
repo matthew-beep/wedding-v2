@@ -604,7 +604,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               your response will help us in our planning. For more information please refer to our FAQs. 
               Can&apos;t wait to celebrate this day with you there!
             </p>
-            <div className="flex flex-col gap-3 lg:flex-row w-5/12 justify-center">
+            <div className="flex flex-col gap-3 lg:flex-row w-full lg:w-5/12 justify-center">
               <Link href="/faq" className="w-full h-auto">
                 <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
                   FAQ
