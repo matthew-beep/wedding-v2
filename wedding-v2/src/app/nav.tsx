@@ -124,7 +124,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
           }}
           animate={controls}
         >
-          <div className="flex justify-between w-11/12 items-center">
+          <div className="flex justify-between w-auto items-center">
             <motion.h2 
               className="text-4xl text-[#486A51]"
               style={{
@@ -155,7 +155,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black py-4 px-4 text-2xl cursor-pointer"
+                className="py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
@@ -166,7 +166,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black py-4 px-4 text-2xl cursor-pointer"
+                className="py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
@@ -177,7 +177,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black py-4 px-4 text-2xl cursor-pointer"
+                className="py-4 px-4 text-2xl cursor-pointer"
                 initial={{
                   color: 'white'
                 }}
@@ -188,7 +188,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="text-black px-4 py-2 text-2xl text-white cursor-pointer bg-[#486A51]"
+                className="px-4 py-2 text-2xl text-white cursor-pointer bg-[#486A51]"
               >
                   <Link href="/rsvp">
                     RSVP

@@ -567,11 +567,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </motion.div>
         </section>
         <motion.section 
-          className="flex flex-col gap-8 h-auto lg:gap-32 py-10 lg:flex-row-reverse border-2"
+          className="flex flex-col gap-8 h-auto py-10 lg:flex-row-reverse border-2"
           id="rsvp"
         >
           <motion.div 
-            className="flex flex-col h-[50vh] w-full lg:w-1/2 border-2"
+            className="flex flex-col w-full aspect-auto border-2"
             initial={{ 
               opacity: 0,
               translateY: '25%'
@@ -595,9 +595,9 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               className="w-full h-full object-cover object-center"
             />
           </motion.div>
-          <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between border-2">
+          <motion.div className="flex flex-col gap-8 lg:w-ful lg:justify-between border-2">
             <div>
-              <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br/> THERE?</h2>
+              <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br className="hidden lg:inline"/> THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
             <p className="text-lg md:text-xl xl:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
