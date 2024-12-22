@@ -600,12 +600,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br className="hidden lg:inline"/> THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
-            <p className="text-lg md:text-xl xl:text-2xl text-[#333333]">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+            <p className="text-lg md:text-xl xl:text-2xl text-[#333333] w-full lg:w-9/12 ">Please remember to RSVP by February 28th. Even if you are unable to attend, 
               your response will help us in our planning. For more information please refer to our FAQs. 
               Can&apos;t wait to celebrate this day with you there!
             </p>
-            <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 m-auto hidden lg:inline"/>
-            <div className="flex flex-col gap-3 lg:flex-row w-full justify-center">
+            <div className="flex flex-col gap-3 lg:flex-row w-5/12 justify-center">
               <Link href="/faq" className="w-full h-auto">
                 <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
                   FAQ
@@ -617,7 +616,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 </button>
               </Link>
             </div>
-            
+            <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 my-auto hidden lg:inline"/>
           </motion.div>
         </motion.section>
       </section>
