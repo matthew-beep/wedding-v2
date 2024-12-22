@@ -493,8 +493,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </Link>
           </motion.div>
         </section>
-        <section className="flex flex-col relative border-2">
-          <div className="flex items-center justify-between h-auto border-2">
+        <section className="flex flex-col relative">
+          <div className="flex items-center justify-between h-auto">
             <div>
               <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
               <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
@@ -521,7 +521,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </div>
           </div>
           <motion.div 
-            className="flex gap-2 overflow-x-scroll scrollbar-hide w-full border-amber-400 border-2"
+            className="flex gap-2 overflow-x-scroll scrollbar-hide w-full"
             ref={scrollRef}
             variants={photoContainer}
             initial={"hidden"}
@@ -595,16 +595,16 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               className="w-full h-full object-center object-cover"
             />
           </motion.div>
-          <motion.div className="flex flex-col gap-8 lg:w-9/12 h-auto lg:justify-between">
+          <motion.div className="flex flex-col gap-8 lg:w-9/12 lg:justify-between lg:max-h-[50vh]">
             <div>
               <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br className="hidden lg:inline"/> THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
-            <p className="text-lg md:text-xl xl:text-2xl text-[#333333] w-full lg:w-9/12 ">Please remember to RSVP by February 28th. Even if you are unable to attend, 
+            <p className="text-lg md:text-xl xl:text-2xl text-[#333333] w-full lg:w-10/12 ">Please remember to RSVP by February 28th. Even if you are unable to attend, 
               your response will help us in our planning. For more information please refer to our FAQs. 
               Can&apos;t wait to celebrate this day with you there!
             </p>
-            <div className="flex flex-col gap-3 lg:flex-row w-full lg:w-5/12 justify-center">
+            <div className="flex flex-col gap-3 lg:flex-row w-full lg:w-6/12 justify-center">
               <Link href="/faq" className="w-full h-auto">
                 <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
                   FAQ
