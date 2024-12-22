@@ -358,7 +358,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             className="flex flex-col gap-12 lg:flex-row w-full lg:items-center lg:justify-between"
             variants={infoContainer}
           >
-            <motion.div 
+            <motion.div   
               className="flex flex-col gap-3 lg:items-center"
               variants={infoAnimation}
             >
@@ -567,14 +567,14 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </motion.div>
         </section>
         <motion.section 
-          className="flex flex-col gap-8 h-auto py-10 lg:flex-row-reverse border-2"
+          className="flex flex-col gap-8 h-auto py-10 lg:flex-row-reverse"
           id="rsvp"
-        >
+        >          
           <motion.div 
-            className="flex flex-col w-full aspect-auto border-2"
+            className="flex flex-col w-full lg:w-5/12 aspect-auto lg:max-h-[50vh]"
             initial={{ 
               opacity: 0,
-              translateY: '25%'
+              translateY: '10%'
             }}
             whileInView={{ 
               opacity: 1,
@@ -592,10 +592,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             <Image 
               src={rsvp} 
               alt="Anita & Jesus looking back" 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-center object-cover"
             />
           </motion.div>
-          <motion.div className="flex flex-col gap-8 lg:w-ful lg:justify-between border-2">
+          <motion.div className="flex flex-col gap-8 lg:w-9/12 h-auto lg:justify-between">
             <div>
               <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br className="hidden lg:inline"/> THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
@@ -604,7 +604,8 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               your response will help us in our planning. For more information please refer to our FAQs. 
               Can&apos;t wait to celebrate this day with you there!
             </p>
-            <div className="flex flex-col gap-3">
+            <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 m-auto hidden lg:inline"/>
+            <div className="flex flex-col gap-3 lg:flex-row w-full justify-center">
               <Link href="/faq" className="w-full h-auto">
                 <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
                   FAQ
@@ -616,6 +617,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 </button>
               </Link>
             </div>
+            
           </motion.div>
         </motion.section>
       </section>
