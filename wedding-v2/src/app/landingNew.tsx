@@ -489,7 +489,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
             </Link>
           </motion.div>
         </section>
-        <section className="flex flex-col relative">
+        <section className="flex flex-col relative h-screen">
           <div className="flex items-center justify-between h-auto">
             <div>
               <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
@@ -579,7 +579,7 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
-            <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between">
+            <motion.div className="flex flex-col gap-8 lg:w-1/2 lg:justify-between border-2">
               <div>
                 <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE <br className="hidden"/> YOU THERE?</h2>
                 <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>

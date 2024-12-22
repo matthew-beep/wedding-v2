@@ -172,7 +172,9 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
                 }}
                 animate={textColor}
               >
-                Registry
+                <Link href="https://www.amazon.com/wedding/share/anitajesusregistry" target='_blank'>
+                  Registry
+                </Link>
               </motion.li>
               <motion.li 
                 className="text-black py-4 px-4 text-2xl cursor-pointer"
