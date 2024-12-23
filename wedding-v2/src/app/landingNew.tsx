@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
-import {motion, useScroll, easeInOut, useMotionValueEvent, useAnimationControls} from 'framer-motion'
+import {motion, easeInOut, useAnimationControls} from 'framer-motion'
 import rsvp from './img/rsvp.jpg';
 import video from './img/video.mp4';
 import photo1 from './img/mainpage-horizontalscroll1.JPG';
@@ -18,44 +18,14 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ large }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
   const [modal, setModal] = useState<boolean>(false);
   const [modalPic, setModalPic] = useState<string>(photo1);
   const textAnimation = useAnimationControls();
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const scrollAmount = 300;
-  const { scrollYProgress: end } = useScroll({
-    target: ref,
-    offset: ["end end", "end start"]
-  })
-
-  const { scrollYProgress: start } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"]
-  })
-
-  const { scrollYProgress : section} = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  })
-
-  useMotionValueEvent(end, "change", (latest) => {
-    console.log("Page scroll: ", latest)
-  })
-
-  useMotionValueEvent(start, "change", (latest) => {
-    console.log("Container scroll: ", latest)
-  })
-
-  useMotionValueEvent(section, "change", (latest) => {
-    console.log("Section scroll: ", latest)
-  })
-
 
   useEffect(() => { // initial text animation
     textAnimation.start("show");
-    console.log(large); // for lint error
   }, [])
 
   useEffect(() => {
@@ -567,11 +537,11 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
           </motion.div>
         </section>
         <motion.section 
-          className="flex flex-col gap-8 h-auto py-10 lg:flex-row-reverse"
+          className="flex flex-col gap-8 lg:gap-12 h-auto py-16 lg:flex-row-reverse"
           id="rsvp"
         >          
           <motion.div 
-            className="flex flex-col w-full lg:w-5/12 aspect-auto lg:max-h-[50vh]"
+            className="flex flex-col w-full lg:w-5/12 aspect-auto h-96 lg:h-auto lg:max-h-[50vh]"
             initial={{ 
               opacity: 0,
               translateY: '10%'
@@ -595,28 +565,69 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               className="w-full h-full object-center object-cover"
             />
           </motion.div>
-          <motion.div className="flex flex-col gap-8 lg:w-9/12 lg:justify-between lg:max-h-[50vh]">
+          <motion.div 
+            className="flex flex-col gap-5 lg:w-7/12 lg:justify-between lg:max-h-[50vh]"
+          >
             <div>
-              <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU <br className="hidden lg:inline"/> THERE?</h2>
+              <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
-            <p className="text-lg md:text-xl xl:text-2xl text-[#333333] w-full lg:w-10/12 ">Please remember to RSVP by February 28th. Even if you are unable to attend, 
-              your response will help us in our planning. For more information please refer to our FAQs. 
-              Can&apos;t wait to celebrate this day with you there!
-            </p>
-            <div className="flex flex-col gap-3 lg:flex-row w-full lg:w-6/12 justify-center">
+            <motion.p 
+              className="text-lg lg:text-2xl text-[#333333] w-full lg:w-11/12 "
+              initial={{ 
+                opacity: 0,
+                translateY: '10%'
+              }}
+              whileInView={{ 
+                opacity: 1,
+                translateY: '0%'
+              }}
+              transition={{ 
+                duration: 0.3, 
+                delay:0.2 
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5
+              }}
+            >
+              Please remember to RSVP by February 28th to let us know if you can join us on our special day. 
+              Your response is important, even if you're unable to attend, as it will help us finalize our arrangements.
+              If you have any questions, please check out our FAQs or feel free to reach out to us directly—we're happy to help!
+              We're so excited to celebrate this unforgettable moment surrounded by our closest family and friends. 
+              Your presence means the world to us, and we can't wait to share this day with you!
+            </motion.p>
+            <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 hidden lg:inline m-auto"/>
+            <motion.div 
+              className="flex flex-col gap-3 lg:flex-row w-full justify-center"
+              initial={{ 
+                opacity: 0,
+                translateY: '10%'
+              }}
+              whileInView={{ 
+                opacity: 1,
+                translateY: '0%'
+              }}
+              transition={{ 
+                duration: 0.3, 
+                delay:0.2 
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2
+              }}
+            >
               <Link href="/faq" className="w-full h-auto">
-                <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51]  cursor-pointer duration-200 transition-all">
+                <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51] cursor-pointer duration-200 transition-all">
                   FAQ
                 </button>
               </Link>
               <Link href="/rsvp" className="w-full h-auto">
-                <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full">
+                <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full hover:bg-[#3b4d40] duration-200 transition-all">
                   RSVP
                 </button>
               </Link>
-            </div>
-            <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 my-auto hidden lg:inline"/>
+            </motion.div>
           </motion.div>
         </motion.section>
       </section>

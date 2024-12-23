@@ -170,7 +170,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
   const turnOff = () => {
       if (scroll <= 0) {
         controls.start({
-          color: 'white',
+          color: pathname != '/faq' ? 'white' : '#486A51',
           backgroundColor: 'rgba(250, 251, 247, 0)',
           boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)',
           transition: {duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
