@@ -7,7 +7,6 @@ import Password from './password';
 export default function Home() {
   const [auth, setAuth] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);  // New state for mounting check
-  const pass = "pass"
 
   useEffect(() => {
     setIsMounted(true);  // Set to true once component mounts

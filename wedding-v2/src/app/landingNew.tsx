@@ -14,10 +14,10 @@ import { ExternalLink, X, CircleArrowLeft, CircleArrowRight } from 'lucide-react
 
 
 interface LandingProps {
-  large : boolean;
+
 }
 
-const Landing: React.FC<LandingProps> = ({ large }) => {
+const Landing: React.FC<LandingProps> = ({ }) => {
   const [modal, setModal] = useState<boolean>(false);
   const [modalPic, setModalPic] = useState<string>(photo1);
   const textAnimation = useAnimationControls();
@@ -592,10 +592,10 @@ const Landing: React.FC<LandingProps> = ({ large }) => {
               }}
             >
               Please remember to RSVP by February 28th to let us know if you can join us on our special day. 
-              Your response is important, even if you're unable to attend, as it will help us finalize our arrangements.
-              If you have any questions, please check out our FAQs or feel free to reach out to us directly—we're happy to help!
-              We're so excited to celebrate this unforgettable moment surrounded by our closest family and friends. 
-              Your presence means the world to us, and we can't wait to share this day with you!
+              Your response is important, even if you&apos;re unable to attend, as it will help us finalize our arrangements.
+              If you have any questions, please check out our FAQs or feel free to reach out to us directly—we&apos;re happy to help!
+              We&apos;re so excited to celebrate this unforgettable moment surrounded by our closest family and friends. 
+              Your presence means the world to us, and we can&apos;t wait to share this day with you!
             </motion.p>
             <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 hidden lg:inline m-auto"/>
             <motion.div 

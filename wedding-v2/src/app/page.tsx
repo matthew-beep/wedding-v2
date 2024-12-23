@@ -72,7 +72,7 @@ export default function Home() {
             {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight} />}
           </header>
           <main className="bg-white">
-            <Landing large={isLargeScreen} />
+            <Landing />
           </main>
           <Footer />
         </div>
