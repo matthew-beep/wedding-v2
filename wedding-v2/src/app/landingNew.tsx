@@ -593,7 +593,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             >
               Please remember to RSVP by February 28th to let us know if you can join us on our special day. 
               Even if you&apos;re unable to attend, your response will help us finalize our arrangements.
-              If you have any questions, please check out our FAQs or feel free to reach out to us directly!
+              If you have any questions, please feel free to check out our FAQ page.
               We&apos;re so excited to celebrate this unforgettable moment surrounded by our closest family and friends. 
               Your presence means the world to us, and we can&apos;t wait to share this day with you!
             </motion.p>
