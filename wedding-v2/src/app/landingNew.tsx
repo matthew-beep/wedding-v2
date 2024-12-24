@@ -566,14 +566,14 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             />
           </motion.div>
           <motion.div 
-            className="flex flex-col gap-5 lg:w-7/12 lg:justify-between lg:max-h-[50vh]"
+            className="flex flex-col gap-8 lg:w-7/12 lg:justify-between lg:max-h-[50vh]"
           >
             <div>
               <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
             <motion.p 
-              className="text-lg lg:text-xl text-[#333333] w-full lg:w-11/12 "
+              className="text-lg text-[#333333] w-full"
               initial={{ 
                 opacity: 0,
                 translateY: '10%'
