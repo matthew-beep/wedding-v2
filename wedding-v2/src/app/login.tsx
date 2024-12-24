@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { collection, where, query, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
 import { LoaderCircle } from 'lucide-react';
-import { motion, easeInOut } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 
 interface LoginProps {
