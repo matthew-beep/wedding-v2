@@ -233,7 +233,9 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             placeholder ="First Name" 
             value={firstName} 
             onChange={handleFirst}
-            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'
+            required
+            />
         </div>
         <div className='flex flex-col w-full'>
           <label htmlFor="lastName" className='text-xl text-[#486A51]'>Last Name <span className='text-sm text-[#919191]'>(required)</span></label>
@@ -243,7 +245,9 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             placeholder ="Last Name" 
             value={lastName}
             onChange={handleLast} 
-            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'/>
+            className='border-2 border-[#E2E5DE] rounded-none w-full p-2 focus:outline-none focus:border-[#486A51] bg-white'
+            required
+            />
         </div>
       </div>
       <div className='lg:w-4/12'>
@@ -280,8 +284,9 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             name="attendance"
             value="decline" 
             onChange={handleSelect}
+            required
           />
-          <label htmlFor="attendance" className='text-lg text-[#333333]'>Sad to miss, but sending love from afar</label>
+          <label htmlFor="notAttending" className='text-lg text-[#333333]'>Sad to miss, but sending love from afar</label>
         </div>
       </div>
       <div className='lg:w-4/12'>

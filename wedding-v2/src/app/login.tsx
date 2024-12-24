@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { collection, where, query, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
 import { LoaderCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, easeInOut } from 'framer-motion';
 
 
 interface LoginProps {
@@ -104,7 +104,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
             </div>
           </div>
           <button className='p-2 bg-[#486A51] w-1/3 sm:1/4 font-canto flex text-center items-center justify-center text-2xl rounded-full text-[#FAFBF7]' onClick={handleLogin}>
-            LOGIN
+            Login
           </button>
         </div>
       }
@@ -113,17 +113,20 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ duration: 0.1 }}
-          className='sm:w-96 sm:h-96 w-48 h-48 flex flex-col items-center justify-center gap-5'
+          className='sm:w-96 sm:h-96 w-48 h-48 flex flex-col items-center justify-center gap-10'
         >
-          
           <motion.div
             animate={{rotate: 360}}
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
             className='w-5/12 h-5/12 flex items-center justify-center'
           >
-            <LoaderCircle color="#333333" size={24} className='w-full h-full'/>
+            <LoaderCircle color="#333333" size={48} />
           </motion.div>
-          <h3 className='font-canto text-3xl text-[#333333] font-semibold'>Loading...</h3>
+          <h4 
+            className='font-canto text-2xl'
+          >
+            Welcome {firstName}
+          </h4>
         </motion.div>
       }
     </div>
