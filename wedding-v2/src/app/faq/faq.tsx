@@ -100,8 +100,8 @@ const FAQ: React.FC<FAQProps> = ({ }) => {
 
   return (
     <div className="relative bg-[#FAFBF7]"> 
-      <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col items-center">
-        <div className="h-auto border-gray-700 w-full flex pt-32 pb-4 xl:pt-32">
+      <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col items-center lg:pb-8">
+        <div className="h-auto border-gray-700 w-full flex pt-32 pb-4 lg:pt-48">
             <div 
               className="h-full w-full z-0 flex justify-center text-black font-canto"
             >
