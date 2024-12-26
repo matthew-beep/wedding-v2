@@ -123,7 +123,7 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
             <LoaderCircle color="#333333" size={48} />
           </motion.div>
           <h4 
-            className='font-canto text-2xl'
+            className='font-canto text-2xl text-[#333333]'
           >
             Welcome {firstName}
           </h4>
