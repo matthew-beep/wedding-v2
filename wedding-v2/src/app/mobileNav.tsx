@@ -98,7 +98,10 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold, setNav
       } else {
         if (!navDisplay) {
           setDownAnimation(false);
-          setNav(false);
+          console.log("turning off");
+          if(scroll > 0) {
+            setNav(false);
+          }
         }
       }
     }
@@ -188,7 +191,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold, setNav
 
 
   return (
-    <nav className="font-canto w-full flex flex-col">
+    <motion.nav className="font-canto w-full flex flex-col">
       <motion.div 
         className='flex flex-col relative'
       >
@@ -291,7 +294,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold, setNav
           }
         </AnimatePresence>
       </motion.div>
-    </nav>
+    </motion.nav>
   );
 }
 
