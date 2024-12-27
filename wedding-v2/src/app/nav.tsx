@@ -197,7 +197,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height, setNav }) => {
                 </Link>
               </motion.li>
               <motion.li 
-                className="px-4 py-2 text-2xl text-white cursor-pointer bg-[#486A51]"
+                className="px-4 py-2 text-2xl text-white cursor-pointer bg-[#486A51] hover:bg-[#3b4d40] duration-200 transition-all"
               >
                   <Link href="/rsvp">
                     RSVP

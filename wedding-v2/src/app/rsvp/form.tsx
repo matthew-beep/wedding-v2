@@ -190,11 +190,11 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   const thankYou = (
     <div className='font-canto flex flex-col items-center bg-[#FAFBF7] w-full text-[#333333]'>
       <h4 className='text-5xl font-bold'>Thank You</h4>
-      <p>Your response has been submitted.</p>
-      <div className='flex items-center justify-center gap-5 p-5'>
+      <p className=''>Your response has been submitted.</p>
+      <div className='flex items-center justify-center lg:justify-between gap-5 p-5 w-full lg:w-1/4'>
         <button
           onClick={handleResponse}
-          className='h-full flex py-2 items-center justify-center text-[#486A51] text-xl rounded-full'
+          className='h-full flex py-2 items-center justify-center text-[#486A51] text-lg lg:text-xl rounded-full'
         >
           Submit Another Response
         </button>
@@ -311,7 +311,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
             className='border-2 border-[#E2E5DE] rounded-none w-full p-2 min-h-32 focus:outline-none focus:border-[#486A51] bg-white'/>
         </div>
       </div>
-      <button type="submit" className="bg-[#486A51] lg:w-4/12 py-2 w-full text-white font-canto text-3xl rounded-full">Submit</button>
+      <button type="submit" className="bg-[#486A51] lg:w-4/12 py-2 w-full text-white font-canto text-3xl rounded-full hover:bg-[#3b4d40] duration-200 transition-all">Submit</button>
     </form>
   )
 

@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = ({  }) => {
             <Link href="/dresscode" >Dress Code</Link>
             <Link href="https://www.amazon.com/wedding/share/anitajesusregistry" target='_blank' >Registry</Link>
             <Link href="/faq">FAQ</Link>
-            <Link href="/rsvp" className='bg-[#486A51] px-5 py-2 text-[#FAFBF7]'>RSVP</Link>
+            <Link href="/rsvp" className='bg-[#486A51] px-5 py-2 text-[#FAFBF7] hover:bg-[#3b4d40] duration-200 transition-all'>RSVP</Link>
           </div>
         </div>
       </section>
