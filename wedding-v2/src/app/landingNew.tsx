@@ -183,6 +183,8 @@ const Landing: React.FC<LandingProps> = ({ }) => {
 
 
               lg:aspect-auto lg:shrink-0
+
+              <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 hidden lg:inline m-auto"/>
   */
 
   return (
@@ -537,7 +539,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
           </motion.div>
         </section>
         <motion.section 
-          className="flex flex-col gap-8 lg:gap-12 h-auto py-16 lg:flex-row-reverse"
+          className="flex flex-col gap-8 lg:gap-12 h-auto pb-16 pt-8 lg:flex-row-reverse"
           id="rsvp"
         >          
           <motion.div 
@@ -566,14 +568,14 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             />
           </motion.div>
           <motion.div 
-            className="flex flex-col gap-8 lg:w-7/12 lg:justify-between lg:max-h-[50vh]"
+            className="flex flex-col gap-8 lg:w-7/12 lg:max-h-[50vh]"
           >
             <div>
               <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
             <motion.p 
-              className="text-lg text-[#333333] w-full"
+              className="text-lg lg:text-2xl text-[#333333] w-full"
               initial={{ 
                 opacity: 0,
                 translateY: '10%'
@@ -597,9 +599,8 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               We&apos;re so excited to celebrate this unforgettable moment surrounded by our closest family and friends. 
               Your presence means the world to us, and we can&apos;t wait to share this day with you!
             </motion.p>
-            <hr className="h-px bg-[#333333] border border-[#333333] w-2/12 hidden lg:inline m-auto"/>
             <motion.div 
-              className="flex flex-col gap-3 lg:flex-row w-full justify-center"
+              className="flex flex-col gap-3 lg:flex-row lg:w-1/2 justify-center"
               initial={{ 
                 opacity: 0,
                 translateY: '10%'
@@ -618,12 +619,12 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               }}
             >
               <Link href="/faq" className="w-full h-auto">
-                <button className="w-full h-full flex border py-2 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51] cursor-pointer duration-200 transition-all">
+                <button className="w-full h-full flex border py-2 lg:py-4 items-center justify-center border-[#486A51] text-[#486A51] text-3xl rounded-full hover:text-[#FAFBF7] hover:bg-[#486A51] cursor-pointer duration-200 transition-all">
                   FAQ
                 </button>
               </Link>
               <Link href="/rsvp" className="w-full h-auto">
-                <button className="w-full h-full flex border py-2 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full hover:bg-[#3b4d40] duration-200 transition-all">
+                <button className="w-full h-full flex border py-2 lg:py-4 items-center justify-center bg-[#486A51] text-[#FAFBF7] text-3xl rounded-full hover:bg-[#3b4d40] duration-200 transition-all">
                   RSVP
                 </button>
               </Link>
