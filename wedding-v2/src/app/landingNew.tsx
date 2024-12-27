@@ -575,7 +575,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
             </div>
             <motion.p 
-              className="text-lg lg:text-2xl text-[#333333] w-full"
+              className="text-lg lg:text-xl text-[#333333] w-full"
               initial={{ 
                 opacity: 0,
                 translateY: '10%'
@@ -600,7 +600,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               Your presence means the world to us, and we can&apos;t wait to share this day with you!
             </motion.p>
             <motion.div 
-              className="flex flex-col gap-3 lg:flex-row lg:w-1/2 justify-center"
+              className="flex flex-col gap-3 lg:flex-row lg:w-2/3 justify-center"
               initial={{ 
                 opacity: 0,
                 translateY: '10%'
