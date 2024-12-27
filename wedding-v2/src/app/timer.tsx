@@ -18,12 +18,23 @@ const Timer: React.FC<TimerProps> = ({  }) => {
 
   const getTime = () => {
     const difference = weddingDate.getTime() - new Date().getTime();
+
+    if (difference < 0) { // set timer to 0 when date has passed
+      setDays(0);
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
+      return;
+    }
+
     setDays(Math.floor(difference / (1000 * 60 * 60 * 24)));
     setHours(Math.floor((difference / (1000 * 60 * 60)) % 24));
     setMinutes(Math.floor((difference / 1000 / 60) % 60));
     setSeconds(Math.floor((difference / 1000) % 60));
   }
   
+
+
   useEffect(() => {
     const interval = setInterval(() => getTime(), 1000);
 

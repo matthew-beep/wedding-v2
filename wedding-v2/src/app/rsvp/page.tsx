@@ -14,7 +14,8 @@ export default function Home() {
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
   const [auth, setAuth] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);  // New state for mounting check
-
+  const [nav, setNav] = useState<boolean>(true);
+  
   useEffect(() => {
     setIsMounted(true);  // Set to true once component mounts
 
@@ -95,10 +96,15 @@ export default function Home() {
         <Login setAuth={setAuth} />
       ) : (
         <div className="relative bg-[#fdfdfd]">
-          <header className="fixed top-0 left-0 z-40 w-screen">
-            {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight} threshold={0.5}/>}
-            {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight}/>}
-          </header>
+            <header 
+              className="fixed top-0 left-0 z-40 w-screen"
+              style={{
+                pointerEvents: nav ? "auto": "none"
+              }}
+            >
+              {!isLargeScreen && <MobileNav scroll={scrollYProgress} height={windowHeight} threshold={0.75} setNav={setNav}/>}
+              {isLargeScreen && <Nav scroll={scrollYProgress} height={windowHeight} setNav={setNav}/>}
+            </header>
           <main className="bg-[#fdfdfd]">
             <RSVP />
           </main>

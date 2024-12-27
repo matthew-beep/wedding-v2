@@ -11,9 +11,10 @@ interface MobileNavProps {
   scroll : number;
   height : number;
   threshold : number;
+  setNav: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
+const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold, setNav }) => {
   const [downAnimation, setDownAnimation] = useState<boolean>(false);
   const [navDisplay, setNavDisplay] = useState<boolean>(false);
   const [iconOpacity, setIconOpacity] = useState<number>(0);
@@ -93,9 +94,11 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
     if (scroll !== undefined) {
       if (scroll > 5) {
         setDownAnimation(true);
+        setNav(true);
       } else {
         if (!navDisplay) {
           setDownAnimation(false);
+          setNav(false);
         }
       }
     }
@@ -113,6 +116,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
 
   useEffect(() => {
     if (downAnimation == true) {
+      setNav(true);
       setIconOpacity(1);
       controls.start({
         color: '#486A51',
@@ -121,6 +125,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
+      setNav(false);
       setIconOpacity(0);
       controls.start({
         color: pathname != '/faq' ? 'white' : '#486A51',
@@ -133,6 +138,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
 
   useEffect(() => {
     if (scroll > (threshold * height) && scrollDown) { // hide navbar when scrolling down
+      setNav(false);
       if(!navDisplay) {
         controls.start({
           y: '-100%',
@@ -140,6 +146,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ scroll, height, threshold }) => {
         })
       }
     } else {
+      setNav(true);
       controls.start({
         y: '0%',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }

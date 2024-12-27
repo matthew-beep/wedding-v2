@@ -9,16 +9,17 @@ import Link from 'next/link';
 interface NavProps {
   scroll : number;
   height : number;
+  setNav: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Nav: React.FC<NavProps> = ({ scroll, height }) => {
+const Nav: React.FC<NavProps> = ({ scroll, height, setNav }) => {
   const [downAnimation, setDownAnimation] = useState<boolean>(false);
   const [iconOpacity, setIconOpacity] = useState<number>(0);
   const [prevScroll, setPrevScroll] = useState<number>(scroll);
   const [scrollDown, setScrollDown] = useState<boolean>(false);
   const controls = useAnimationControls();
   const textColor = useAnimationControls();
-    const pathname = usePathname();
+  const pathname = usePathname();
 
   const linkSection = {
     hidden: {
@@ -53,8 +54,10 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
     if (scroll !== undefined) {
       if (scroll > 5) {
         setDownAnimation(true);
+        setNav(true);
       } else {
         setDownAnimation(false);
+        setNav(false);
       }
     }
   }, [scroll])
@@ -71,6 +74,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
 
   useEffect(() => {
     if (downAnimation == true) {
+      setNav(true);
       setIconOpacity(1);
       textColor.start({
         color: '#486A51'
@@ -82,6 +86,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
+      setNav(false);
       setIconOpacity(0);
       textColor.start({
         color: pathname != '/faq' ? 'white' : '#486A51'
@@ -97,11 +102,13 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
 
   useEffect(() => {
     if (scroll > (0.75 * height) && scrollDown) { // hide navbar when scrolling down
+      setNav(false);
       controls.start({
         y: '-100%',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
+      setNav(true);
       controls.start({
         y: '0%',
         transition: { duration: 0.1, ease: [0.43, 0.13, 0.23, 0.96] }
@@ -112,17 +119,19 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
 
 
   return (
-    <nav className="font-canto w-full flex flex-col">
+    <motion.nav 
+      className="font-canto w-full flex flex-col"
+      initial={{
+        color: 'white',
+        boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)'
+      }}
+      animate={controls}
+    >
       <motion.div 
         className='flex flex-col relative'
       >
         <motion.section 
           className="flex w-full justify-center h-28 items-center relative z-20 px-10"
-          initial={{
-            color: 'white',
-            boxShadow: '0px -2px 10px rgba(0, 0, 0, 0)'
-          }}
-          animate={controls}
         >
           <div className="flex justify-between w-auto items-center">
             <motion.h2 
@@ -197,7 +206,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height }) => {
             </motion.ul>
         </motion.section>
       </motion.div>
-    </nav>
+    </motion.nav>
   );
 }
 
