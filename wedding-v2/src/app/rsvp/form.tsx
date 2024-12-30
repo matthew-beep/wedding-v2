@@ -198,26 +198,28 @@ const Form: React.FC<RSVPProps> = ({  }) => {
         >
           Submit Another Response
         </button>
-        <button className=''>
-          <add-to-calendar-button
-            name="Anita & Jesus Get Married"
-            description="Come celebrate our love!"
-            startDate="2025-08-29"
-            endDate="2025-08-29"
-            startTime="15:00"
-            endTime="21:00"
-            location="Rock Creek Gardens, Puyallap"
-            options="['Apple','Google','iCal','Outlook.com']"
-            timeZone="America/Los_Angeles"
-            trigger="click"
-            inline
-            listStyle="modal"
-            iCalFileName="Reminder-Event"
-            buttonStyle='round'
-            styleLight="--btn-background: #486A51; --btn-text: #fff; --font: Canto, 'Times New Roman', Times, serif;"
-            styleDark="--btn-background: #000;"
-          />
-        </button>
+        {attending &&
+          <button className=''>
+            <add-to-calendar-button
+              name="Anita & Jesus Get Married"
+              description="Come celebrate our love!"
+              startDate="2025-08-29"
+              endDate="2025-08-29"
+              startTime="15:00"
+              endTime="21:00"
+              location="Rock Creek Gardens, Puyallap"
+              options="['Apple','Google','iCal','Outlook.com']"
+              timeZone="America/Los_Angeles"
+              trigger="click"
+              inline
+              listStyle="modal"
+              iCalFileName="Reminder-Event"
+              buttonStyle='round'
+              styleLight="--btn-background: #486A51; --btn-text: #fff; --font: Canto, 'Times New Roman', Times, serif;"
+              styleDark="--btn-background: #000;"
+            />
+          </button>
+        }
       </div>
     </div>
   )
