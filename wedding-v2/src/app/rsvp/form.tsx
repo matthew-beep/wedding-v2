@@ -33,11 +33,11 @@ async function checkMatch(firstname:string, lastname:string): Promise<string> {
       alert("Invite not found for " + firstname + " " + lastname + ". Please enter your name exactly as it was written on the invite");
       throw new Error("Invite not found for " + firstname + " " + lastname + ". Please enter your name exactly as it was written on the invite");
     } else {
-      console.log("Found invite for " + firstname + " " + lastname);
+
       snapshot.forEach((doc) => {
         userId = doc.id;
         const submitted = doc.data().submitted;
-        console.log("Document ID:", userId);
+
         if (submitted) {
           alert("A response was already submitted for " + firstname + " " + lastname); 
           throw new Error("Response has already been submitted");
@@ -62,7 +62,7 @@ async function checkRsvp(id:string, firstname:string, lastname:string): Promise<
     
 
     if (docSnap.exists()) {
-      
+
       console.log("Rsvp already exists");
       alert("A response was already submitted for " + firstname + " " + lastname); 
       throw new Error(" RSVP has already been submitted");
@@ -106,13 +106,6 @@ const Form: React.FC<RSVPProps> = ({  }) => {
     }
   }, [value]);
 
-  useEffect(() => {
-    console.log(attendance)
-  }, [attendance])
-
-  useEffect(() => {
-    console.log(attending)
-  }, [attending])
 
   const handleFirst = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(event.target.value);
@@ -163,7 +156,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
       const attendanceRef = doc(db, 'attending', id);
       const absentRef = doc(db, 'absent', id);
       const rsvpList = doc(db, 'rsvp', id);
-      console.log(rsvpList);
+
       if (attending) {
         await setDoc(attendanceRef, {
           firstName: firstName,

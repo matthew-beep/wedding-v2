@@ -44,11 +44,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log("nav showing: " + nav);
-
-  }, [nav])
-
-  useEffect(() => {
     if (typeof window !== "undefined") {
       const mediaQuery = window.matchMedia("(min-width: 1024px)");
 

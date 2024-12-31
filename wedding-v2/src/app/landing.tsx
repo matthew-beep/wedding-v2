@@ -148,7 +148,6 @@ const Landing: React.FC<LandingProps> = ({ }) => {
   }
   
   const handleClick = (photo:string) => {
-    console.log("Clicked!");
     setModal(true);
     setModalPic(photo);
   }

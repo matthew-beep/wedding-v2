@@ -28,7 +28,6 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
       if (result) {
         setAuth(true);
         sessionStorage.setItem('isLoggedIn', 'true');
-        console.log("logging in")
       } else {
         alert("Sorry, no invite was found for " + "\"" + firstName + " " + lastName + "\"");
       }
@@ -47,16 +46,8 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
       );
   
       const snapshot = await getDocs(q);
-      if (!snapshot.empty) {
-        snapshot.forEach((doc) => {
-          console.log("Document ID:", doc.id);
-          console.log("Data:", doc.data());
-        });
-      }
-      console.log("Match Found")
       return !snapshot.empty;
     } catch (error) {
-      console.log("nothing found")
       return false;
     } finally {
       setLoading(false);
