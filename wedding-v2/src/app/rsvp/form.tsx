@@ -23,8 +23,8 @@ async function checkMatch(firstname:string, lastname:string): Promise<string> {
     const userRef = collection(db, 'rsvp');
     const q = query(
       userRef,
-      where("firstName", "==", firstname),
-      where("lastName", "==", lastname)
+      where("firstName", "==", firstname.trim()),
+      where("lastName", "==", lastname.trim())
     );
 
     const snapshot = await getDocs(q);

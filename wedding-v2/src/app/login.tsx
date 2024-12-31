@@ -42,8 +42,8 @@ const Login: React.FC<LoginProps> = ({ setAuth }) => {
       const userRef = collection(db, 'rsvp');
       const q = query(
         userRef,
-        where("firstName", "==", firstname),
-        where("lastName", "==", lastname)
+        where("firstName", "==", firstname.trim()),
+        where("lastName", "==", lastname.trim())
       );
   
       const snapshot = await getDocs(q);
