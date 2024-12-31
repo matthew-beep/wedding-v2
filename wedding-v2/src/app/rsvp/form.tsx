@@ -92,6 +92,8 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const [message, setMessage] = useState<string>("We are so excited to see you there!");
+
   useEffect(() => {
     if (value) {
       // Map the documents and set the rsvpList state
@@ -160,6 +162,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
 
       // need to add the info to the docs 
       const attendanceRef = doc(db, 'attending', id);
+      const absentRef = doc(db, 'absent', id);
       const rsvpList = doc(db, 'rsvp', id);
       console.log(rsvpList);
       if (attending) {
@@ -171,7 +174,16 @@ const Form: React.FC<RSVPProps> = ({  }) => {
           diet: diet,
           text: text
         })
+      } else {
+        setMessage("Wish we could see you, thanks for your response!");
+        await setDoc(absentRef, {
+          firstName: firstName,
+          lastName: lastName,
+          attending: attending,
+          text: text
+        })
       }
+      
       
       await updateDoc(rsvpList, {
         attending: attending,
@@ -186,20 +198,27 @@ const Form: React.FC<RSVPProps> = ({  }) => {
       setIsLoading(false);
     }
   }
-
+  // TODO: need to add new collection for not going
   const thankYou = (
     <div className='font-canto flex flex-col items-center bg-[#FAFBF7] w-full text-[#333333]'>
-      <h4 className='text-5xl font-bold'>Thank You</h4>
-      <p className=''>Your response has been submitted.</p>
-      <div className='flex items-center justify-center lg:justify-between gap-5 p-5 w-full lg:w-1/4'>
+      <div className='flex flex-col items-center gap-5'>
+        <h4 className='text-3xl font-bold'>Thank You</h4>
+        <p className='text-lg'>{message}</p>
+        <hr className='h-px mt-2 mb-5 w-9/12'/>
+      </div>
+      <div 
+        className='flex items-center justify-center lg:justify-between gap-5 p-5 w-full lg:w-1/4'>
         <button
           onClick={handleResponse}
-          className='h-full flex py-2 items-center justify-center text-[#486A51] text-lg lg:text-xl rounded-full'
+          className='h-full flex py-2 items-center justify-center text-[#486A51] text-lg lg:text-xl rounded-full hover:opacity-75 duration-100 transition-all'
+          style={{
+            width: attending ? '' : '100%',
+          }}
         >
           Submit Another Response
         </button>
         {attending &&
-          <button className=''>
+          <button>
             <add-to-calendar-button
               name="Anita & Jesus Get Married"
               description="Come celebrate our love!"

@@ -28,15 +28,26 @@ interface RSVPAttending {
   text: string;
 }
 
+interface RSVPAbsent {
+  id: string;
+  firstName: string;
+  lastName: string;
+  attending: boolean;
+  text: string;
+}
+
 const Table: React.FC<TableProps> = ({ }) => {
   const [rsvpList, setRsvpList] = useState<RSVPDocument[]>([]); 
   const [attendingList, setAttendingList] = useState<RSVPAttending[]>([]); 
+  const [absentList, setAbsentList] = useState<RSVPAbsent[]>([]); 
+  const [absentNum, setAbsentNum] = useState<number>(0);
   const [attendanceNum, setAttendanceNum] = useState<number>(0);
   const [totalNum, setTotalNum] = useState<number>(0);
 
   // Use the query in useCollection (it will run the query every time it changes)
   const [value, loading] = useCollection(collection(db, 'rsvp'));
   const [attendingValue, attendingLoading] = useCollection(collection(db, 'attending'));
+  const [absentValue, absentLoading] = useCollection(collection(db, 'absent'));
 
   useEffect(() => {
     if (value) {
@@ -65,6 +76,20 @@ const Table: React.FC<TableProps> = ({ }) => {
       setAttendanceNum(fetchedAttendingList.length);
     }
   }, [attendingValue]);
+
+  useEffect(() => {
+    if (absentValue) {
+      // Map the documents and set the rsvpList state
+      const fetchedAbsentList: RSVPAbsent[] = absentValue.docs.map(doc => ({
+         // Extract the document ID
+        ...doc.data() as RSVPAttending, // Type assertion to RSVPDocument
+        id: doc.id,
+      }));
+      // Update the state
+      setAbsentList(fetchedAbsentList);
+      setAbsentNum(fetchedAbsentList.length);
+    }
+  }, [absentValue]);
   
 
   useEffect(() => {
@@ -75,7 +100,7 @@ const Table: React.FC<TableProps> = ({ }) => {
 
   return (
     <div className="relative w-full text-black p-5 flex md:flex-row flex-col gap-5 justify-around">
-      <div>
+      <div className='flex flex-col'>
         {attendingLoading && 
           <div>
             <h2 className='font-proxima font-bold text-3xl'>Loading Attendance List</h2>
@@ -132,6 +157,58 @@ const Table: React.FC<TableProps> = ({ }) => {
             </button>
           </div>
         }
+        {absentLoading && 
+          <div>
+            <h2 className='font-proxima font-bold text-3xl'>Loading Attendance List</h2>
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 0.1 }}>
+              <motion.div
+                className='w-auto flex items-center justify-center'
+                animate={{rotate: 360}}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              >
+                <LoaderCircle size={30}/>
+              </motion.div>
+            </motion.div>
+          </div>
+        }
+        {absentValue && 
+          <div>
+            <h2 className='font-proxima font-bold text-3xl'>Not Attending</h2>
+            <table className='border-2'>
+              <thead>
+                <tr>
+                  <th className='border-2 p-1'>First Name</th>
+                  <th className='border-2 p-1'>Last Name</th>
+                  <th className='border-2 p-1'>Attending</th>
+                  <th className='border-2 p-1'>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                {absentList.map((item, index) => (
+                  <tr 
+                    key={index} 
+                    className='border-2'
+                    style={{
+                      backgroundColor: (index % 2 == 0) ? 'white' : 'lightgray',
+                    }}
+                  >
+                    <td className='p-1'>{item.firstName}</td>
+                    <td className='p-1'>{item.lastName}</td>
+                    <td className='p-1'>{item.attending + " "}</td>
+                    <td className='p-1'>{item.text}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p>Total Absent: {absentNum}</p>
+            <button className='px-5 py-2 rounded-md font-proxima font-bold text-white bg-green-400 my-5'>
+              <CsvDownloadButton data={absentList} delimiter={","}/>
+            </button>
+          </div>
+        }
       </div> 
       <div>
       {loading && 
@@ -169,7 +246,9 @@ const Table: React.FC<TableProps> = ({ }) => {
                     key={index} 
                     className='border-2'
                     style={{
-                      backgroundColor: (index % 2 == 0) ? 'white' : 'lightgray',
+                      backgroundColor: item.submitted 
+                      ? (item.attending ? '#D5F0C0' : '#FF8886') 
+                      : (index % 2 == 0 ? 'white' : 'lightgray')
                     }}
                   >
                     <td className='p-1'>{item.firstName}</td>
