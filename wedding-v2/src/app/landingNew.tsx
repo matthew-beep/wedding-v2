@@ -539,7 +539,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
           </motion.div>
         </section>
         <motion.section 
-          className="flex flex-col gap-8 lg:gap-12 h-auto pb-16 pt-8 lg:flex-row-reverse"
+          className="flex flex-col-reverse gap-8 lg:gap-12 h-auto pb-16 pt-8 lg:flex-row-reverse"
           id="rsvp"
         >          
           <motion.div 
@@ -558,7 +558,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             }}
             viewport={{
               once: true,
-              amount: 0.5
+              amount: 0.2
             }}
           >
             <Image 
@@ -567,13 +567,30 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               className="w-full h-full object-center object-cover"
             />
           </motion.div>
-          <motion.div 
+          <div 
             className="flex flex-col gap-8 lg:w-7/12 lg:max-h-[50vh]"
           >
-            <div>
+            <motion.div
+              initial={{ 
+                opacity: 0,
+                translateY: '10%'
+              }}
+              whileInView={{ 
+                opacity: 1,
+                translateY: '0%'
+              }}
+              transition={{ 
+                duration: 0.3, 
+                delay:0.2 
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2
+              }}
+            >
               <h2 className="text-3xl text-[#486A51] md:text-4xl lg:text-6xl">SEE YOU THERE?</h2>
               <h3 className="text-[#919191] md:text-lg lg:text-xl">RSVP</h3>
-            </div>
+            </motion.div>
             <motion.p 
               className="text-lg lg:text-xl text-[#333333] w-full"
               initial={{ 
@@ -590,7 +607,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               }}
               viewport={{
                 once: true,
-                amount: 0.5
+                amount: 0.8
               }}
             >
               Please remember to RSVP by February 28th to let us know if you can join us on our special day. 
@@ -615,7 +632,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
               }}
               viewport={{
                 once: true,
-                amount: 0.2
+                amount: 0.8
               }}
             >
               <Link href="/faq" className="w-full h-auto">
@@ -629,7 +646,7 @@ const Landing: React.FC<LandingProps> = ({ }) => {
                 </button>
               </Link>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.section>
       </section>
     </div>

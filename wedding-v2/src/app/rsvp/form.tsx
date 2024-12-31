@@ -38,7 +38,6 @@ async function checkMatch(firstname:string, lastname:string): Promise<string> {
         userId = doc.id;
         const submitted = doc.data().submitted;
         console.log("Document ID:", userId);
-        //console.log("Data:", doc.data());
         if (submitted) {
           alert("A response was already submitted for " + firstname + " " + lastname); 
           throw new Error("Response has already been submitted");
