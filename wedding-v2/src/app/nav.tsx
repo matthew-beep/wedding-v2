@@ -57,11 +57,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height, setNav }) => {
         setNav(true);
       } else {
         setDownAnimation(false);
-        if(scroll == 0) {
-          setNav(true);
-        } else {
-          setNav(false);
-        }
+        setNav(false);
       }
     }
   }, [scroll])
@@ -90,7 +86,9 @@ const Nav: React.FC<NavProps> = ({ scroll, height, setNav }) => {
         transition: { duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }
       })
     } else {
-      setNav(false);
+      if (scroll > 0) {
+        setNav(false);
+      }
       setIconOpacity(0);
       textColor.start({
         color: pathname != '/faq' ? 'white' : '#486A51'
