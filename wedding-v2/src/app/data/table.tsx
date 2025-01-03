@@ -60,6 +60,7 @@ const Table: React.FC<TableProps> = ({ }) => {
       // Update the state
       setRsvpList(fetchedRsvpList);
       setTotalNum(fetchedRsvpList.length);
+      console.log(fetchedRsvpList);
     }
   }, [value]);
 
@@ -260,6 +261,9 @@ const Table: React.FC<TableProps> = ({ }) => {
               </tbody>
             </table>
             <p>Total Invites: {totalNum}</p>
+            <button className='px-5 py-2 rounded-md font-proxima font-bold text-white bg-green-400 my-5'>
+              <CsvDownloadButton data={rsvpList} delimiter={","}/>
+            </button>
           </div>
         }
       </div>

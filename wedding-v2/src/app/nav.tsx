@@ -57,7 +57,11 @@ const Nav: React.FC<NavProps> = ({ scroll, height, setNav }) => {
         setNav(true);
       } else {
         setDownAnimation(false);
-        setNav(false);
+        if(scroll == 0) {
+          setNav(true);
+        } else {
+          setNav(false);
+        }
       }
     }
   }, [scroll])

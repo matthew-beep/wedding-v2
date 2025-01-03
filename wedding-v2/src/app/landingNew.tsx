@@ -465,79 +465,6 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             </Link>
           </motion.div>
         </section>
-        <section className="flex flex-col relative">
-          <div className="flex items-center justify-between h-auto">
-            <div>
-              <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
-              <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
-            </div>
-            <div className="lg:flex hidden">
-              <button
-                className="flex text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
-                onClick={scrollLeft}
-              >
-                <CircleArrowLeft 
-                  size={50} 
-                  strokeWidth={0.75} 
-                />
-              </button>
-              <button
-                className="flex text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
-                onClick={scrollRight}
-              >
-                <CircleArrowRight 
-                  size={50} 
-                  strokeWidth={0.75} 
-                />
-              </button>
-            </div>
-          </div>
-          <motion.div 
-            className="flex gap-2 overflow-x-scroll scrollbar-hide w-full"
-            ref={scrollRef}
-            variants={photoContainer}
-            initial={"hidden"}
-            whileInView={"show"}
-            viewport={{
-              once: true,
-              amount: 0.4
-            }}
-          >
-            <motion.div 
-              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:w-[30rem]"
-              variants={photoAnimation}
-            >
-              <Image 
-                src={photo1} 
-                alt="Jesus taking a photo of Anita" 
-                className="w-full h-full object-cover object-center cursor-pointer" 
-                onClick={() => handleClick(photo1)}
-              />
-            </motion.div>
-            <motion.div 
-              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:w-[30rem]"
-              variants={photoAnimation}
-            >
-              <Image 
-                src={photo2} 
-                alt="Anita Holding Flowers" 
-                className="w-full h-full object-cover object-center cursor-pointer" 
-                onClick={() => handleClick(photo2)}
-              />
-            </motion.div>
-            <motion.div 
-              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:w-[30rem]"
-              variants={photoAnimation}
-            >
-              <Image 
-                src={photo3} 
-                alt="Jesus and Anita standing together" 
-                className="w-full h-full object-cover object-center cursor-pointer"
-                onClick={() => handleClick(photo3)}
-              />
-            </motion.div>
-          </motion.div>
-        </section>
         <motion.section 
           className="flex flex-col-reverse gap-8 lg:gap-12 h-auto pb-16 pt-8 lg:flex-row-reverse"
           id="rsvp"
@@ -648,6 +575,79 @@ const Landing: React.FC<LandingProps> = ({ }) => {
             </motion.div>
           </div>
         </motion.section>
+        <section className="flex flex-col relative">
+          <div className="flex items-center justify-between h-auto">
+            <div>
+              <h1 className="text-3xl lg:text-5xl text-[#486A51]">ANITA & JESUS</h1>
+              <h2 className="text-[#919191] lg:text-2xl">Bride & Groom</h2>
+            </div>
+            <div className="lg:flex hidden">
+              <button
+                className="flex text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
+                onClick={scrollLeft}
+              >
+                <CircleArrowLeft 
+                  size={50} 
+                  strokeWidth={0.75} 
+                />
+              </button>
+              <button
+                className="flex text-[#486A51] hover:text-[#798c7e] cursor-pointer duration-200 transition-all"
+                onClick={scrollRight}
+              >
+                <CircleArrowRight 
+                  size={50} 
+                  strokeWidth={0.75} 
+                />
+              </button>
+            </div>
+          </div>
+          <motion.div 
+            className="flex gap-2 overflow-x-scroll scrollbar-hide w-full"
+            ref={scrollRef}
+            variants={photoContainer}
+            initial={"hidden"}
+            whileInView={"show"}
+            viewport={{
+              once: true,
+              amount: 0.4
+            }}
+          >
+            <motion.div 
+              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:w-[30rem]"
+              variants={photoAnimation}
+            >
+              <Image 
+                src={photo1} 
+                alt="Jesus taking a photo of Anita" 
+                className="w-full h-full object-cover object-center cursor-pointer" 
+                onClick={() => handleClick(photo1)}
+              />
+            </motion.div>
+            <motion.div 
+              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:w-[30rem]"
+              variants={photoAnimation}
+            >
+              <Image 
+                src={photo2} 
+                alt="Anita Holding Flowers" 
+                className="w-full h-full object-cover object-center cursor-pointer" 
+                onClick={() => handleClick(photo2)}
+              />
+            </motion.div>
+            <motion.div 
+              className="min-w-80 md:min-w-96 aspect-square lg:aspect-auto lg:w-[30rem]"
+              variants={photoAnimation}
+            >
+              <Image 
+                src={photo3} 
+                alt="Jesus and Anita standing together" 
+                className="w-full h-full object-cover object-center cursor-pointer"
+                onClick={() => handleClick(photo3)}
+              />
+            </motion.div>
+          </motion.div>
+        </section>
       </section>
     </div>
   );
