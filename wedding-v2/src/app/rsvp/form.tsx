@@ -1,6 +1,6 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import React, { useState } from 'react';
+//import { useCollection } from 'react-firebase-hooks/firestore';
 import { collection, setDoc, doc, updateDoc, query, where, getDocs, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { LoaderCircle } from 'lucide-react';
@@ -12,10 +12,12 @@ interface RSVPProps {
 
 }
 
+
+/*
 interface AttendanceDocument {
 
 }
-
+*/
 
 async function checkMatch(firstname:string, lastname:string): Promise<string> {
   try {
@@ -85,14 +87,15 @@ const Form: React.FC<RSVPProps> = ({  }) => {
   const [diet, setDiet] = useState<string>("");
   const [text, setText] = useState<string>("");
 
-  const [value, error] = useCollection(collection(db, 'attending'));
-  const [attendance, setAttendance] = useState<AttendanceDocument[]>([]);
+  //const [value, error] = useCollection(collection(db, 'attending'));
+  //const [attendance, setAttendance] = useState<AttendanceDocument[]>([]);
   const [attending, setAttending] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [message, setMessage] = useState<string>("We are so excited to see you there!");
 
+  /*
   useEffect(() => {
     if (value) {
       // Map the documents and set the rsvpList state
@@ -105,7 +108,7 @@ const Form: React.FC<RSVPProps> = ({  }) => {
       setAttendance(fetchedRsvpList);
     }
   }, [value]);
-
+  */
 
   const handleFirst = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(event.target.value);
@@ -184,8 +187,8 @@ const Form: React.FC<RSVPProps> = ({  }) => {
       
       setIsSubmitted(true);
       
-    } catch {
-      console.log(error);
+    } catch (err){
+      console.log(err);
     } finally {
       setIsLoading(false);
     }
