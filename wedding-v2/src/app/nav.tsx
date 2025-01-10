@@ -183,7 +183,7 @@ const Nav: React.FC<NavProps> = ({ scroll, height, setNav }) => {
                 }}
                 animate={textColor}
               >
-                <Link href="https://www.amazon.com/wedding/share/anitajesusregistry" target='_blank'>
+                <Link href="/registry">
                   Registry
                 </Link>
               </motion.li>

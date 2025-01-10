@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from 'react';
 import {useEffect, useRef, useState} from 'react'
 import {motion, easeInOut, useAnimationControls} from 'framer-motion'
-import rsvp from './img/rsvp.jpg';
+import rsvp from './img/seeyou.jpg';
 import video from './img/video.mp4';
 import photo1 from './img/mainpage-horizontalscroll1.JPG';
 import photo2 from './img/mainpage-horizontalscroll2.JPG';

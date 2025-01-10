@@ -6,11 +6,11 @@ import women from '../img/women.jpeg'
 import Image from "next/image";
 import Link from 'next/link';
 
-interface DresscodeProps {
+interface RegistryProps {
   windowWidth? : number;
 }
 
-const Dresscode: React.FC<DresscodeProps> = ({ }) => {
+const Registry: React.FC<RegistryProps> = ({ }) => {
 
   const textAnimation = {
     hidden: {              
@@ -34,7 +34,7 @@ const Dresscode: React.FC<DresscodeProps> = ({ }) => {
       <section className="min-h-svh sm:min-h-screen h-auto relative flex flex-col">
         <div className="h-[50svh] md:h-[70vh]">
           <div 
-          className="h-auto w-full z-0 flex pt-24 lg:pt-0 justify-center text-white font-canto dress lg:items-center"
+          className="h-auto w-full z-0 flex pt-24 lg:pt-0 justify-center text-white font-canto registry lg:items-center"
           style={{
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -48,7 +48,7 @@ const Dresscode: React.FC<DresscodeProps> = ({ }) => {
               initial="hidden"
               animate="show"
             >
-              Dress Code
+              Registry
             </motion.h2>
           </div>
         </div>
@@ -89,4 +89,4 @@ const Dresscode: React.FC<DresscodeProps> = ({ }) => {
   );
 }
 
-export default Dresscode;
+export default Registry;
